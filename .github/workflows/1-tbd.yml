@@ -9,7 +9,7 @@ name: Step 1, Enable CodeQL
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: [CodeQL Setup]
+    workflows: [CodeQL]
   # Add events that trigger this workflow
   # TBD-step-1-event:
 

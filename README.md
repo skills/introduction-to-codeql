@@ -69,11 +69,13 @@ Code scanning is part of the [GitHub Advanced Security (GHAS)](https://docs.gith
 <details id=1>
 <summary><h2>Step 1: Enable CodeQL</h2></summary>
 
-_Welcome to "TBD-course-name"! :wave:_
+👋 Hello! Welcome to the GitHub Skills course: Secure Your Repository's Source Code! 
 
-TBD-step-1-information
+Let's get started!  
 
-**What is _TBD-term-1_**: TBD-definition-1
+In this first step, we'll be learning more about CodeQL and how to use it to secure your source code. 
+
+**What is GitHub code scanning**: Code scanning is a capability that allows development teams to integrate security testing tools into the software development process.  This is done using GitHub Actions.  Code scanning allows you to integrate many different types of security testing tools.  Take a look at the 
 
 ### :keyboard: Activity: TBD-step-1-name
 

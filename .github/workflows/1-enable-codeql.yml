@@ -10,6 +10,8 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows: [CodeQL]
+    types:
+      - in_progress
   # Add events that trigger this workflow
   # TBD-step-1-event:
 

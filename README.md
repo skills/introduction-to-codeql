@@ -7,9 +7,9 @@
   Add your open source license, GitHub uses the MIT license.
 -->
 
-# TBD-course-name
+# Secure Your Repository's Source Code 
 
-_TBD-course-description_
+Ensuring the security of application source code is a critical step in modern software development.  In this GitHub Skills course, you will learn to use GitHub code scanning to identify, resolve, and prevent insecure coding patterns.
 
 <!--
   <<< Author notes: Start of the course >>>
@@ -20,15 +20,17 @@ _TBD-course-description_
   Do not use quotes on the <details> tag attributes.
 -->
 
-<details id=0>
+<details id=0 open>
 <summary><h2>Welcome</h2></summary>
 
-TBD-welcome-paragraph
+👋 Hello!  Welcome to the GitHub Skills course: Secure Your Repository's Source Code!  In this course, we will explore using GitHub code scanning, powered by [CodeQL](https://codeql.github.com/), to identify common coding practices that can lead to security vulnerabilities.  During this course, we will enable code scanning on your repository to identify, remediate, and prevent SQL injection vulnerabilities.
+  
+Code scanning is part of the [GitHub Advanced Security (GHAS)](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security) product suite.  All of the features of Advanced Security are 100% free for open source, public repositories.
 
-- **Who is this for**: TBD-audience.
-- **What you'll learn**: TBD-objective.
-- **What you'll build**: TBD-result.
-- **Prerequisites**: TBD-prerequisites.
+- **Who is this for**: Developers, security engineers, open source maintainers.
+- **What you'll learn**: Enabling code scanning, identifying SQL injection vulnerabilities with CodeQL.
+- **What you'll build**: A secure software development pipeline that allows you to identify and prevent new security vulnerabilities from being introduced into your production code.
+- **Prerequisites**: A baseline knowledge of GitHub concepts such as pull requests, Actions, and source code.  You'll also need to be familiar with the concepts of Static Application Security Testing (SAST).  Don't worry, we'll demistify the complex parts for you 🙂.
 - **How long**: This course is TBD-step-count steps long and takes less than TBD-duration to complete.
 
 ## How to start this course

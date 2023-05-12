@@ -1,4 +1,4 @@
-name: Step 1, TBD-step-1-name
+name: Step 1, Enable CodeQL
 
 # This step triggers after TBD-step-1-event-desc
 # This step sets STEP to 2

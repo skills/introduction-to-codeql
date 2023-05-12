@@ -67,7 +67,7 @@ Code scanning is part of the [GitHub Advanced Security (GHAS)](https://docs.gith
 -->
 
 <details id=1 open>
-<summary><h2>Step 1: TBD-step-1-name</h2></summary>
+<summary><h2>Step 1: Enable CodeQL</h2></summary>
 
 _Welcome to "TBD-course-name"! :wave:_
 

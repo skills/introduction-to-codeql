@@ -8,6 +8,8 @@ name: Step 1, TBD-step-1-name
 # Reference https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: [CodeQL Setup]
   # Add events that trigger this workflow
   # TBD-step-1-event:
 

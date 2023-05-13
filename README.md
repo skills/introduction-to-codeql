@@ -66,7 +66,7 @@ Code scanning is part of the [GitHub Advanced Security (GHAS)](https://docs.gith
   TBD-step-1-notes.
 -->
 
-<details id=1>
+<details id=1 open>
 <summary><h2>Step 1: Enable CodeQL</h2></summary>
 
 👋 Hello! Welcome to the GitHub Skills course: Secure Your Repository's Source Code! 
@@ -84,9 +84,18 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
 1. Navigate the to **settings** tab at the top of your repository.
 1. Inside the repository settings page navigate to **Code security and analysis** in the left-hand navigation, under the **Security** heading
-1. Scroll down to the section titled **Code scanning**.  Here we will configure the CodeQL analysis.  There are two sections here, "CodeQL analysis" and "Other tools"  for now we will focus on CodeQL analysis.  Feel free to browse the other code scanning tool integrations 
+1. Scroll down to the section titled **Code scanning**.  Here we will configure the CodeQL analysis.  There are two sections, "CodeQL analysis" and "Other tools"  for now we will focus on CodeQL analysis.  Feel free to browse the other code scanning tool integrations by choosing "Explore other workflows".  We're not going to set up any other tools in this course, though. 
 1. Select the **Set up** dropdown and choose **Default**
-1. Wait about 20 seconds then refresh this page for the next step.
+  <img width="837" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/c539dc7a-0c94-4137-b17f-18f965039165">
+
+6. Let's take a look at the config options in the modal:
+  - **Languages to analyze:** These are the languages that will be scanned by CodeQL.  In this case, it's `Python`.  
+  - **Query suites:** CodeQL [queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) are packaged in bundles called "suites".  This section allows you to choose which query suite to use.  We'll leave this set as **Default** for this exercise
+  - **Events:** This section tells CodeQL when to scan.  In this case, it's set to scan on any pull request to the `main` branch.
+   <img width="903" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/516b6b43-e172-4324-86e9-21c4a74ca610">
+
+7. Press **Enable CodeQL**
+8. Wait about 20 seconds then refresh this page for the next step.
 
 </details>
 
@@ -97,7 +106,7 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
   TBD-step-2-notes.
 -->
 
-<details id=2 open>
+<details id=2>
 <summary><h2>Step 2: TBD-step-2-name</h2></summary>
 
 _You did TBD-step-1-name! :tada:_

@@ -75,12 +75,17 @@ Let's get started!
 
 In this first step, we'll be learning more about CodeQL and how to use it to secure your source code. 
 
-**What is GitHub code scanning**: Code scanning is a capability that allows development teams to integrate security testing tools into the software development process.  This is done using GitHub Actions.  Code scanning allows you to integrate many different types of security testing tools.  Take a look at the 
+**What is GitHub code scanning**: Code scanning is a capability that allows development teams to integrate security testing tools into the software development process.  This is done using GitHub Actions.  With code scanning, you can integrate many different types of tools including SAST, container, and infrastructure as code security tools.
 
-### :keyboard: Activity: TBD-step-1-name
+**What is CodeQL**: CodeQL is a static analysis testing tool created by the team at GitHub.  CodeQL is a deep semantic analysis tool that helps you identify security weaknesses like SQL injection, cross-site scripting, and code injection issues.  
+
+### :keyboard: Activity: Enable code scanning with CodeQL
 
 1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. TBD-step-1-instructions.
+1. Navigate the to **settings** tab at the top of your repository.
+1. Inside the repository settings page navigate to **Code security and analysis** in the left-hand navigation, under the **Security** heading
+1. Scroll down to the section titled **Code scanning**.  Here we will configure the CodeQL analysis.  There are two sections here, "CodeQL analysis" and "Other tools"  for now we will focus on CodeQL analysis.  Feel free to browse the other code scanning tool integrations 
+1. Select the **Set up** dropdown and choose **Default**
 1. Wait about 20 seconds then refresh this page for the next step.
 
 </details>

@@ -35,7 +35,7 @@ jobs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
   on_view-alerts-step-2-event:
-    name: On view-alerts-step-2-event
+    name: On review-alerts-step-2-event
     needs: get_current_step
 
     # We will only run this action when:

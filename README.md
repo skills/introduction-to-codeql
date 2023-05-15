@@ -82,10 +82,10 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 ### :keyboard: Activity: Enable code scanning with CodeQL
 
 1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. Navigate the to **settings** tab at the top of your repository.
-1. Inside the repository settings page navigate to **Code security and analysis** in the left-hand navigation, under the **Security** heading
-1. Scroll down to the section titled **Code scanning**.  Here we will configure the CodeQL analysis.  There are two sections, "CodeQL analysis" and "Other tools"  for now we will focus on CodeQL analysis.  Feel free to browse the other code scanning tool integrations by choosing "Explore other workflows".  We're not going to set up any other tools in this course, though. 
-1. Select the **Set up** dropdown and choose **Default**
+2. Navigate the to **settings** tab at the top of your repository.
+3. Inside the repository settings page navigate to **Code security and analysis** in the left-hand navigation, under the **Security** heading
+4. Scroll down to the section titled **Code scanning**.  Here we will configure the CodeQL analysis.  There are two sections, "CodeQL analysis" and "Other tools"  for now we will focus on CodeQL analysis.  Feel free to browse the other code scanning tool integrations by choosing "Explore other workflows".  We're not going to set up any other tools in this course, though. 
+5. Select the **Set up** dropdown and choose **Default**
   <img width="837" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/c539dc7a-0c94-4137-b17f-18f965039165">
 
 6. Let's take a look at the config options in the modal:
@@ -107,18 +107,77 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 -->
 
 <details id=2>
-<summary><h2>Step 2: TBD-step-2-name</h2></summary>
+<summary><h2>Step 2: Review and Triage CodeQL Alerts</h2></summary>
 
-_You did TBD-step-1-name! :tada:_
+_Way to go! You got CodeQL running! :tada:_
 
-TBD-step-2-information
+In this exercise, we'll review the CodeQL findings and understand how to triage the alerts.  
 
 **What is _TBD-term-2_**: TBD-definition-2
 
-### :keyboard: Activity: TBD-step-2-name
+### :keyboard: Activity 1: Review the CodeQL Alerts
 
-1. TBD-step-2-instructions.
-1. Wait about 20 seconds then refresh this page for the next step.
+In this activity, we will review some of the CodeQL findings in the Security page of your repository.  The Security page is where all security related information is displayed. 
+1. Navigate to the **Security** tab in the top navigation bar of your repository PROTIP: do this in a new tab
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/b9d39c6c-34a7-45e8-8a84-ccfe89f9ac65)
+  
+2. Select **Code scanning** under the "Vulnerability alerts" heading in left-side navigation bar
+3. This screen will contain all the vulnerabilities identified by CodeQL inside this repository's codebase.  Explore the different filters and search capabilities in this page.  These filtering capabilities become very helpful when you're working with many findings!
+
+
+### :keyboard: Activity 2: Review an Alert
+In this activity, we will work through a CodeQL alert.  We'll understand how to view the data-flow of the vulnerability, understand what part of the code the alert impacts, and learn how to get more information about the alert.  There are no changes in this activity, we're just working through the alert UI. 
+
+* **Alert status:** This section shows the current alert status (open or closed), as well as which branch this alert was found in, and when it was found
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/5c34e1ac-d7ab-47b4-a83a-4a86a473cb9b)
+
+* **Location information:**  This section describes which part of the code is vulnerable.  
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/b402aef6-ca19-491b-a2a0-1d402106e64f)
+  
+* **Paths:** Feel free to click on **Show paths** to get more insights into the alert's data-flow.  The modal that opens up is very helpful in understanding where the user input (we call that a source) flows through the application until it's acted on (we call this the sink).  This modal helps to understand the flow of data through your application
+  
+* **Recommendations:** This section includes some more very useful information.  In the top bar, you can see the tool (CodeQL in this case), Rule ID, and even view the CodeQL query used to find this vulnerabilitiy.  You can view the query by clicking **View source**.  Additionally, this pane includes recommendations for fixing this vulnerability.  Click **Show more** to view the full recommendation
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/fc149d1f-6593-4f6f-9f3c-e3b64b4bd2ab)
+
+* **Audit trail:** The audit trail section of the alert shows the history of the alert.  As users mark a finding as closed, or fix a finding in code, we track those changes here
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/6cc9e07e-c32c-4868-a4c3-0fb97544ea3f)
+
+* **Alert tirage:** To triage an alert, or open a new issue, you will use these buttons.  Don't do anything yet 😄. We'll get into these buttons in a moment!
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/604e4812-eaa3-4732-8520-00fae0ea68cd)
+
+* **Additional info:** Finally, the right-side panel contains information such as tags, CWE information, and the severity of the alert
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/eecd7776-1dfc-4d40-856b-0a7a1a81f653)
+
+
+### :keyboard: Activity 3: Close an Alert
+Now that we're familiar with the alert layout, let's work through the process of closing one!
+
+1. Inside the same alert you just opened, click the **Dismiss alert** button, then choose any reason for dismissal, and add a short note.
+2. Click **Dismiss alert**
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/5eb98ae6-2bb2-4ebd-a302-a30cb4e058c8)
+
+3. At this point, the alert will change state to closed.  You also see that the change you made has been added to the audit trail at the bottom of the alert
+4. Navigate back to **Security** > **Code scanning alerts**.  You'll see that you only have 1 alert listed.
+5. Click **1 Closed**.  This will bring you to the closed alerts where you can view the alert you just closed
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/9842b7b7-d6fe-4755-83dc-048425dc55ce)
+
+6. Feel free to reopen the alert by opening it, then selecting **Reopen alert**
+
+### :keyboard: Activity 4: Create a GitHub Issue for an Alert
+This last step allows us to create a GitHub Issue to track the work that goes into resolving a vulnerability.  Issues are nice because they can provide a location to collaborate on a security problem much the same way we would with a traditional software bug.  Additionally, issues can be assigned to people or teams.
+  
+1. Open one of the open alerts that CodeQL originally found.  
+2. Click the green **Create issue** button at the top right of the alert.  TIP: If you don't see this button, you might be working in a closed alert.  Try with an alert that's currently open
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/a446baf6-18e5-442d-b0fc-8e4110e422dd)
+
+3. A new issue creation page will open.  You don't need to make any changes in this page, but feel free to if you need to add additional information.  
+4. Click **Submit new issue**
+4. View the issue you just created by clicking **Issues** in the top nav bar of your repository. Your issue will be listed in that page. 
 
 </details>
 

@@ -113,7 +113,7 @@ _Way to go! You got CodeQL running! :tada:_
 
 In this exercise, we'll review the CodeQL findings and understand how to triage the alerts.  
 
-**What is _TBD-term-2_**: TBD-definition-2
+**What is CWE**: CWE stands for Common Weakenss Enumeration.  You can think of it as a way to describe and categorize security issues in application source code.  More information o n CWEs is available in this [wikipedia article](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)
 
 ### :keyboard: Activity 1: Review the CodeQL Alerts
 
@@ -189,18 +189,55 @@ This last step allows us to create a GitHub Issue to track the work that goes in
 -->
 
 <details id=3>
-<summary><h2>Step 3: TBD-step-3-name</h2></summary>
+<summary><h2>Step 3: Fix Security Vulnerabilites</h2></summary>
 
-_Nice work finishing TBD-step-2-name :sparkles:_
+_Nice work finishing Step 2: Reviewing and Triaging CodeQL Alerts :sparkles:_
+  
+In this step, we will work to fix the existing security vulnerabilities already identified by CodeQL.  Remember, at this point we have introduced CodeQL into our repository and had it scan the existing code.  The vulnerabilities it found are real-world issues and they need to be fixed!  We'll fix this issue by editing the `/server/routes.py` file.  We'll then create a pull request to merge this code in to the main branch of our repository.
 
-TBD-step-3-information
+  
+**What is pull request**: A pull request (PR) is a utility available in GitHub that allows new code to be reviewed before being "merged" with the main code in the repository.  This method allows multiple people to work on the same code at the same time.  For more information, check out the GitHub Skills course [Introduction to GitHub](https://github.com/skills/introduction-to-github)
 
-**What is _TBD-term-3_**: TBD-definition-3
+### :keyboard: Activity 1: Review alerts
+This step is important!  Before we fix these alerts, we need to make sure the alerts are still open.  We'll also need to get some information on which files we need to fix, and how best to fix these issues.
 
-### :keyboard: Activity: TBD-step-3-name
+1. Navigate to your code scanning alerts page: **Security** > **Code scanning**
+1. You should see 2 alerts listed as Open. If any of the alerts are listed as **Closed**, open the alert page and choose **Reopen alert**
+![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/c9d9f1b7-5f17-423c-8b43-81e8912aaf9c)
 
-1. TBD-step-3-instructions.
-1. Wait about 20 seconds then refresh this page for the next step.
+Now that both of these alerts are back to an "Open" state, we can come up with a plan to fix them.  If you look at the alerts, they are both calling out one specific file containing the issues: `server/routes.py`.  The issue is in how we're crafting the SQL query for the database.  These queries are vulnerable to SQL injection attacks.  We need to get these SQL statements re-written more securely.  
+  
+If you expand the **More info** section at the bottom of the alert, there are very clear suggestions to fix this query.  We're going to implement those suggestions in the next step.
+
+### :keyboard: Activity 2: Edit routes.py
+Now that we know where the issues exist and how to fix them, we're going to modify the file `routes.py` to fix the problems.  Again, you'll want to do these next steps in a separate browser window or tab.
+  
+1. In the **Code** pane, click on the folder named `server`, then click on the file named `routes.py`.  The code view page will open.
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
+  
+2. Click the edit button
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d)
+  
+3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE %s", name`.  Your page should look like this:
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/0513c535-a4a1-4be4-b7e0-efb0ed49827e)
+  
+4. Next we're going to edit line 22.  We'll replace the SQL statement with this text: `"SELECT * FROM books WHERE author LIKE %s", author`
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/a5f7b863-aa06-4302-846b-82af27f1fa84)
+  
+5. Select **Commit File** from the top right 
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/daffc4b7-b137-4441-92c6-6e65bfd654d4)
+  
+6. The "Propose changes" window will pop up.  Leave the defaults configured, and choose **Commit file**
+
+9. Now that the code has been committed into your main branch, CodeQL will initiate a new scan. Check the status of that scan by navigating to **Actions** then choose the **CodeQL** action.  Once it's complete, Actions will display a green check next to the last run
+
+10. Once that CodeQL scan is done, navigate to **Security** > **Code scanning** to see the alerts.  You should have 0 open alerts and 2 closed alerts 🎉.  Feel free to review the closed alerts, especially the audit trail.  
+
 
 </details>
 

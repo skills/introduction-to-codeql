@@ -280,7 +280,7 @@ In this first activity, we'll introduce the same insecure SQL statement from bef
   
   <img width="690" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/dd460da6-5097-45e4-b949-36f62b0c45e0">
 
-4. Select **Commit File** from the top right 
+4. Select **Commit changes** from the top right 
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/daffc4b7-b137-4441-92c6-6e65bfd654d4)
   

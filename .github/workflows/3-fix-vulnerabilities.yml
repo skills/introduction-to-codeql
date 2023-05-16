@@ -8,6 +8,9 @@ name: Step 3, Fix security vulnerabilities
 # Reference https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - server/routes.py
   # Add events that trigger this workflow
   # TBD-step-3-event:
 

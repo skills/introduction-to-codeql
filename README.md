@@ -268,28 +268,24 @@ Let's get started 👍
 
 In this first activity, we'll introduce the same insecure SQL statement from before to the `routes.py` file.  Once we update the file, we'll commit it to a new branch, then create a pull request.
 
-1. In the **Code** pane, click on the folder named `server`, then click on the file named `routes.py`.  The code view page will open.
-  
+  1. In the **Code** pane, click on the folder named `server`, then click on the file named `routes.py`.  The code view page will open.
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
   
-2. Click the edit button
+  2. Click the edit button
   
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d)
+  <img width="530" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d">
   
-3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.  Your page should look like this:
-  
-  <img width="690" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/dd460da6-5097-45e4-b949-36f62b0c45e0">
+  3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.  Your page should look like this:
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/dd460da6-5097-45e4-b949-36f62b0c45e0)
 
-4. Select **Commit changes** from the top right 
-  
+  4. Select **Commit changes** from the top right 
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/daffc4b7-b137-4441-92c6-6e65bfd654d4)
   
-5. The "Propose changes" window will open.  This time, you're going to select the radio button next to **Create a new branch**.  You can create a new name for this branch, or leave it the default suggestion.
-  
-  <img width="511" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/62586097-2099-4f24-b7f6-30509933db2e">
+  5. The "Propose changes" window will open.  This time, you're going to select the radio button next to **Create a new branch**.  You can create a new name for this branch, or leave it the default suggestion.
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/62586097-2099-4f24-b7f6-30509933db2e)
 
-6. Click **Propose changes**.  This opens a new pull request
-7. in the "Open a pull request" window, click **Create pull request**
+  6. Click **Propose changes**.  This opens a new pull request
+  7. in the "Open a pull request" window, click **Create pull request**
   
 
 ### :keyboard: Activity: Review pull request
@@ -312,26 +308,7 @@ Now, let's work through the pull request to see what the experience is like.
 
 5. Wait about 20 seconds then refresh this page for the next step.
 
-</details>
-
-<!--
-  <<< Author notes: Step 5 >>>
-  Start this step by acknowledging the previous step.
-  Define terms and link to docs.github.com.
-  TBD-step-5-notes.
--->
-
-<details id=5>
-<summary><h2>Step 5: TBD-step-5-name</h2></summary>
-
-_Almost there TBD-step-4-name! :heart:_
-
-TBD-step-5-information
-
-### :keyboard: Activity: TBD-step-5-name
-
-1. TBD-step-5-instructions.
-1. Wait about 20 seconds then refresh this page for the next step.
+At this point
 
 </details>
 

@@ -193,10 +193,7 @@ This last step allows us to create a GitHub Issue to track the work that goes in
 
 _Nice work finishing Step 2: Reviewing and Triaging CodeQL Alerts :sparkles:_
   
-In this step, we will work to fix the existing security vulnerabilities already identified by CodeQL.  Remember, at this point we have introduced CodeQL into our repository and had it scan the existing code.  The vulnerabilities it found are real-world issues and they need to be fixed!  We'll fix this issue by editing the `/server/routes.py` file.  We'll then create a pull request to merge this code in to the main branch of our repository.
-
-  
-**What is pull request**: A pull request (PR) is a utility available in GitHub that allows new code to be reviewed before being "merged" with the main code in the repository.  This method allows multiple people to work on the same code at the same time.  For more information, check out the GitHub Skills course [Introduction to GitHub](https://github.com/skills/introduction-to-github)
+In this step, we will work to fix the existing security vulnerabilities already identified by CodeQL.  Remember, at this point we have introduced CodeQL into our repository and had it scan the existing code.  The vulnerabilities it found are real-world issues and they need to be fixed!  We'll fix this issue by editing the `/server/routes.py` file.  
 
 ### :keyboard: Activity 1: Review alerts
 This step is important!  Before we fix these alerts, we need to make sure the alerts are still open.  We'll also need to get some information on which files we need to fix, and how best to fix these issues.

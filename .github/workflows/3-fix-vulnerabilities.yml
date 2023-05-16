@@ -1,4 +1,4 @@
-name: Step 3, TBD-step-3-name
+name: Step 3, Fix security vulnerabilities
 
 # This step triggers after TBD-step-3-event-desc
 # This step sets STEP to 4
@@ -33,7 +33,7 @@ jobs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
   on_TBD-step-3-event:
-    name: On TBD-step-3-event
+    name: On fix-vulnerabilities-event
     needs: get_current_step
 
     # We will only run this action when:

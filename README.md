@@ -262,10 +262,55 @@ Let's get started 👍
 
 **What is pull request**: A pull request (PR) is a utility available in GitHub that allows new code to be reviewed before being "merged" with the main code in the repository.  This method allows multiple people to work on the same code at the same time.  For more information, check out the GitHub Skills course [Introduction to GitHub](https://github.com/skills/introduction-to-github)
 
-### :keyboard: Activity: TBD-step-4-name
+**What is branch**: A branch is a separate copy of the code inside our repository.  Branches allow developers to work on a different copy of the code, separate from the main branch.  For more information see the GitHub docs: [About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches#).
 
-1. TBD-step-4-instructions.
-1. Wait about 20 seconds then refresh this page for the next step.
+### :keyboard: Activity: Edit `routes.py` and create a new pull request
+
+In this first activity, we'll introduce the same insecure SQL statement from before to the `routes.py` file.  Once we update the file, we'll commit it to a new branch, then create a pull request.
+
+1. In the **Code** pane, click on the folder named `server`, then click on the file named `routes.py`.  The code view page will open.
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
+  
+2. Click the edit button
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d)
+  
+3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.  Your page should look like this:
+  
+  <img width="690" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/dd460da6-5097-45e4-b949-36f62b0c45e0">
+
+4. Select **Commit File** from the top right 
+  
+  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/daffc4b7-b137-4441-92c6-6e65bfd654d4)
+  
+5. The "Propose changes" window will open.  This time, you're going to select the radio button next to **Create a new branch**.  You can create a new name for this branch, or leave it the default suggestion.
+  
+  <img width="511" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/62586097-2099-4f24-b7f6-30509933db2e">
+
+6. Click **Propose changes**.  This opens a new pull request
+7. in the "Open a pull request" window, click **Create pull request**
+  
+
+### :keyboard: Activity: Review pull request
+
+At this point, we've edited the file `routes.py` with our vulnerable code, committed those changes to our new branch, and created a pull request to merge the new branch into our `main` branch.  This is the exact same set of steps a developer would take as they introduce new, vulnerable code into a repository.  
+  
+Now, let's work through the pull request to see what the experience is like.
+  
+1. In the previous activity, we created the pull request.  After creating the pull request, you were brought directly to the pull request page.  Take a look at the checks at the bottom of the pull request.  You will see a check called "Code scanning/CodeQL".  This is the CodeQL analysis job scanning the code introduced in the pull request
+  
+  <img width="530" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ce5868ba-c0a4-4be5-9eaa-ff4b8a1ed682">
+
+2.  Once the check is complete, you will see a new comment in the pull request from CodeQL indicating that there is a new security vulnerability; a SQL query built from user controlled data.  This is our SQL injection vulnerability
+  
+  <img width="1180" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/378bd766-ef61-4619-ab3c-bf2c8d9618d7">
+
+3. Review the data flow paths by clicking **Show paths**
+  
+4. Add a comment and tag one of your friends by using their GitHub handle ex: `@username`.  This will notify them that you made a comment on the issue and maybe need their help solving the problem 😄
+
+5. Wait about 20 seconds then refresh this page for the next step.
 
 </details>
 

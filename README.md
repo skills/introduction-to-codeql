@@ -246,13 +246,19 @@ Now that we know where the issues exist and how to fix them, we're going to modi
 -->
 
 <details id=4>
-<summary><h2>Step 4: TBD-step-4-name</h2></summary>
+<summary><h2>Step 4: Prevent Vulnerabilities in the Pull Request</h2></summary>
 
-_Nicely done TBD-step-3-name! :partying_face:_
+_Nicely done!  You finished Step 3: Fix Security Vulnerabilites! :partying_face:_
 
-TBD-step-4-information
+Way to go!  You made it this far.  We're almost done! The last step is to test out the pull request integration with CodeQL.  In this step, we will be adding a vulnerability back into the `routes.py` file to trigger an alert for a SQL injection vulnerability.  This is going to be the same issue we saw originally.  
+  
+The goal here is to understand what developers experience when a new vulnerability is found.  
+  
+We will edit the `routes.py` file, edit the SQL statement to make it insecure, commit that code, create a pull request to merge that insecure code into the main branch, then experience the alert inside the pull request. 
+  
+Let's get started 👍
 
-**What is _TBD-term-4_**: TBD-definition-4
+**What is pull request**: TBD-definition-4
 
 ### :keyboard: Activity: TBD-step-4-name
 

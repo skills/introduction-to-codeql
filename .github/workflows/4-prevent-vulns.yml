@@ -1,4 +1,4 @@
-name: Step 4, TBD-step-4-name
+name: Step 4, Prevent vulnerabilities in the pull request
 
 # This step triggers after TBD-step-4-event-desc
 # This step sets STEP to 5
@@ -8,6 +8,8 @@ name: Step 4, TBD-step-4-name
 # Reference https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
+  pull_request:
+    types: opened
   # Add events that trigger this workflow
   # TBD-step-4-event:
 
@@ -33,7 +35,7 @@ jobs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
   on_TBD-step-4-event:
-    name: On TBD-step-4-event
+    name: On pr-event
     needs: get_current_step
 
     # We will only run this action when:

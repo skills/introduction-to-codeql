@@ -177,8 +177,9 @@ This last step allows us to create a GitHub Issue to track the work that goes in
 
 3. A new issue creation page will open.  You don't need to make any changes in this page, but feel free to if you need to add additional information.  
 4. Click **Submit new issue**
-4. View the issue you just created by clicking **Issues** in the top nav bar of your repository. Your issue will be listed in that page. 
-
+5. View the issue you just created by clicking **Issues** in the top nav bar of your repository. Your issue will be listed in that page. 
+6. Wait about 20 seconds then refresh this page for the next step.
+  
 </details>
 
 <!--
@@ -235,7 +236,8 @@ Now that we know where the issues exist and how to fix them, we're going to modi
 
 10. Once that CodeQL scan is done, navigate to **Security** > **Code scanning** to see the alerts.  You should have 0 open alerts and 2 closed alerts 🎉.  Feel free to review the closed alerts, especially the audit trail.  
 
-
+11. Wait about 20 seconds then refresh this page for the next step.
+  
 </details>
 
 <!--
@@ -258,7 +260,7 @@ We will edit the `routes.py` file, edit the SQL statement to make it insecure, c
   
 Let's get started 👍
 
-**What is pull request**: TBD-definition-4
+**What is pull request**: A pull request (PR) is a utility available in GitHub that allows new code to be reviewed before being "merged" with the main code in the repository.  This method allows multiple people to work on the same code at the same time.  For more information, check out the GitHub Skills course [Introduction to GitHub](https://github.com/skills/introduction-to-github)
 
 ### :keyboard: Activity: TBD-step-4-name
 

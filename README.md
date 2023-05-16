@@ -324,10 +324,10 @@ If you would like to learn more about pull request integrations for code scannin
 _Congratulations friend, you've completed this course!_ 🥇
 
 Here's a recap of all the tasks you've accomplished in your repository:
-  - Enabled CodeQL on our repository
-  - CodeQL scanned the code in our repository and notified us of a couple SQL injection vulenrabilities
+  - Enabled CodeQL on your repository
+  - CodeQL scanned the code in your repository and notified us of a couple SQL injection vulenrabilities
   - We reviewed the findings, marked the findings as closed, and explored the audit trail 
-  - Fixed our code and saw that the findings automatically closed out
+  - Fixed your code and saw that the findings automatically closed out
   - Introduced a new vulnerability
   - Created a pull request, and were notified of the vulnerability
 

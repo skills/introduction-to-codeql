@@ -129,7 +129,7 @@ In this activity, we will review the CodeQL findings in the Security page of you
 ### :keyboard: Activity 2: Review an Alert
 In this activity, we will work through a CodeQL alert.  We'll understand how to view the data-flow of the vulnerability, understand what part of the code the alert impacts, and learn how to get more information about the alert.  There are no changes in this activity, we're just working through the alert UI. 
 
-* **Alert status:** This section shows the current alert status (open or closed), as well as which branch this alert was found in, and when it was found
+* **Alert status:** This section shows the current alert status (open or closed), as well as which branch this alert was found in and when it was found
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/5c34e1ac-d7ab-47b4-a83a-4a86a473cb9b)
 

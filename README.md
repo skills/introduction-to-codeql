@@ -175,9 +175,9 @@ This last step will show you how to create a GitHub Issue to track the work that
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/a446baf6-18e5-442d-b0fc-8e4110e422dd)
 
-3. A new issue creation page will open.  You don't need to make any changes in this page, but feel free to if you need to add additional information.  
+3. A new issue creation page will open.  You don't need to make any changes in this page, but feel free to add additional information.  
 4. Click **Submit new issue**
-5. View the issue you just created by clicking **Issues** in the top nav bar of your repository. Your issue will be listed in that page. 
+5. View the issue you just created by clicking **Issues** in the top navigation bar of your repository. Your issue will be listed in that page. 
 6. Wait about 20 seconds then refresh this page for the next step.
   
 </details>

@@ -23,7 +23,7 @@ Ensuring the security of application source code is a critical step in modern so
 <details id=0 open>
 <summary><h2>Welcome</h2></summary>
 
-👋 Hello!  Welcome to the GitHub Skills course: Secure Your Repository's Source Code!  In this course, we will explore using GitHub code scanning, powered by [CodeQL](https://codeql.github.com/), to identify common coding practices that can lead to security vulnerabilities.  During this course, we will enable code scanning on your repository to identify, remediate, and prevent vulnerabilities.
+👋 Hello!  Welcome to the GitHub Skills course: Secure Your Repository Source Code!  In this course, we will explore using GitHub code scanning, powered by [CodeQL](https://codeql.github.com/), to identify common coding practices that can lead to security vulnerabilities.  During this course, we will enable code scanning on your repository to identify, remediate, and prevent vulnerabilities.
   
 Code scanning is part of the [GitHub Advanced Security (GHAS)](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security) product suite.  All of the features of Advanced Security are 100% free for open source, public repositories.
 

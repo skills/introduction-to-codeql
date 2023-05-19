@@ -7,7 +7,7 @@
   Add your open source license, GitHub uses the MIT license.
 -->
 
-# Secure Your Repository's Source Code 
+# Secure Your Repository Source Code 
 
 Ensuring the security of application source code is a critical step in modern software development.  In this GitHub Skills course, you will learn to use GitHub code scanning to identify, resolve, and prevent insecure coding patterns.
 

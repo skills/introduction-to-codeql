@@ -113,7 +113,7 @@ _Way to go! You got CodeQL running! :tada:_
 
 In this exercise, we'll review the CodeQL findings and understand how to triage the alerts.  
 
-**What is CWE**: CWE stands for Common Weakenss Enumeration.  You can think of it as a way to describe and categorize security issues in application source code.  More information o n CWEs is available in this [wikipedia article](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)
+**What is CWE**: CWE stands for Common Weakenss Enumeration.  You can think of it as a way to describe and categorize security issues in application source code.  More information on CWEs is available in this [wikipedia article](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)
 
 ### :keyboard: Activity 1: Review the CodeQL Alerts
 

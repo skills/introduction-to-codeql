@@ -31,7 +31,7 @@ Code scanning is part of the [GitHub Advanced Security (GHAS)](https://docs.gith
 - **What you'll learn**: Enabling code scanning, identifying SQL injection vulnerabilities with CodeQL.
 - **What you'll build**: A secure software development pipeline that allows you to identify and prevent new security vulnerabilities from being introduced into your production code.
 - **Prerequisites**: A baseline knowledge of GitHub concepts such as pull requests, Actions, and source code.  You'll also need to be familiar with the concepts of Static Application Security Testing (SAST).  Don't worry, we'll demistify the complex parts for you 🙂.
-- **How long**: This course is TBD-step-count steps long and takes less than TBD-duration to complete.
+- **How long**: This course is four steps long and takes less than 30 minutes to complete.
 
 ## How to start this course
 

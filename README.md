@@ -116,7 +116,7 @@ In this exercise, we'll review the CodeQL findings and understand how to triage 
   1. View the status of a CodeQL scan
   2. View the CodeQL alerts
   3. Review an alert
-  4. Close an alert
+  4. Dismiss an alert
   5. Create a GitHub issue to track an alert
 
 **What is GitHub Actions**:  GitHub Actions is the automation and CI/CD platform within GitHub.  We use Actions to orchestrate and execute security scans with code scanning.  More information on GitHub Actions is available [here](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
@@ -170,14 +170,14 @@ In this activity, we will work through a CodeQL alert.  We'll understand how to 
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/eecd7776-1dfc-4d40-856b-0a7a1a81f653)
 
 
-### :keyboard: Activity 4: Close an Alert
+### :keyboard: Activity 4: Dismiss an Alert
 Now that we're familiar with the alert layout, let's work through the process of closing one!
 
 1. Inside the same alert you just opened, click the **Dismiss alert** button, then choose any reason for dismissal, and add a short note.
 2. Click **Dismiss alert**
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/5eb98ae6-2bb2-4ebd-a302-a30cb4e058c8)
 
-3. At this point, the alert will change state to closed.  You also see that the change you made has been added to the audit trail at the bottom of the alert
+3. At this point, the alert will change state to "Dismissed".  You also see that the change you made has been added to the audit trail at the bottom of the alert
 4. Navigate back to **Security** > **Code scanning alerts**.  You'll see that you only have 1 alert listed.
 5. Click **1 Closed**.  This will bring you to the closed alerts where you can view the alert you just closed
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/9842b7b7-d6fe-4755-83dc-048425dc55ce)

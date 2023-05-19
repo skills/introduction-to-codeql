@@ -235,11 +235,8 @@ Now that we know where the issues exist and how to fix them, we're going to modi
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/daffc4b7-b137-4441-92c6-6e65bfd654d4)
   
 6. The "Propose changes" window will pop up.  Leave the defaults configured, and choose **Commit changes**
-
 9. Now that the code has been committed into your main branch, CodeQL will initiate a new scan. Check the status of that scan by navigating to **Actions** then choose the **CodeQL** action.  Once the scan job completes, Actions will display a green check next to the last run
-
 10. Once that CodeQL scan is done, navigate to **Security** > **Code scanning** to see the alerts.  You should have 0 open alerts and 2 closed alerts 🎉.  Feel free to review the closed alerts, especially the audit trail.  
-
 11. Wait about 20 seconds then refresh this page for the next step.
   
 </details>

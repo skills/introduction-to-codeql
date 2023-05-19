@@ -81,18 +81,19 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 
 ### :keyboard: Activity: Enable code scanning with CodeQL
 
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-2. Navigate the to **settings** tab at the top of your repository.
-3. Inside the repository settings page navigate to **Code security and analysis** in the left-hand navigation, under the **Security** heading
-4. Scroll down to the section titled **Code scanning**.  Here we will configure the CodeQL analysis.  There are two sections, "CodeQL analysis" and "Other tools"  for now we will focus on CodeQL analysis.  Feel free to browse the other code scanning tool integrations by choosing "Explore other workflows".  We're not going to set up any other tools in this course, though. 
-5. Select the **Set up** dropdown and choose **Default**
+  1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
+  2. Navigate the to **settings** tab at the top of your repository.
+  3. Inside the repository settings page navigate to **Code security and analysis** in the left-hand navigation, under the **Security** heading
+  4. Scroll down to the section titled **Code scanning**.  Here we will configure the CodeQL analysis.  There are two sections, "CodeQL analysis" and "Other tools"  for now we will focus on CodeQL analysis.  Feel free to browse the other code scanning tool integrations by choosing "Explore other workflows".  We're not going to set up any other tools in this course, though. 
+  5. Select the **Set up** dropdown and choose **Default**
   <img width="837" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/c539dc7a-0c94-4137-b17f-18f965039165">
 
-6. Let's take a look at the config options in the modal:
-  - **Languages to analyze:** These are the languages that will be scanned by CodeQL.  In this case, it's `Python`.  
-  - **Query suites:** CodeQL [queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) are packaged in bundles called "suites".  This section allows you to choose which query suite to use.  We'll leave this set as **Default** for this exercise
-  - **Events:** This section tells CodeQL when to scan.  In this case, it's set to scan on any pull request to the `main` branch.
-   <img width="903" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/516b6b43-e172-4324-86e9-21c4a74ca610">
+  6. Let's take a look at the config options in the modal:
+  
+      - **Languages to analyze:** These are the languages that will be scanned by CodeQL.  In this case, it's `Python`.  
+      - **Query suites:** CodeQL [queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) are packaged in bundles called "suites".  This section allows you to choose which query suite to use.  We'll leave this set as **Default** for this exercise
+      - **Events:** This section tells CodeQL when to scan.  In this case, it's set to scan on any pull request to the `main` branch.
+        <img width="903" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/516b6b43-e172-4324-86e9-21c4a74ca610">
 
 7. Press **Enable CodeQL**
 8. Wait about 20 seconds then refresh this page for the next step.
@@ -111,26 +112,37 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 
 _Way to go! You got CodeQL running! :tada:_
 
-In this exercise, we'll review the CodeQL findings and understand how to triage the alerts.  We have 4 activities we'll accomplish in this step:
-  1. View the CodeQL alerts
-  2. Review an alert
-  3. Close an alert
-  4. Create a GitHub issue to track an alert
-  
+In this exercise, we'll review the CodeQL findings and understand how to triage the alerts.  We have 5 activities we'll accomplish in this step:
+  1. View the status of a CodeQL scan
+  2. View the CodeQL alerts
+  3. Review an alert
+  4. Close an alert
+  5. Create a GitHub issue to track an alert
+
+**What is GitHub Actions**:  GitHub Actions is the automation and CI/CD platform within GitHub.  We use Actions to orchestrate and execute security scans with code scanning.  More information on GitHub Actions is available [here](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
 **What is CWE**: CWE stands for Common Weakenss Enumeration.  You can think of it as a way to describe and categorize security issues in application source code.  More information on CWEs is available in this [wikipedia article](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)
 
-### :keyboard: Activity 1: View all CodeQL Alerts
+### :keyboard: Activity 1: View the status of a CodeQL scan
 
-In this activity, we will view the CodeQL findings in the Security page of your repository.  The Security page is where all security related information is displayed. 
-1. Navigate to the **Security** tab in the top navigation bar of your repository **ProTip**: It can take up to 4 minutes for this scan to complete.  If you don't see any results yet, just hang tight.  They'll show up :)
+  In this activity, we'll explore GitHub Actions to view the status of a CodeQL scan.  
+  1. Go to your Actions page by selecting **Actions** from the top navigation bar
+  2. If the CodeQL Action run is still executing, you will see a yellow spinner indicating the scan is still in progress.  This typically takes about 4 minutes to complete.
+    ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/77acac2d-49df-4ef8-a23b-db9260dce01d)
+
+  3. Once the scan is complete, a green check will show next to the execution.  
+  4. Much more information in available inside the Actions run.  Feel free to explore this section to view information such as the CodeQL logs, duration, status, and artifacts generated by CodeQL 
   
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/b9d39c6c-34a7-45e8-8a84-ccfe89f9ac65)
+### :keyboard: Activity 2: View all CodeQL Alerts
+
+  In this activity, we will view the CodeQL findings in the Security page of your repository.  The Security page is where all security related information is displayed. 
+  1. Navigate to the **Security** tab in the top navigation bar of your repository
+    ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/b9d39c6c-34a7-45e8-8a84-ccfe89f9ac65)
   
-2. Select **Code scanning** under the "Vulnerability alerts" heading in left-side navigation bar
-3. This screen will contain all the vulnerabilities identified by CodeQL inside this repository's codebase.  Explore the different filters and search capabilities in this page.  These filtering capabilities become very helpful when you're working with many findings!
+  2. Select **Code scanning** under the "Vulnerability alerts" heading in left-side navigation bar
+  3. This screen will contain all the vulnerabilities identified by CodeQL inside this repository's codebase.  Explore the different filters and search capabilities in this page.  These filtering capabilities become very helpful when you're working with many findings!
 
 
-### :keyboard: Activity 2: Review an Alert
+### :keyboard: Activity 3: Review an Alert
 In this activity, we will work through a CodeQL alert.  We'll understand how to view the data-flow of the vulnerability, understand what part of the code the alert impacts, and learn how to get more information about the alert.  There are no changes in this activity, we're just working through the alert UI. 
 
 * **Alert status:** This section shows the current alert status (open or closed), as well as which branch this alert was found in and when it was found
@@ -157,7 +169,7 @@ In this activity, we will work through a CodeQL alert.  We'll understand how to 
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/eecd7776-1dfc-4d40-856b-0a7a1a81f653)
 
 
-### :keyboard: Activity 3: Close an Alert
+### :keyboard: Activity 4: Close an Alert
 Now that we're familiar with the alert layout, let's work through the process of closing one!
 
 1. Inside the same alert you just opened, click the **Dismiss alert** button, then choose any reason for dismissal, and add a short note.
@@ -171,7 +183,7 @@ Now that we're familiar with the alert layout, let's work through the process of
 
 6. Feel free to reopen the alert by opening it, then selecting **Reopen alert**
 
-### :keyboard: Activity 4: Create a GitHub Issue for an Alert
+### :keyboard: Activity 5: Create a GitHub Issue for an Alert
 This last step will show you how to create a GitHub Issue to track the work that goes into resolving a vulnerability.  Issues are nice because they can provide a location to collaborate on a security problem, the same way we would a traditional software bug.  Additionally, issues can be assigned to people or teams.
   
 1. Open one of the open alerts that CodeQL originally found.  

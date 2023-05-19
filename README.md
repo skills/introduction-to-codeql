@@ -168,7 +168,7 @@ Now that we're familiar with the alert layout, let's work through the process of
 6. Feel free to reopen the alert by opening it, then selecting **Reopen alert**
 
 ### :keyboard: Activity 4: Create a GitHub Issue for an Alert
-This last step allows us to create a GitHub Issue to track the work that goes into resolving a vulnerability.  Issues are nice because they can provide a location to collaborate on a security problem much the same way we would with a traditional software bug.  Additionally, issues can be assigned to people or teams.
+This last step will show you how to create a GitHub Issue to track the work that goes into resolving a vulnerability.  Issues are nice because they can provide a location to collaborate on a security problem, the same way we would a traditional software bug.  Additionally, issues can be assigned to people or teams.
   
 1. Open one of the open alerts that CodeQL originally found.  
 2. Click the green **Create issue** button at the top right of the alert.  TIP: If you don't see this button, you might be working in a closed alert.  Try with an alert that's currently open

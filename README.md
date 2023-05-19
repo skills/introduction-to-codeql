@@ -268,7 +268,7 @@ Let's get started 👍
 
 **What is branch**: A branch is a separate copy of the code inside our repository.  Branches allow developers to work on a different copy of the code, separate from the main branch.  For more information see the GitHub docs: [About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches#).
 
-### :keyboard: Activity: Edit `routes.py` and create a new pull request
+### :keyboard: Activity 1: Edit `routes.py` and create a new pull request
 
 In this first activity, we'll introduce the same insecure SQL statement from before to the `routes.py` file.  Once we update the file, we'll commit it to a new branch, then create a pull request.
 
@@ -288,14 +288,14 @@ In this first activity, we'll introduce the same insecure SQL statement from bef
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/62586097-2099-4f24-b7f6-30509933db2e)
 
   6. Click **Propose changes**.  This opens a new pull request
-  7. in the "Open a pull request" window, click **Create pull request**
+  7. In the "Open a pull request" window, click **Create pull request**
   
 
-### :keyboard: Activity: Review pull request
+### :keyboard: Activity 2: Review pull request
 
 At this point, we've edited the file `routes.py` with our vulnerable code, committed those changes to our new branch, and created a pull request to merge the new branch into our `main` branch.  This is the exact same set of steps a developer would take as they introduce new, vulnerable code into a repository.  
   
-Now, let's work through the pull request to see what the experience is like.
+Now, let's take a look at the pull request to see what the experience is like.
   
 1. In the previous activity, we created the pull request.  After creating the pull request, you were brought directly to the pull request page.  Take a look at the checks at the bottom of the pull request.  You will see a check called "Code scanning/CodeQL".  This is the CodeQL analysis job scanning the code introduced in the pull request
   
@@ -307,7 +307,7 @@ Now, let's work through the pull request to see what the experience is like.
 
 3. Review the data flow paths by clicking **Show paths**
   
-4. Add a comment and tag one of your friends by using their GitHub handle ex: `@username`.  This will notify them that you made a comment on the issue and maybe need their help solving the problem 😄
+4. Add a comment and tag one of your friends by using their GitHub handle ex: `@username`.  This will notify them that you made a comment on the issue and need their help solving the problem 😄
 
 5. Wait about 20 seconds then refresh this page for the next step.
 
@@ -325,14 +325,14 @@ If you would like to learn more about pull request integrations for code scannin
 <details id=X>
 <summary><h2>Finish</h2></summary>
 
-_Congratulations friend, you've completed this course!_ 🥇
+_Congratulations friend, you've completed this course!_ 🏆
 
-Here's a recap of all the tasks you've accomplished in your repository:
+Here's a recap of all the tasks you accomplished in your repository:
   - Enabled CodeQL on your repository
-  - CodeQL scanned the code in your repository and notified us of a couple SQL injection vulenrabilities
+  - CodeQL scanned the code in your repository and notified us of two SQL injection vulenrabilities
   - We reviewed the findings, marked the findings as closed, and explored the audit trail 
-  - Fixed your code and saw that the findings automatically closed out
-  - Introduced a new vulnerability
+  - Fixed your code in the main branch and saw that the findings automatically closed out
+  - Introduced a new vulnerability in a new branch
   - Created a pull request, and were notified of the vulnerability
 
 ### What's next?

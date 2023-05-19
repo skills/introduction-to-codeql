@@ -122,7 +122,7 @@ In this exercise, we'll review the CodeQL findings and understand how to triage 
 ### :keyboard: Activity 1: View all CodeQL Alerts
 
 In this activity, we will view the CodeQL findings in the Security page of your repository.  The Security page is where all security related information is displayed. 
-1. Navigate to the **Security** tab in the top navigation bar of your repository **ProTip**: do this in a new tab
+1. Navigate to the **Security** tab in the top navigation bar of your repository **ProTip**: It can take up to 4 minutes for this scan to complete.  If you don't see any results yet, just hang tight.  They'll show up :)
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/b9d39c6c-34a7-45e8-8a84-ccfe89f9ac65)
   

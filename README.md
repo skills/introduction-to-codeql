@@ -332,7 +332,7 @@ If you would like to learn more about pull request integrations for code scannin
   Review what we learned, ask for feedback, provide next steps.
 -->
 
-<details id=X>
+<details id=5>
 <summary><h2>Finish</h2></summary>
 
 _Congratulations friend, you've completed this course!_ 🏆

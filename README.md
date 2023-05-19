@@ -230,11 +230,11 @@ Now that we know where the issues exist and how to fix them, we're going to modi
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/a5f7b863-aa06-4302-846b-82af27f1fa84)
   
-5. Select **Commit File** from the top right 
+5. Select **Commit changes...** from the top right 
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/daffc4b7-b137-4441-92c6-6e65bfd654d4)
   
-6. The "Propose changes" window will pop up.  Leave the defaults configured, and choose **Commit changes...**
+6. The "Propose changes" window will pop up.  Leave the defaults configured, and choose **Commit changes**
 
 9. Now that the code has been committed into your main branch, CodeQL will initiate a new scan. Check the status of that scan by navigating to **Actions** then choose the **CodeQL** action.  Once the scan job completes, Actions will display a green check next to the last run
 

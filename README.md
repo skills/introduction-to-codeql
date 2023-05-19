@@ -111,13 +111,17 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 
 _Way to go! You got CodeQL running! :tada:_
 
-In this exercise, we'll review the CodeQL findings and understand how to triage the alerts.  
-
+In this exercise, we'll review the CodeQL findings and understand how to triage the alerts.  We have 4 activities we'll accomplish in this step:
+  1. View the CodeQL alerts
+  2. Review an alert
+  3. Close an alert
+  4. Create a GitHub issue to track an alert
+  
 **What is CWE**: CWE stands for Common Weakenss Enumeration.  You can think of it as a way to describe and categorize security issues in application source code.  More information on CWEs is available in this [wikipedia article](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)
 
-### :keyboard: Activity 1: Review the CodeQL Alerts
+### :keyboard: Activity 1: View all CodeQL Alerts
 
-In this activity, we will review the CodeQL findings in the Security page of your repository.  The Security page is where all security related information is displayed. 
+In this activity, we will view the CodeQL findings in the Security page of your repository.  The Security page is where all security related information is displayed. 
 1. Navigate to the **Security** tab in the top navigation bar of your repository **ProTip**: do this in a new tab
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/b9d39c6c-34a7-45e8-8a84-ccfe89f9ac65)
@@ -205,7 +209,7 @@ This step is important!  Before we fix these alerts, we need to make sure the al
 
 Now that both of these alerts are back to an "Open" state, we can come up with a plan to fix them.  If you look at the alerts, they are both calling out one specific file containing the issues: `server/routes.py`.  The issue is in how we're crafting the SQL query for the database.  These queries are vulnerable to SQL injection attacks.  We need to get these SQL statements re-written more securely.  
   
-If you expand the **More info** section at the bottom of the alert, there are very clear suggestions to fix this query.  We're going to implement those suggestions in the next step.
+If you expand the **More info** section at the bottom of the alert, there are very clear suggestions to fix this query.  We're going to implement those suggestions in the next activity.
 
 ### :keyboard: Activity 2: Edit routes.py
 Now that we know where the issues exist and how to fix them, we're going to modify the file `routes.py` to fix the problems.  Again, you'll want to do these next steps in a separate browser window or tab.

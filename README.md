@@ -114,15 +114,10 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 
 _Way to go! You got CodeQL running! :tada:_
 
-In this exercise, we'll review the CodeQL findings and understand how to triage the alerts.  We have 5 activities we'll accomplish in this step:
-  1. View the status of a CodeQL scan
-  2. View the CodeQL alerts
-  3. Review an alert
-  4. Dismiss an alert
-  5. Create a GitHub issue to track an alert
+In this exercise, we'll review the CodeQL scan results, triage an alert, and create a GitHub issue to track an alert.
 
-**What is GitHub Actions**:  GitHub Actions is the automation and CI/CD platform within GitHub.  We use Actions to orchestrate and execute security scans with code scanning.  More information on GitHub Actions is available [here](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
-**What is CWE**: CWE stands for Common Weakenss Enumeration.  You can think of it as a way to describe and categorize security issues in application source code.  More information on CWEs is available in this [wikipedia article](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)
+We use GitHub Actions to orchestrate and execute security scans with code scanning. GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. For more information on GitHub Actions, see "[Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)."
+**What is CWE**: CWE stands for Common Weakenss Enumeration. You can think of it as a way to describe and categorize security issues in application source code.  More information on CWEs is available in this [wikipedia article](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)
 
 ### :keyboard: Activity 1: View the status of a CodeQL scan
 

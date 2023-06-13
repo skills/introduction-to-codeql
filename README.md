@@ -81,21 +81,22 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 
 ### :keyboard: Activity: Enable code scanning with CodeQL
   
-  First, we will enable code scanning with CodeQL in our repository.
+First, we will enable code scanning with CodeQL in our repository.
 
-  1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-  2. Navigate the to **Settings** tab at the top of your newly created repository.
-  3. Under the **Security** section on the left side, select **Code security and analysis**.
-  4. Scroll down to the section titled **Code scanning**. For the purpose of this course, we will focus on CodeQL analysis.
-  5. Click on the **Set up** dropdown menu and choose **Default**.
-  <img width="837" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/c539dc7a-0c94-4137-b17f-18f965039165">
+1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
+2. Navigate the to **Settings** tab at the top of your newly created repository.
+3. Under the **Security** section on the left side, select **Code security and analysis**.
+4. Scroll down to the section titled **Code scanning**. For the purpose of this course, we will focus on CodeQL analysis.
+5. Click on the **Set up** dropdown menu and choose **Default**.
+<img width="837" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/c539dc7a-0c94-4137-b17f-18f965039165">
 
-  Let's take a look at the configuration options in the modal:
+Let's take a look at the configuration options in the modal:
   
-      - **Languages to analyze:** These are the languages that will be scanned by CodeQL. In this case, we will be scanning in `Python`.  
-      - **Query suites:** CodeQL [queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) are packaged in bundles called "suites". This section allows you to choose which query suite to use.  We'll leave this set as **Default** for this exercise. For more information, see "[About CodeQL queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries)." 
-      - **Events:** This section tells CodeQL when to scan. In this case, it's set to scan on any pull request to the `main` branch.
-        <img width="903" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/516b6b43-e172-4324-86e9-21c4a74ca610">
+  - **Languages to analyze:** These are the languages that will be scanned by CodeQL. In this case, we will be scanning in `Python`.  
+  - **Query suites:** CodeQL [queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) are packaged in bundles called "suites". This section allows you to choose which query suite to use.  We'll leave this set as **Default** for this exercise. For more information, see "[About CodeQL queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries)." 
+  - **Events:** This section tells CodeQL when to scan. In this case, it's set to scan on any pull request to the `main` branch.
+    
+<img width="903" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/516b6b43-e172-4324-86e9-21c4a74ca610">
 
 6. Click **Enable CodeQL**
 7. Wait about 20 seconds then refresh this page for the next step.
@@ -118,7 +119,7 @@ In this exercise, we'll review the CodeQL scan results, triage an alert, and cre
 
 **What is GitHub Actions**: GitHub Actions is the automation and CI/CD platform within GitHub.We use GitHub Actions to orchestrate and execute security scans with code scanning. GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. For more information on GitHub Actions, see "[Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)."
 
-**What is CWE**: Common Weakenss Enumeration (CWE) is a category system for hardware and software weaknesses and vulnerabilities. Think of it as a way to describe and categorize security issues in application source code. For more information on CWEs, see the Wikipedia article "[Common Weakness Enumeration](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)."
+**What is CWE**: Common Weakenss Enumeration (CWE) is a category system for hardware and software weaknesses and vulnerabilities. Think of it as a way to describe and categorize security issues in an application's source code. For more information on CWEs, see the Wikipedia article "[Common Weakness Enumeration](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration)."
 
 ### :keyboard: Activity 1: View the status of a CodeQL scan
 
@@ -160,10 +161,11 @@ In this activity, we will explore the alert UI. We'll review the data flow of th
   
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/b402aef6-ca19-491b-a2a0-1d402106e64f)
 
-**Paths:** Feel free to click on **Show paths** to get more insights into the alert's data-flow.  The modal that opens up is very helpful in understanding where the user input (we call that a source) flows through the application until it's acted on (we call this the sink).  This modal helps to understand the flow of data through your application
+**Paths:** You can click on "Show paths" to get more insights into the alert's data flow. The modal shows us where the user input (we call that a "source") flows through the application until it's acted on (we call this the "sink"). This visualizes the flow of data through your application.
   
-* **Recommendations:** This section includes some more very useful information.  In the top bar, you can see the tool (CodeQL in this case), Rule ID, and even view the CodeQL query used to find this vulnerabilitiy.  You can view the query by clicking **View source**.  Additionally, this pane includes recommendations for fixing this vulnerability.  Click **Show more** to view the full recommendation
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/fc149d1f-6593-4f6f-9f3c-e3b64b4bd2ab)
+**Recommendations:** This section includes some more very useful information.  In the top bar, you can see the tool (CodeQL in this case), Rule ID, and even view the CodeQL query used to find this vulnerabilitiy.  You can view the query by clicking **View source**.  Additionally, this pane includes recommendations for fixing this vulnerability.  Click **Show more** to view the full recommendation
+
+![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/fc149d1f-6593-4f6f-9f3c-e3b64b4bd2ab)
 
 * **Audit trail:** The audit trail section of the alert shows the history of the alert.  As users mark a finding as closed, or fix a finding in code, we track those changes here
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/6cc9e07e-c32c-4868-a4c3-0fb97544ea3f)

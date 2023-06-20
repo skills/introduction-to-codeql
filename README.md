@@ -157,52 +157,54 @@ In this activity, we will explore the alert UI. We'll review the data flow of th
   
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/5c34e1ac-d7ab-47b4-a83a-4a86a473cb9b)
 
-**Location information:**  This section describes which part of the code is vulnerable.  
+**Location information:** This section describes which part of the code is vulnerable.  
   
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/b402aef6-ca19-491b-a2a0-1d402106e64f)
 
-**Paths:** You can click on "Show paths" to get more insights into the alert's data flow. The modal shows us where the user input (we call that a "source") flows through the application until it's acted on (we call this the "sink"). This visualizes the flow of data through your application.
+**Paths:** Clicking on "Show paths" will give you additional insights into the alert's data flow. The modal shows us where the user input (we call that a "source") flows through the application until it's acted on (we call this the "sink"). This visualizes the flow of data through your application. 
   
-**Recommendations:** This section includes some more very useful information.  In the top bar, you can see the tool (CodeQL in this case), Rule ID, and even view the CodeQL query used to find this vulnerabilitiy.  You can view the query by clicking **View source**.  Additionally, this pane includes recommendations for fixing this vulnerability.  Click **Show more** to view the full recommendation
+**Recommendations:** This section gives a quick over of the tool (CodeQL in this case), Rule ID, and even allows you to view the CodeQL query used to find this vulnerability. You can view the query by clicking **View source**. Additionally, this pane includes recommendations for fixing this vulnerability. Click **Show more** to view the full recommendation.
 
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/fc149d1f-6593-4f6f-9f3c-e3b64b4bd2ab)
 
-* **Audit trail:** The audit trail section of the alert shows the history of the alert.  As users mark a finding as closed, or fix a finding in code, we track those changes here
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/6cc9e07e-c32c-4868-a4c3-0fb97544ea3f)
+**Audit trail:** The audit trail shows the history of the alert. This trail will show the status as users mark a finding as closed or fix a finding in the code.
 
-* **Alert tirage:** To triage an alert, or open a new issue, you will use these buttons.  Don't do anything yet 😄. We'll get into these buttons in a moment!
+![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/6cc9e07e-c32c-4868-a4c3-0fb97544ea3f)
+
+**Alert triage:** To triage an alert, or open a new issue, you will use these buttons. Don't do anything yet 😄. We'll get into these buttons in a moment!
   
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/604e4812-eaa3-4732-8520-00fae0ea68cd)
+![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/604e4812-eaa3-4732-8520-00fae0ea68cd)
 
 * **Additional info:** Finally, the right-side panel contains information such as tags, CWE information, and the severity of the alert
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/eecd7776-1dfc-4d40-856b-0a7a1a81f653)
 
 
 ### :keyboard: Activity 4: Dismiss an Alert
-Now that we're familiar with the alert layout, let's work through the process of closing one!
+Now that we're familiar with the alert layout, let's work through the process of closing one.
 
-1. Inside the same alert you just opened, click the **Dismiss alert** button, then choose any reason for dismissal, and add a short note.
+1. Inside this same alert, click the **Dismiss alert** button, then choose any reason for dismissal, and add a short note.
 2. Click **Dismiss alert**
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/5eb98ae6-2bb2-4ebd-a302-a30cb4e058c8)
 
-3. At this point, the alert will change state to "Dismissed".  You also see that the change you made has been added to the audit trail at the bottom of the alert
-4. Navigate back to **Security** > **Code scanning alerts**.  You'll see that you only have 1 alert listed.
-5. Click **1 Closed**.  This will bring you to the closed alerts where you can view the alert you just closed
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/9842b7b7-d6fe-4755-83dc-048425dc55ce)
+![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/5eb98ae6-2bb2-4ebd-a302-a30cb4e058c8)
 
-6. Feel free to reopen the alert by opening it, then selecting **Reopen alert**
+4. At this point, the alert will change its state to "Dismissed". You can now see the change you made in the audit trail at the bottom of the alert.
+5. Navigate back to **Security** > **Code scanning alerts**.  You'll see that you only have 1 alert listed.
+6. Click **1 Closed**.  This will bring you to the closed alerts where you can view the alert you just closed.
+![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/9842b7b7-d6fe-4755-83dc-048425dc55ce)
+
+7. (Optional) You can also reopen the alert by opening it, then selecting **Reopen alert**
 
 ### :keyboard: Activity 5: Create a GitHub Issue for an Alert
-This last step will show you how to create a GitHub Issue to track the work that goes into resolving a vulnerability.  Issues are nice because they can provide a location to collaborate on a security problem, the same way we would a traditional software bug.  Additionally, issues can be assigned to people or teams.
+This last step will show you how to create a GitHub Issue to track the work that goes into resolving a vulnerability. Issues provide a space for collaboration for a security problem and can be assigned to people or teams.
   
-1. Open one of the open alerts that CodeQL originally found.  
-2. Click the green **Create issue** button at the top right of the alert.  TIP: If you don't see this button, you might be working in a closed alert.  Try with an alert that's currently open
+1. Open one of the open alerts that CodeQL from the scan.  
+2. Click the green **Create issue** button at the top right of the alert. If you don't see this button, check the status of the alert to make sure it's an open alert.
   
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/a446baf6-18e5-442d-b0fc-8e4110e422dd)
+![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/a446baf6-18e5-442d-b0fc-8e4110e422dd)
 
-3. A new issue creation page will open.  You don't need to make any changes in this page, but feel free to add additional information.  
-4. Click **Submit new issue**
-5. View the issue you just created by clicking **Issues** in the top navigation bar of your repository. Your issue will be listed in that page. 
+3. Add any details you would like to include in the new issue form.  
+4. Click **Submit new issue**.
+5. To view the your issue, click **Issues** in the top navigation bar of your repository.
 6. Wait about 20 seconds then refresh this page for the next step.
   
 </details>

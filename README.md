@@ -221,18 +221,18 @@ This last step will show you how to create a GitHub Issue to track the work that
 
 _Nice work finishing Step 2: Reviewing and Triaging CodeQL Alerts :sparkles:_
   
-In this step, we will work to fix the existing security vulnerabilities already identified by CodeQL.  Remember, at this point we have introduced CodeQL into our repository and had it scan the existing code.  The vulnerabilities it found are real-world issues and they need to be fixed!  We'll fix this issue by editing the `/server/routes.py` file.  
+In this step, we will work to fix the existing security vulnerabilities already identified by CodeQL. Remember, at this point, we have introduced CodeQL into our repository and had it scan the existing code. The vulnerabilities it found are real-world issues, and they need to be fixed! We'll fix this issue by editing the `/server/routes.py` file.  
 
 ### :keyboard: Activity 1: Review alerts
-This step is important!  Before we fix these alerts, we need to make sure the alerts are still open.  We'll also need to get some information on which files we need to fix, and how best to fix these issues.
+First, before we fix these alerts, we need to make sure the alerts are still open. We'll also need to gather information on which files to fix and how best to fix them.
 
-1. Navigate to your code scanning alerts page: **Security** > **Code scanning**
-1. You should see 2 alerts listed as Open. If any of the alerts are listed as **Closed**, open the alert page and choose **Reopen alert**
+1. Navigate to your code scanning alerts page: **Security** > **Code scanning**. 
+1. You should see two alerts listed as "**Open**". If any of the alerts are listed as "**Closed**", open the alert page and choose **Reopen alert**.
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/c9d9f1b7-5f17-423c-8b43-81e8912aaf9c)
 
-Now that both of these alerts are back to an "Open" state, we can come up with a plan to fix them.  If you look at the alerts, they are both calling out one specific file containing the issues: `server/routes.py`.  The issue is in how we're crafting the SQL query for the database.  These queries are vulnerable to SQL injection attacks.  We need to get these SQL statements re-written more securely.  
+Now that both of these alerts are open, let's fix them. If you look at the alerts, they both call out one specific file containing the issues: `server/routes.py`. The issue is in crafting the SQL query for the database. These queries are vulnerable to SQL injection attacks. We should rewrite these SQL statements more securely.  
   
-If you expand the **More info** section at the bottom of the alert, there are very clear suggestions to fix this query.  We're going to implement those suggestions in the next activity.
+If you expand the **More info** section at the bottom of the alert, there are very clear suggestions to fix this query. We're going to implement those suggestions in the next activity.
 
 ### :keyboard: Activity 2: Edit routes.py
 Now that we know where the issues exist and how to fix them, we're going to modify the file `routes.py` to fix the problems.  Again, you'll want to do these next steps in a separate browser window or tab.

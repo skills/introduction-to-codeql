@@ -235,31 +235,23 @@ Now that both of these alerts are open, let's fix them. If you look at the alert
 If you expand the **More info** section at the bottom of the alert, there are very clear suggestions to fix this query. We're going to implement those suggestions in the next activity.
 
 ### :keyboard: Activity 2: Edit routes.py
-Now that we know where the issues exist and how to fix them, we're going to modify the file `routes.py` to fix the problems.  Again, you'll want to do these next steps in a separate browser window or tab.
+We now know where the issues exist and how to fix them. We'll start by modifying the file `routes.py`. Again, you'll want to do these next steps in a separate browser window or tab.
   
-1. In the **Code** pane, click on the folder named `server`, then click on the file named `routes.py`.  The code view page will open.
+1. In the **Code** pane on the left, click on the folder named `server`, then selet the file named `routes.py`. The code view page will open.
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
   
-2. Click the edit button
+2. Click the edit button.
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d)
   
-3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE %s", name`.  Your page should look like this:
+3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE %s", name`.
   
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/0513c535-a4a1-4be4-b7e0-efb0ed49827e)
+4. Edit line 22 to replace the SQL statement with this text: `"SELECT * FROM books WHERE author LIKE %s", author`.
   
-4. Next we're going to edit line 22.  We'll replace the SQL statement with this text: `"SELECT * FROM books WHERE author LIKE %s", author`
-  
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/a5f7b863-aa06-4302-846b-82af27f1fa84)
-  
-5. Select **Commit changes...** from the top right 
-  
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/daffc4b7-b137-4441-92c6-6e65bfd654d4)
-  
-6. The "Propose changes" window will pop up.  Leave the defaults configured, and choose **Commit changes**
-9. Now that the code has been committed into your main branch, CodeQL will initiate a new scan. Check the status of that scan by navigating to **Actions** then choose the **CodeQL** action.  Once the scan job completes, Actions will display a green check next to the last run
-10. Once that CodeQL scan is done, navigate to **Security** > **Code scanning** to see the alerts.  You should have 0 open alerts and 2 closed alerts 🎉.  Feel free to review the closed alerts, especially the audit trail.  
+5. Select **Commit changes...** from the top right. The "Propose changes" window will pop up. Leave the defaults configured, and choose **Commit changes**.
+6. CodeQL will now initiate a new scan. Check the status of that scan by navigating to **Actions** then choose the **CodeQL** action. Once the scan job completes, Actions will display a green check next to the last run.
+7. Once that CodeQL scan is done, navigate to **Security** > **Code scanning** to review the alerts. You should have zero open alerts and two closed alerts 🎉. Feel free to review the closed alerts, especially the audit trail.  
 11. Wait about 20 seconds then refresh this page for the next step.
   
 </details>
@@ -274,7 +266,7 @@ Now that we know where the issues exist and how to fix them, we're going to modi
 <details id=4>
 <summary><h2>Step 4: Prevent Vulnerabilities in the Pull Request</h2></summary>
 
-_Nicely done!  You finished Step 3: Fix Security Vulnerabilites! :partying_face:_
+_Nicely done! You finished Step 3: Fix Security Vulnerabilites! :partying_face:_
 
 Way to go!  You made it this far.  We're almost done! The last step is to test out the pull request integration with CodeQL.  In this step, we will be adding a vulnerability back into the `routes.py` file to trigger an alert for a SQL injection vulnerability.  This is going to be the same issue we saw originally.  
   
@@ -284,7 +276,7 @@ We will edit the `routes.py` file, edit the SQL statement to make it insecure, c
   
 Let's get started 👍
 
-**What is pull request**: A pull request (PR) is a utility available in GitHub that allows new code to be reviewed before being "merged" with the main code in the repository.  This method allows multiple people to work on the same code at the same time.  For more information, check out the GitHub Skills course [Introduction to GitHub](https://github.com/skills/introduction-to-github)
+**What is pull request**: A pull request (PR) is a utility available in GitHub that allows new code to be reviewed before being "merged" with the main code in the repository. This method allows multiple people to work on the same code at the same time.  For more information, check out the GitHub Skills course [Introduction to GitHub](https://github.com/skills/introduction-to-github)
 
 **What is branch**: A branch is a separate copy of the code inside our repository.  Branches allow developers to work on a different copy of the code, separate from the main branch.  For more information see the GitHub docs: [About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches#).
 

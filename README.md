@@ -91,7 +91,7 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
   6. Let's take a look at the config options in the modal:
   
       - **Languages to analyze:** These are the languages that will be scanned by CodeQL.  In this case, it's `Python`.  
-      - **Query suites:** CodeQL [queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) are packaged in bundles called "suites".  This section allows you to choose which query suite to use.  We'll leave this set as **Default** for this exercise
+      - **Query suites:** CodeQL [queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) are packaged per language and are grouped into "suites".  The `Default` query suite is a highly precise group of security queries, while the `Extended` query suite includes additional queries with slightly lower precision and severity.  This section allows you to choose which query suite to use.  We'll leave this set as **Default** for this exercise
       - **Events:** This section tells CodeQL when to scan.  In this case, it's set to scan on any pull request to the `main` branch.
         <img width="903" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/516b6b43-e172-4324-86e9-21c4a74ca610">
 

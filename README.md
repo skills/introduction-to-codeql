@@ -268,17 +268,21 @@ We now know where the issues exist and how to fix them. We'll start by modifying
 
 _Nicely done! You finished Step 3: Fix Security Vulnerabilites! :partying_face:_
 
-Way to go!  You made it this far.  We're almost done! The last step is to test out the pull request integration with CodeQL.  In this step, we will be adding a vulnerability back into the `routes.py` file to trigger an alert for a SQL injection vulnerability.  This is going to be the same issue we saw originally.  
+Way to go! You made it this far. We're almost done! The last step is to test out the pull request integration with CodeQL. In this step, we will add a vulnerability back into the `routes.py` file to trigger an alert for a SQL injection vulnerability. This is going to be the same issue initially saw.  
   
-The goal here is to understand what developers experience when a new vulnerability is found.  
-  
-We will edit the `routes.py` file, edit the SQL statement to make it insecure, commit that code, create a pull request to merge that insecure code into the main branch, then experience the alert inside the pull request. 
+Our goal is to understand what developers experience when they find a new vulnerability.  
+
+In this step, we will:
+- edit the `routes.py` file.
+- change the SQL statement to make it insecure.
+- commit those changes and merge the insecure code into the main branch.
+- experience the alert inside the pull request.
   
 Let's get started 👍
 
-**What is pull request**: A pull request (PR) is a utility available in GitHub that allows new code to be reviewed before being "merged" with the main code in the repository. This method allows multiple people to work on the same code at the same time.  For more information, check out the GitHub Skills course [Introduction to GitHub](https://github.com/skills/introduction-to-github)
+**What is pull request**: Pull requests are proposed changes to a repository submitted by a user and accepted or rejected by a repository's collaborators. This allows multiple people to work on the same code at the same time. For more information, check out the GitHub Skills course "[Introduction to GitHub](https://github.com/skills/introduction-to-github)" or "[About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)" from the GitHub docs.
 
-**What is branch**: A branch is a separate copy of the code inside our repository.  Branches allow developers to work on a different copy of the code, separate from the main branch.  For more information see the GitHub docs: [About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches#).
+**What is branch**: A branch is a parallel version of your repository. By default, your repository has one branch named main and it is considered to be the definitive branch. Creating additional branches allows you to copy the main branch of your repository and safely make any changes without disrupting the main project. For more information, see "[About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches#)" in the GitHub docs.
 
 ### :keyboard: Activity 1: Edit `routes.py` and create a new pull request
 

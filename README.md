@@ -249,10 +249,10 @@ We now know where the issues exist and how to fix them. We'll start by modifying
   
 4. Edit line 22 to replace the SQL statement with this text: `"SELECT * FROM books WHERE author LIKE %s", author`.
   
-5. Select **Commit changes...** from the top right. The "Propose changes" window will pop up. Leave the defaults configured, and choose **Commit changes**.
+5. Click **Commit changes...** from the top right. The "Propose changes" window will pop up. Leave the defaults configured, and click **Commit changes** again.
 6. CodeQL will now initiate a new scan. Check the status of that scan by navigating to **Actions** then choose the **CodeQL** action. Once the scan job completes, Actions will display a green check next to the last run.
 7. Once that CodeQL scan is done, navigate to **Security** > **Code scanning** to review the alerts. You should have zero open alerts and two closed alerts 🎉. Feel free to review the closed alerts, especially the audit trail.  
-11. Wait about 20 seconds then refresh this page for the next step.
+8. Wait about 20 seconds then refresh this page for the next step.
   
 </details>
 
@@ -286,24 +286,21 @@ Let's get started 👍
 
 ### :keyboard: Activity 1: Edit `routes.py` and create a new pull request
 
-In this first activity, we'll introduce the same insecure SQL statement from before to the `routes.py` file.  Once we update the file, we'll commit it to a new branch, then create a pull request.
+In this first activity, we'll introduce the same insecure SQL statement from before to the `routes.py` file. Once we update the file, we'll commit it to a new branch, then create a pull request.
 
-  1. In the **Code** pane, click on the folder named `server`, then click on the file named `routes.py`.  The code view page will open.
+  1. In the **Code** pane on the left, click on the folder named `server`, then selet the file named `routes.py`. The code view page will open.
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
   
   2. Click the edit button
   <img width="700" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d">
   
-  3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.  Your page should look like this:
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/dd460da6-5097-45e4-b949-36f62b0c45e0)
+  3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.
 
-  4. Select **Commit changes** from the top right 
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/daffc4b7-b137-4441-92c6-6e65bfd654d4)
-  
-  5. The "Propose changes" window will open.  This time, you're going to select the radio button next to **Create a new branch**.  You can create a new name for this branch, or leave it the default suggestion.
+  4. Click **Commit changes...** from the top right. The "Propose changes" window will pop up.
+  5. This time, select the radio button next to **Create a new branch**. You can create a new name for this branch or leave it as the default suggestion.
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/62586097-2099-4f24-b7f6-30509933db2e)
 
-  6. Click **Propose changes**.  This opens a new pull request
+  6. Click **Propose changes**. This opens a new pull request
   7. In the "Open a pull request" window, click **Create pull request**
   
 

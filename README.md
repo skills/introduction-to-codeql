@@ -163,15 +163,15 @@ In this activity, we will explore the alert UI. We'll review the data flow of th
 
 **Paths:** Clicking on "Show paths" will give you additional insights into the alert's data flow. The modal shows us where the user input (we call that a "source") flows through the application until it's acted on (we call this the "sink"). This visualizes the flow of data through your application. 
   
-**Recommendations:** This section gives a quick over of the tool (CodeQL in this case), Rule ID, and even allows you to view the CodeQL query used to find this vulnerability. You can view the query by clicking **View source**. Additionally, this pane includes recommendations for fixing this vulnerability. Click **Show more** to view the full recommendation.
+**Recommendations:** This section provides a quick overview of the tool (CodeQL in this case), Rule ID, and even allows you to view the CodeQL query used to find this vulnerability. You can view the query by clicking **View source**. Additionally, this pane includes recommendations for fixing this vulnerability. Click **Show more** to view the full recommendation.
 
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/fc149d1f-6593-4f6f-9f3c-e3b64b4bd2ab)
 
-**Audit trail:** The audit trail shows the history of the alert. This trail will show the status as users mark a finding as closed or fix a finding in the code.
+**Audit trail:** The audit trail shows the history of the alert. This trail will show the status as users mark an alert as closed or fix an alert in the code.
 
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/6cc9e07e-c32c-4868-a4c3-0fb97544ea3f)
 
-**Alert triage:** To triage an alert, or open a new issue, you will use these buttons. Don't do anything yet 😄. We'll get into these buttons in a moment!
+**Alert triage:** Use the buttons at the top right of the alert to triage or create a new issue for the alert. Don't do anything yet. We'll get into these buttons in a moment. 😄
   
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/604e4812-eaa3-4732-8520-00fae0ea68cd)
 
@@ -182,17 +182,14 @@ In this activity, we will explore the alert UI. We'll review the data flow of th
 ### :keyboard: Activity 4: Dismiss an Alert
 Now that we're familiar with the alert layout, let's work through the process of closing one.
 
-1. Inside this same alert, click the **Dismiss alert** button, then choose any reason for dismissal, and add a short note.
-2. Click **Dismiss alert**
-
-![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/5eb98ae6-2bb2-4ebd-a302-a30cb4e058c8)
-
-4. At this point, the alert will change its state to "Dismissed". You can now see the change you made in the audit trail at the bottom of the alert.
-5. Navigate back to **Security** > **Code scanning alerts**.  You'll see that you only have 1 alert listed.
-6. Click **1 Closed**.  This will bring you to the closed alerts where you can view the alert you just closed.
+1. Inside this same alert, click **Dismiss alert**, choose any reason for dismissal, and add a short note.
+2. Click **Dismiss alert**.
+3. At this point, the alert will change its state to "Dismissed". You can now see the change you made in the audit trail at the bottom of the alert.
+4. Navigate back to **Security** > **Code scanning alerts**.  You'll see that you only have 1 alert listed.
+5. Click **1 Closed**.  This will bring you to the closed alerts where you can view the alert you just closed.
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/9842b7b7-d6fe-4755-83dc-048425dc55ce)
 
-7. (Optional) You can also reopen the alert by opening it, then selecting **Reopen alert**
+7. (Optional) You can also reopen the alert by opening it, then selecting **Reopen alert**.
 
 ### :keyboard: Activity 5: Create a GitHub Issue for an Alert
 This last step will show you how to create a GitHub Issue to track the work that goes into resolving a vulnerability. Issues provide a space for collaboration for a security problem and can be assigned to people or teams.

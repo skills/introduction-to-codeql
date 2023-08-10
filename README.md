@@ -222,29 +222,28 @@ First, before we fix these alerts, we need to make sure the alerts are still ope
 1. You should see two alerts listed as "**Open**". If any of the alerts are listed as "**Closed**", open the alert page and choose **Reopen alert**.
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/c9d9f1b7-5f17-423c-8b43-81e8912aaf9c)
 
-Now that both of these alerts are open, let's fix them. If you look at the alerts, they both call out one specific file containing the issues: `server/routes.py`. The issue is in crafting the SQL query for the database. These queries are vulnerable to SQL injection attacks. We should rewrite these SQL statements more securely.  
+Now that both of these alerts are open, let's fix them. If you look at the alerts, they both call out one specific file containing the issues: `server/routes.py`. The issue is in crafting the SQL query for the database. These queries are vulnerable to SQL injection attacks. We should rewrite these SQL statements more securely. 
   
 If you expand the **More info** section at the bottom of the alert, there are very clear suggestions to fix this query. We're going to implement those suggestions in the next activity.
 
 ### :keyboard: Activity 2: Edit routes.py
 We now know where the issues exist and how to fix them. We'll start by modifying the file `routes.py`. Again, you'll want to do these next steps in a separate browser window or tab.
   
-1. In the **Code** pane on the left, click on the folder named `server`, then selet the file named `routes.py`. The code view page will open.
-  
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
-  
-2. Click the **Edit** button to the right.
+1. Click the **Code** tab in your repository.
+2. Select the `server` folder.
+3. Select the `routes.py` file.
+4. Click the **Edit** button to the right.
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d)
   
-3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE %s", name`.
+5. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE %s", name`.
   
-4. Edit line 22 to replace the SQL statement with this text: `"SELECT * FROM books WHERE author LIKE %s", author`.
+6. Edit line 22 to replace the SQL statement with this text: `"SELECT * FROM books WHERE author LIKE %s", author`.
   
-5. Click **Commit changes...** from the top right. The "Propose changes" window will pop up. Leave the defaults configured, and click **Commit changes** again.
-6. CodeQL will now initiate a new scan. Check the status of that scan by navigating to **Actions** then choose the **CodeQL** action. Once the scan job completes, Actions will display a green check next to the last run.
-7. Once that CodeQL scan is done, navigate to **Security** > **Code scanning** to review the alerts. You should have zero open alerts and two closed alerts 🎉. Feel free to review the closed alerts, especially the audit trail.  
-8. Wait about 20 seconds then refresh this page for the next step.
+7. Click **Commit changes...** from the top right. The "Propose changes" window will pop up. Leave the defaults configured, and click **Commit changes** again.
+8. CodeQL will now initiate a new scan. Check the status of that scan by navigating to **Actions** then choose the **CodeQL** action. Once the scan job completes, Actions will display a green check next to the last run.
+9. Once that CodeQL scan is done, navigate to **Security** > **Code scanning** to review the alerts. You should have zero open alerts and two closed alerts 🎉. Feel free to review the closed alerts, especially the audit trail.  
+10. Wait about 20 seconds then refresh this page for the next step.
   
 </details>
 
@@ -280,20 +279,21 @@ Let's get started 👍
 
 In this first activity, we'll introduce the same insecure SQL statement from before to the `routes.py` file. Once we update the file, we'll commit it to a new branch, then create a pull request.
 
-  1. In the **Code** pane on the left, click on the folder named `server`, then selet the file named `routes.py`. The code view page will open.
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
+  1. Click the **Code** tab in your repository.
+  2. Select the `server` folder.
+  3. Select the `routes.py` file.
   
-  2. Click the **Edit** button to the right.
+  4. Click the **Edit** button to the right.
   <img width="700" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d">
   
-  3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.
+  5. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.
 
-  4. Click **Commit changes...** from the top right. The "Propose changes" window will pop up.
-  5. This time, select the radio button next to **Create a new branch**. You can create a new name for this branch or leave it as the default suggestion.
+  6. Click **Commit changes...** from the top right. The "Propose changes" window will pop up.
+  7. This time, select the radio button next to **Create a new branch**. You can create a new name for this branch or leave it as the default suggestion.
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/62586097-2099-4f24-b7f6-30509933db2e)
 
-  6. Click **Propose changes**. This opens a new pull request.
-  7. In the "Open a pull request" window, click **Create pull request**.
+  8. Click **Propose changes**. This opens a new pull request.
+  9. In the "Open a pull request" window, click **Create pull request**.
   
 
 ### :keyboard: Activity 2: Review pull request

@@ -172,8 +172,6 @@ In this activity, we will explore the alert UI. We'll review the data flow of th
 ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/6cc9e07e-c32c-4868-a4c3-0fb97544ea3f)
 
 **Alert triage:** Use the buttons at the top right of the alert to triage or create a new issue for the alert. Don't do anything yet. We'll get into these buttons in a moment. 😄
-  
-![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/604e4812-eaa3-4732-8520-00fae0ea68cd)
 
 * **Additional info:** Finally, the right-side panel contains information such as tags, CWE information, and the severity of the alert
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/eecd7776-1dfc-4d40-856b-0a7a1a81f653)
@@ -196,9 +194,6 @@ This last step will show you how to create a GitHub Issue to track the work that
   
 1. Open one of the open alerts that CodeQL from the scan.  
 2. Click the green **Create issue** button at the top right of the alert. If you don't see this button, check the status of the alert to make sure it's an open alert.
-  
-![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/a446baf6-18e5-442d-b0fc-8e4110e422dd)
-
 3. Add any details you would like to include in the new issue form.  
 4. Click **Submit new issue**.
 5. To view the your issue, click **Issues** in the top navigation bar of your repository.
@@ -238,7 +233,7 @@ We now know where the issues exist and how to fix them. We'll start by modifying
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
   
-2. Click the edit button.
+2. Click the **Edit** button to the right.
   
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d)
   
@@ -288,7 +283,7 @@ In this first activity, we'll introduce the same insecure SQL statement from bef
   1. In the **Code** pane on the left, click on the folder named `server`, then selet the file named `routes.py`. The code view page will open.
   ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/2af87da0-b39a-469c-ab37-d3121660978e)
   
-  2. Click the edit button
+  2. Click the **Edit** button to the right.
   <img width="700" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d">
   
   3. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.

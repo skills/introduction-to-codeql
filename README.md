@@ -282,16 +282,12 @@ In this first activity, we'll introduce the same insecure SQL statement from bef
   1. Click the **Code** tab in your repository.
   2. Select the `server` folder.
   3. Select the `routes.py` file.
-  
   4. Click the **Edit** button to the right.
   <img width="700" alt="image" src="https://github.com/leftrightleft/enable-code-scanning/assets/4910518/ac53e02c-a169-439f-b04a-37c36048514d">
   
   5. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.
-
   6. Click **Commit changes...** from the top right. The "Propose changes" window will pop up.
   7. This time, select the radio button next to **Create a new branch**. You can create a new name for this branch or leave it as the default suggestion.
-  ![image](https://github.com/leftrightleft/enable-code-scanning/assets/4910518/62586097-2099-4f24-b7f6-30509933db2e)
-
   8. Click **Propose changes**. This opens a new pull request.
   9. In the "Open a pull request" window, click **Create pull request**.
   

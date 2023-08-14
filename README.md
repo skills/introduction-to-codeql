@@ -77,7 +77,7 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 
 **What is GitHub code scanning**: _[Code scanning](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)_ is a capability that allows development teams to integrate security testing tools into the software development process. This is done using GitHub Actions. With code scanning, you can integrate many different types of tools including SAST, container, and infrastructure as code security tools.
 
-**What is CodeQL**: _[CodeQL](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql)_ is a static analysis testing tool created by the team -(should we mention which team?)- at GitHub. CodeQL is a deep semantic analysis tool that helps you identify security weaknesses such as SQL injection, cross-site scripting, and code injection issues.
+**What is CodeQL**: _[CodeQL](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql)_ is a static analysis testing tool that helps you identify security weaknesses such as SQL injection, cross-site scripting, and code injection issues.
 
 ### :keyboard: Activity: Enable code scanning with CodeQL
   

@@ -1,14 +1,14 @@
-name: Step 1, TBD-step-1-name
+name: Step 1, Enable CodeQL
 
-# This step triggers after TBD-step-1-event-desc.
+# This step triggers after enable-codeql-event-desc.
 # This workflow updates from step 1 to step 2.
 
-# This will run every time we TBD-step-1-event-desc.
+# This will run every time we enable-codeql-event-desc.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
   # Add events that trigger this workflow.
-  # TBD-step-1-event:
+  # enable-codeql-event:
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
@@ -30,8 +30,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
-  on_TBD-step-1-event:
-    name: On TBD-step-1-event
+  on_enable-codeql:
+    name: On enable codeql
     needs: get_current_step
 
     # We will only run this action when:
@@ -53,7 +53,7 @@ jobs:
         with:
           fetch-depth: 0 # Let's get all the branches.
 
-      # TBD-step-1-additional-steps
+      # enable-codeql-additional-steps
 
       # In README.md, switch step 1 for step 2.
       - name: Update to step 2

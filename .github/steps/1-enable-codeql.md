@@ -7,7 +7,7 @@
   TBD-step-1-notes.
 -->
 
-## Step 1: Step 1: Enable CodeQL
+## Step 1: Enable CodeQL
 
 👋 Hello! Welcome to the GitHub Skills course: Enable code scanning! 
 

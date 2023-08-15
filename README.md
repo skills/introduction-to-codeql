@@ -16,50 +16,27 @@ _TBD-course-description_
 </header>
 
 <!--
-  <<< Author notes: Course start >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
+  <<< Author notes: Step 1 >>>
+  Choose 3-5 steps for your course.
+  The first step is always the hardest, so pick something easy!
+  Link to docs.github.com for further explanations.
+  Encourage users to open new tabs for steps!
+  TBD-step-1-notes.
 -->
 
-## Welcome
+## Step 1: TBD-step-1-name
 
-TBD-welcome-paragraph
+_Welcome to "TBD-course-name"! :wave:_
 
-- **Who is this for**: TBD-audience.
-- **What you'll learn**: TBD-objective.
-- **What you'll build**: TBD-result.
-- **Prerequisites**: TBD-prerequisites.
-- **How long**: This course takes less than TBD-duration to complete.
+TBD-step-1-information
 
-In this course, you will:
+**What is _TBD-term-1_**: TBD-definition-1
 
-1. TBD-step-1-name
-2. TBD-step-2-name
-3. TBD-step-3-name
-4. TBD-step-4-name
-5. TBD-step-5-name
+### :keyboard: Activity: TBD-step-1-name
 
-### How to start this course
-
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'TBD-organization',
-  template_name: 'TBD-course-name',
-  owner: '@me',
-  name: 'TBD-organization-TBD-course-name',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
-
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](TBD-generate)
-
-1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
-3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
+1. TBD-step-1-instructions.
+1. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
 
 <footer>
 

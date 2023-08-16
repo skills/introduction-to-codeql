@@ -29,7 +29,7 @@ We now know where the issues exist and how to fix them. We'll start by modifying
 3. Select the `routes.py` file.
 4. Click the **Edit** button to the right.
   
-  ![edit-button.png](images/edit-button.png)
+  ![edit-button.png](/images/edit-button.png)
   
 5. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE %s", name`.
   

@@ -1,9 +1,9 @@
 lname: Step 1, Enable CodeQL
 
-# This step triggers after enable-codeql-event-desc.
+# This step triggers after enabling codeql.
 # This workflow updates from step 1 to step 2.
 
-# This will run every time we enable-codeql-event-desc.
+# This will run every time we enable codeql.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:

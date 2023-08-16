@@ -1,14 +1,14 @@
-name: Step 3, TBD-step-3-name
+name: Step 3, fix-security-vulnerabilities
 
-# This step triggers after TBD-step-3-event-desc.
+# This step triggers after fix-security-vulnerabilities-event-desc.
 # This workflow updates from step 3 to step 4.
 
-# This will run every time we TBD-step-3-event-desc.
+# This will run every time we fix-security-vulnerabilities-event-desc.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
   # Add events that trigger this workflow.
-  # TBD-step-3-event:
+  # fix-security-vulnerabilities-event:
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
@@ -30,8 +30,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
-  on_TBD-step-3-event:
-    name: On TBD-step-3-event
+  on_fix-security-vulnerabilities-event:
+    name: On fix security vulnerabilities
     needs: get_current_step
 
     # We will only run this action when:
@@ -53,7 +53,7 @@ jobs:
         with:
           fetch-depth: 0 # Let's get all the branches.
 
-      # TBD-step-3-additional-steps
+      # fix-security-vulnerabilities-additional-steps
 
       # In README.md, switch step 3 for step 4.
       - name: Update to step 4

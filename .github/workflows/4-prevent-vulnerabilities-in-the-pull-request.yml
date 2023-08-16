@@ -1,14 +1,14 @@
-name: Step 4, TBD-step-4-name
+name: Step 4, prevent-vulnerabilities-in-the-pull-request
 
-# This step triggers after TBD-step-4-event-desc.
+# This step triggers after prevent-vulnerabilities-in-the-pull-request-event-desc.
 # This workflow updates from step 4 to step 5.
 
-# This will run every time we TBD-step-4-event-desc.
+# This will run every time we prevent-vulnerabilities-in-the-pull-request-event-desc.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
   # Add events that trigger this workflow
-  # TBD-step-4-event:
+  # prevent-vulnerabilities-in-the-pull-request-event:
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
@@ -30,8 +30,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
-  on_TBD-step-4-event:
-    name: On TBD-step-4-event
+  on_prevent-vulnerabilities-in-the-pull-request-event:
+    name: On prevent vulnerabilities in the pull request
     needs: get_current_step
 
     # We will only run this action when:
@@ -53,7 +53,7 @@ jobs:
         with:
           fetch-depth: 0 # Let's get all the branches.
 
-      # TBD-step-4-additional-steps
+      # prevent-vulnerabilities-in-the-pull-request-additional-steps
 
       # In README.md, switch step 4 for step 5.
       - name: Update to step 5

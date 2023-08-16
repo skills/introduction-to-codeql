@@ -34,7 +34,7 @@ In this first activity, we'll introduce the same insecure SQL statement from bef
   3. Select the `routes.py` file.
   4. Click the **Edit** button to the right.
 
-![edit-button.png](images/edit-button.png)
+![edit-button.png](/images/edit-button.png)
   
   5. Edit line 16 by highlighting the SQL statement and replace it with this text: `"SELECT * FROM books WHERE name LIKE '%" + name + "%'"`.
   6. Click **Commit changes...** from the top right. The "Propose changes" window will pop up.
@@ -51,7 +51,7 @@ Now, let's take a look at the pull request to see what the experience is like.
   
 1. In the previous activity, we created the pull request.  After creating the pull request, you were brought directly to the pull request page. At the bottom of the pull request, you will see a check called "Code scanning/CodeQL". This is the CodeQL analysis job scanning the code introduced in the pull request.
 
-![pr-panel](images/pr-panel.png)
+![pr-panel](/images/pr-panel.png)
 
 2.  Once the check is complete, you will see a new comment in the pull request from CodeQL indicating a new security vulnerability; a SQL query built from user-controlled data. This is our SQL injection vulnerability.
   

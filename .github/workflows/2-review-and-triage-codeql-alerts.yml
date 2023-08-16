@@ -1,6 +1,6 @@
 name: Step 2, review-and-triage-codeql-alerts
 
-# This step triggers after review-and-triage-codeql-alerts-event-desc.
+# This step triggers after submitting a new issues after review and triage.
 # This workflow updates from step 2 to step 3.
 
 # This will run every time we review-and-triage-codeql-alerts-event-desc.

@@ -1,14 +1,14 @@
-name: Step 2, TBD-step-2-name
+name: Step 2, review-and-triage-codeql-alerts
 
-# This step triggers after TBD-step-2-event-desc.
+# This step triggers after review-and-triage-codeql-alerts-event-desc.
 # This workflow updates from step 2 to step 3.
 
-# This will run every time we TBD-step-2-event-desc.
+# This will run every time we review-and-triage-codeql-alerts-event-desc.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
   # Add events that trigger this workflow.
-  # TBD-step-2-event:
+  # review-and-triage-codeql-alerts-event:
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
@@ -30,8 +30,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
-  on_TBD-step-2-event:
-    name: On TBD-step-2-event
+  on_review-and-triage-codeql-alerts-event:
+    name: On review and triage codeql alerts
     needs: get_current_step
 
     # We will only run this action when:
@@ -53,7 +53,7 @@ jobs:
         with:
           fetch-depth: 0 # Let's get all the branches.
 
-      # TBD-step-2-additional-steps
+      # review-and-triage-codeql-alerts-additional-steps
 
       # In README.md, switch step 2 for step 3.
       - name: Update to step 3

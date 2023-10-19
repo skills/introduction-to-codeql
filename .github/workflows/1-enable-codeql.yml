@@ -1,4 +1,4 @@
-lname: Step 1, Enable CodeQL
+name: Step 1, Enable CodeQL
 
 # This step triggers after enabling codeql.
 # This workflow updates from step 1 to step 2.
@@ -8,7 +8,10 @@ lname: Step 1, Enable CodeQL
 on:
   workflow_dispatch:
   # Add events that trigger this workflow.
-  # enable-codeql-event:
+  workflow_run:
+    workflows: [CodeQL]
+    types:
+      - in_progress
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:

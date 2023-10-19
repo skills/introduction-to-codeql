@@ -8,7 +8,8 @@ name: Step 4, prevent-vulnerabilities-in-the-pull-request
 on:
   workflow_dispatch:
   # Add events that trigger this workflow
-  # prevent-vulnerabilities-in-the-pull-request-event:
+  pull_request:
+    types: opened
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
@@ -61,5 +62,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           from_step: 4
-          to_step: 5
+          to_step: X
           branch_name: tbd-branch-name

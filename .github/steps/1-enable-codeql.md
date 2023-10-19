@@ -28,7 +28,6 @@ First, we will enable code scanning with CodeQL in our repository.
 3. Under the **Security** section on the left side, select **Code security and analysis**.
 4. Scroll down to the section titled **Code scanning**. For the purpose of this course, we will focus on CodeQL analysis.
 5. Click on the **Set up** dropdown menu and choose **Default**.
-6. 
 ![enable-code-scanning-default.png](/images/enable-code-scanning-default.png)
 
 Let's take a look at the configuration options in the modal:

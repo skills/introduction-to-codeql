@@ -8,7 +8,9 @@ name: Step 3, fix-security-vulnerabilities
 on:
   workflow_dispatch:
   # Add events that trigger this workflow.
-  # fix-security-vulnerabilities-event:
+  push:
+    paths:
+      - server/routes.py
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:

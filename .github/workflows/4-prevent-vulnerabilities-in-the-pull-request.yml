@@ -8,7 +8,8 @@ name: Step 4, prevent-vulnerabilities-in-the-pull-request
 on:
   workflow_dispatch:
   # Add events that trigger this workflow
-  # prevent-vulnerabilities-in-the-pull-request-event:
+  pull_request:
+    types: opened
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:

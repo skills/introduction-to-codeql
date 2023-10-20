@@ -9,7 +9,7 @@
   Add your open source license, GitHub uses the MIT license.
 -->
 
-# Enable code scanning to secure your source code
+# Enable CodeQL to secure your source code
 
 _Ensuring the security of application source code is a critical step in modern software development. In this GitHub Skills course, you will learn to use GitHub code scanning to identify, resolve, and prevent insecure coding patterns._
 
@@ -26,7 +26,7 @@ _Ensuring the security of application source code is a critical step in modern s
 
 ## Welcome
 
-_Welcome to "Enable code scanning"! :wave:_
+_Welcome to "Introduction to CodeQL"! :wave:_
 
 In this course, we will explore using GitHub code scanning, powered by [CodeQL](https://codeql.github.com/), to identify common coding practices that can lead to security vulnerabilities. During this course, we will enable code scanning on your repository to identify, remediate, and prevent vulnerabilities.
   

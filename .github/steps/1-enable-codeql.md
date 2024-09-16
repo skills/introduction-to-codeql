@@ -24,7 +24,7 @@ In this first step, we'll be learning more about CodeQL and how to use it to sec
 First, we will enable code scanning with CodeQL in our repository.
 
 1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-2. Navigate the to **Settings** tab at the top of your newly created repository.
+2. Navigate to the **Settings** tab at the top of your newly created repository.
 3. Under the **Security** section on the left side, select **Code security and analysis**.
 4. Scroll down to the section titled **Code scanning**. For the purpose of this course, we will focus on CodeQL analysis.
 5. Click on the **Set up** dropdown menu and choose **Default**.

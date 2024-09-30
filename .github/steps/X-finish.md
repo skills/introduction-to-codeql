@@ -9,7 +9,7 @@ _Congratulations! You have completed this course!_ 🏆
 
 Here's a recap of all the tasks you accomplished in your repository:
   - Enabled CodeQL on your repository.
-  - CodeQL scanned the code in your repository and notified us of two SQL injection vulenrabilities.
+  - CodeQL scanned the code in your repository and notified us of two SQL injection vulnerabilities.
   - Reviewed the findings, marked the findings as closed, and explored the audit trail.
   - Fixed your code in the main branch and saw that the findings automatically closed out.
   - Introduced a new vulnerability in a new branch.

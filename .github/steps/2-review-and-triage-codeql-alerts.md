@@ -80,7 +80,7 @@ Now that we're familiar with the alert layout, let's work through the process of
 ### :keyboard: Activity 5: Create a GitHub Issue for an Alert
 This last step will show you how to create a GitHub Issue to track the work that goes into resolving a vulnerability. Issues provide a space for collaboration for a security problem and can be assigned to people or teams.
   
-1. Open one of the open alerts that CodeQL from the scan.  
+1. Open one of the open alerts that CodeQL identified from the scan.
 2. Click the green **Create issue** button at the top right of the alert. If you don't see this button, check the status of the alert to make sure it's an open alert.
 3. Add any details you would like to include in the new issue form.  
 4. Click **Submit new issue**.

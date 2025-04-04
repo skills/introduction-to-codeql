@@ -1,11 +1,4 @@
-from server.models import Book
-
-
-@flaskapp.route('/')
-def index():
-    name = request.args.get('name')
-    author = request.args.get('author')
-    read = bool(request.args.get('read'))
+('read'))
 
     if name:
         cursor.execute(

@@ -1,0 +1,56 @@
+App name: Kaspersky
+App version: 11.119.4.13153
+OS version: 11
+CPU architecture: arm64-v8a
+Device name: OnePlus6T
+Fingerprint: OnePlus/OnePlus6T/OnePlus6T:11/RKQ1.201217.002/2111252327:user/release-keys
+Free storage space: 85075525632
+-------------------------------
+
+java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.util.concurrent.atomic.AtomicReference.get()' on a null object reference
+	at io.reactivex.internal.operators.observable.ObservableReplay$BoundedReplayBuffer.replay(SourceFile:33)
+	at io.reactivex.internal.operators.observable.j0.subscribe(SourceFile:61)
+	at io.reactivex.internal.operators.observable.m0.subscribeActual(SourceFile:3)
+	at x.gy9.subscribe(SourceFile:12)
+	at io.reactivex.internal.operators.observable.e0.subscribeActual(SourceFile:60)
+	at x.gy9.subscribe(SourceFile:12)
+	at io.reactivex.internal.operators.observable.x.subscribeActual(SourceFile:51)
+	at x.gy9.subscribe(SourceFile:12)
+	at io.reactivex.internal.operators.observable.ObservableConcatMap$ConcatMapDelayErrorObserver.drain(SourceFile:130)
+	at io.reactivex.internal.operators.observable.ObservableConcatMap$ConcatMapDelayErrorObserver.onSubscribe(SourceFile:36)
+	at io.reactivex.internal.operators.observable.k.subscribeActual(SourceFile:146)
+	at x.gy9.subscribe(SourceFile:12)
+	at io.reactivex.internal.operators.observable.h.subscribeActual(SourceFile:69)
+	at x.gy9.subscribe(SourceFile:12)
+	at io.reactivex.internal.operators.observable.ObservableCombineLatest$LatestCoordinator.subscribe(SourceFile:25)
+	at io.reactivex.internal.operators.observable.g.subscribeActual(SourceFile:138)
+	at x.gy9.subscribe(SourceFile:12)
+	at io.reactivex.internal.operators.observable.l1.subscribeActual(SourceFile:78)
+	at x.gy9.subscribe(SourceFile:12)
+	at x.gy9.subscribe(SourceFile:10)
+	at x.gy9.subscribe(SourceFile:3)
+	at com.kaspersky.vpn.ui.presenters.KisaVpnCommonPresenter$observeConnection$subscribeAction$1.invoke(SourceFile:4)
+	at com.kaspersky.vpn.ui.presenters.KisaVpnCommonPresenter$observeConnection$subscribeAction$1.invoke(SourceFile:1)
+	at x.eb1.A(SourceFile:11)
+	at com.kaspersky.vpn.ui.presenters.KisaVpnCommonPresenter.onFirstViewAttach(SourceFile:309)
+	at moxy.MvpPresenter.attachView(SourceFile:21)
+	at com.kaspersky.saas.ui.base.mvp.BaseMvpPresenter.a(SourceFile:1)
+	at com.kaspersky.vpn.ui.presenters.KisaVpnCommonPresenter.c(SourceFile:7)
+	at com.kaspersky.vpn.ui.presenters.KisaVpnCommonPresenter.attachView(SourceFile:3)
+	at moxy.MvpDelegate.onAttach(SourceFile:40)
+	at moxy.MvpAppCompatFragment.onStart(SourceFile:11)
+	at androidx.fragment.app.o.performStart(SourceFile:18)
+	at androidx.fragment.app.a0.k(SourceFile:97)
+	at androidx.fragment.app.y.B(SourceFile:1113)
+	at androidx.fragment.app.y.Z(SourceFile:92)
+	at androidx.fragment.app.y.z(SourceFile:78)
+	at x.fb4.run(SourceFile:19)
+	at android.os.Handler.handleCallback(Handler.java:938)
+	at android.os.Handler.dispatchMessage(Handler.java:99)
+	at android.os.Looper.loop(Looper.java:233)
+	at android.app.ActivityThread.main(ActivityThread.java:8068)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:631)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:978)
+
+-------------------------------

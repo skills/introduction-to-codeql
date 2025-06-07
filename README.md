@@ -4,15 +4,12 @@ _Learn to identify, resolve, and prevent insecure coding patterns._
 
 ## Welcome
 
-In this exercise, we will explore using GitHub code scanning, powered by [CodeQL](https://codeql.github.com/), to identify common coding practices that can lead to security vulnerabilities. During this exercise, we will enable code scanning on your repository to identify, remediate, and prevent vulnerabilities.
-
-Code scanning is part of the [GitHub Advanced Security (GHAS)](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security) product suite. All of the features of Advanced Security are 100% free for open source, public repositories.
-
 - **Who is this for**: Developers, security engineers, open source maintainers.
-- **What you'll learn**: We'll show you how to enable code scanning and identify SQL injection vulnerabilities with CodeQL.
-- **What you'll build**: A secure software development pipeline that allows you to identify and prevent new security vulnerabilities from being introduced into your production code.
-- **Prerequisites**: In this exercise, you'll need a baseline knowledge of GitHub concepts such as pull requests, GitHub Actions, and source code. You'll also need to be familiar with the concepts of Static Application Security Testing (SAST). Don't worry, we'll explain the complex parts for you 🙂.
-- **How long**: This exercise is four steps long and takes less than 30 minutes to complete.
+- **What you'll learn**: How to enable code scanning to identify typical vulnerabilities like SQL injection, review alerts, and take action to fix them.
+- **What you'll build**: An automated process to identify existing vulnerabilities and prevent future vulnerabilities in production code.
+- **Prerequisites**:
+  - Introduction to GitHub
+- **How long**: Less than 30 minutes.
 
 ### How to start this exercise
 

@@ -23,6 +23,7 @@ First, we will enable code scanning with CodeQL in our repository.
 1. Scroll down to the section titled **Code scanning**. For the purpose of this exercise, we will focus on CodeQL analysis.
 
 1. Click on the **Set up** dropdown menu and choose **Default**.
+
    <img width="400" alt="enable code scanning" src="https://github.com/user-attachments/assets/0d639af3-a8fb-4ea7-8b94-44621a34fc3c"/>
 
    Let's take a look at the configuration options in the modal:

@@ -23,7 +23,7 @@ First, we will enable code scanning with CodeQL in our repository.
 1. Scroll down to the section titled **Code scanning**. For the purpose of this exercise, we will focus on CodeQL analysis.
 
 1. Click on the **Set up** dropdown menu and choose **Default**.
-   ![enable code scanning](https://github.com/user-attachments/assets/0d639af3-a8fb-4ea7-8b94-44621a34fc3c)
+   <img width="400" alt="enable code scanning" src="https://github.com/user-attachments/assets/0d639af3-a8fb-4ea7-8b94-44621a34fc3c"/>
 
    Let's take a look at the configuration options in the modal:
 
@@ -31,7 +31,7 @@ First, we will enable code scanning with CodeQL in our repository.
    - **Query suites:** CodeQL [queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) are packaged in bundles called "suites". This section allows you to choose which query suite to use. We'll leave this set as **Default** for this exercise. For more information, see "[About CodeQL queries](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries)."
    - **Events:** This section tells CodeQL when to scan. In this case, it's set to scan on any pull request to the `main` branch.
 
-   ![codeql default configuration box](https://github.com/user-attachments/assets/cf5ba96b-98bb-4db5-b743-bd31bceaabac)
+   <img width="400" alt="codeql default configuration box" src="https://github.com/user-attachments/assets/cf5ba96b-98bb-4db5-b743-bd31bceaabac"/>
 
 1. Click **Enable CodeQL**
 

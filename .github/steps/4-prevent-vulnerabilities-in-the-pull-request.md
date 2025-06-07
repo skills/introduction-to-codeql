@@ -27,7 +27,7 @@ In this first activity, we'll introduce the same insecure SQL statement from bef
 
 1. Click the **Edit** button to the right.
 
-   ![edit button](https://github.com/user-attachments/assets/19462cc5-a360-4dae-a97b-ecfd571aa403)
+   <img width="400" alt="edit button" src="https://github.com/user-attachments/assets/19462cc5-a360-4dae-a97b-ecfd571aa403"/>
 
 1. Edit line 16 by highlighting the SQL statement and replace it with this text.
 
@@ -51,11 +51,11 @@ Now, let's take a look at the pull request to see what the experience is like.
 
 1. In the previous activity, we created the pull request. After creating the pull request, you were brought directly to the pull request page. At the bottom of the pull request, you will see a check called "Code scanning/CodeQL". This is the CodeQL analysis job scanning the code introduced in the pull request.
 
-   ![pr panel](https://github.com/user-attachments/assets/1c29ee0f-cc1d-4568-9e71-338d45ad1d54)
+   <img width="400" alt="pr panel" src="https://github.com/user-attachments/assets/1c29ee0f-cc1d-4568-9e71-338d45ad1d54"/>
 
 1. Once the check is complete, you will see a new comment in the pull request from CodeQL indicating a new security vulnerability; a SQL query built from user-controlled data. This is our SQL injection vulnerability.
 
-   <img width="1180" alt="image" src="https://github.com/user-attachments/assets/677cc104-9116-44a9-8061-091e8126442a">
+   <img width="400" alt="image" src="https://github.com/user-attachments/assets/677cc104-9116-44a9-8061-091e8126442a">
 
 1. Review the data flow paths by clicking **Show paths**.
 

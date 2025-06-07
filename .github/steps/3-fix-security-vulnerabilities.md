@@ -26,7 +26,7 @@ We now know where the issues exist and how to fix them. We'll start by modifying
 
 1. Click the **Edit** button to the right.
 
-   ![edit-button.png](/images/edit-button.png)
+   ![edit button](https://github.com/user-attachments/assets/19462cc5-a360-4dae-a97b-ecfd571aa403)
 
 1. Edit line 16 by highlighting the SQL statement and replace it with this text.
 

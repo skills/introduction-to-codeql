@@ -1,9 +1,10 @@
 name: Step 3
 
 on:
-  push:
-    paths:
-      - server/routes.py
+  workflow_run:
+    workflows: [CodeQL]
+    types:
+      - completed
 
 permissions:
   contents: read

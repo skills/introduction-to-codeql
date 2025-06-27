@@ -8,7 +8,7 @@ _Learn to identify, resolve, and prevent insecure coding patterns._
 - **What you'll learn**: How to enable code scanning to identify typical vulnerabilities like SQL injection, review alerts, and take action to fix them.
 - **What you'll build**: An automated process to identify existing vulnerabilities and prevent future vulnerabilities in production code.
 - **Prerequisites**:
-  - Introduction to GitHub
+  - [Introduction to GitHub](https://github.com/skills/introduction-to-github)
 - **How long**: Less than 30 minutes.
 
 ### How to start this exercise

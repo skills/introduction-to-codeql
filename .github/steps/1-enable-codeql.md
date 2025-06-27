@@ -35,7 +35,7 @@ Here are some options the default configuration provides:
 
 1. In the left navigation, fine the **Security** section and select **Advanced Security**.
 
-1. Scroll down and find the **Code scanning**.
+1. Scroll down and find the **Code scanning** area.
 
 1. In the **CodeQL** setting, click the **Set up** dropdown menu and choose **Default**.
 
@@ -43,6 +43,6 @@ Here are some options the default configuration provides:
 
 1. Click **Enable CodeQL**.
 
-   > This will trigger a first run of CodeQL. You can view the progress in the **Actions** tab.
+   > 💡 Tip: This will trigger a first run of CodeQL. You can view the progress in the **Actions** tab.
 
 1. With CodeQL now enabled, Mona will check your progress and share the next steps.

@@ -11,7 +11,7 @@ permissions:
   issues: write
 
 env:
-  STEP_1_FILE: ".github/steps/1-enable-codeql.md"
+  STEP_1_FILE: ".github/steps/1-step.md"
 
 jobs:
   start_exercise:

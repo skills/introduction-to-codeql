@@ -26,7 +26,7 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
 
 1. In the left navigation, find the **Vulnerability alerts** area and select the **Code scanning** option.
 
-   - Notice that there are not open alerts. This is expected since the vulnerable code on a pull request has not been merged yet.
+   - Notice that there are no alerts. This is expected since the vulnerable code on the pull request has not been merged yet.
 
 1. Return to the recently created pull request. Ignore the failed check and click the **Merge pull request** button.
 

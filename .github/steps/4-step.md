@@ -31,7 +31,7 @@ Finally, let's use the information provided by CodeQL to better understand the v
    - There should be no open alerts and 1 closed alerts. Nice work! 🎉
    - Feel free to review the closed alerts, especially the audit trail.
 
-1. Click on **Closed** to show our recently created alert.
+1. Click on **Closed** to show our recently resolved alert.
 
    <img width="350" alt="image" src="https://github.com/user-attachments/assets/75656267-cd80-47de-82cb-fd50e423f992" />
 
@@ -39,4 +39,4 @@ Finally, let's use the information provided by CodeQL to better understand the v
 
    <img width="350" alt="image" src="https://github.com/user-attachments/assets/316e25cb-e8ce-402d-aba8-7cbba9cb0753" />
 
-1. With our alert fixed, Mona will check your progress and share a final review. Nice work! You are done! 🥳
+1. With our alert fixed, Mona will check your progress and share a final review. Nice work! You are all done! 🥳

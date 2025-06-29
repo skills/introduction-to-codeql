@@ -1,8 +1,8 @@
 name: Step 3
 
 on:
-  issues:
-    types: [opened]
+  issue_comment:
+    types: [created, edited]
 
 permissions:
   contents: read
@@ -13,7 +13,29 @@ env:
   STEP_3_FILE: ".github/steps/4-step.md"
 
 jobs:
+  required_issue_comment_keywords:
+    name: Check issue comment text for required keyword
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for professortocat reference
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text: ${{ github.event.comment.body }}
+          keyphrase: "professortocat"
+          case-sensitive: false
+          minimum-occurrences: 1
+
+      - name: Check for alert reference
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text: ${{ github.event.comment.body }}
+          keyphrase: "alert"
+          case-sensitive: false
+          minimum-occurrences: 1
+
   find_exercise:
+    needs: [required_issue_comment_keywords]
     name: Find Exercise Issue
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.5.0
 

@@ -1,8 +1,10 @@
 name: Step 4
 
 on:
-  pull_request:
-    types: opened
+  workflow_run:
+    workflows: [CodeQL]
+    types:
+      - completed
 
 permissions:
   contents: write

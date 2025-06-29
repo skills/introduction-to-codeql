@@ -1,71 +1,45 @@
-## Step 2: Review and Triage CodeQL Alerts
+## Step 2: Prevent Vulnerabilities in a Pull Request
 
-With our pull request changes now reviewed by CodeQL, let's take a moment to learn about managing alerts.
+In this step, we will introduce a vulnerability into the `routes.py` file to trigger an alert.
 
-GitHub provides a dedicated **Security** tab for securely managing all security related issues. CodeQL saves alerts using the same standard as many other analysis tools with the results showing up under the **Code scanning** area.
+### ⌨️ Activity: Recreate a vulnerability
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/cf4fc6ec-e40e-4df6-8984-b6ec35341737" />
+1. In the top navigation, select the **Code** tab.
 
-### What information do alerts provide?
+1. Navigate to the `server` folder and select the `routes.py` file.
 
-The main area of an alert provides the resolution status, affected branch, code location, and classification information like severity and [CVE identification number](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories#cve-identification-numbers).
+1. In the top right of the preview, click the **Edit** button.
+
+   <img width="400" alt="edit button" src="https://github.com/user-attachments/assets/19462cc5-a360-4dae-a97b-ecfd571aa403"/>
+
+1. Navigate to about **line 16** and modify it to the below.
+
+   ```py
+   "SELECT * FROM books WHERE name LIKE '%" + name + "%'"
+   ```
+
+1. Above the editor in the top-right, click the **Commit changes...** button. Select the radio button next to **Create a new branch**. **DO NOT commit it to main branch.**
+
+1. Click **Propose changes** option and click **Create pull request**.
+
+### ⌨️ Activity: Review pull request
+
+1. If needed, navigate to the newly created pull requests from the previous activity.
+
+1. Scroll to the bottom of the pull request. Search for a check named `CodeQL`. This is the analysis job scanning the proposed code changes in the pull request.
+
+   <img width="500" alt="pr panel" src="https://github.com/user-attachments/assets/1c29ee0f-cc1d-4568-9e71-338d45ad1d54"/>
+
+1. If the job is still running, wait a few minutes for it to complete.
+
+1. Search the comments to find a report from the analysis.
+
+   - Notice that the results found a SQL injection vulnerability. It is also suggesting a fix.
+   - Don't worry about responding or resolving this problem (yet).
+
+   <img width="500" alt="image" src="https://github.com/user-attachments/assets/677cc104-9116-44a9-8061-091e8126442a">
+
+1. With the pull request started, Mona will check your progress and share the next steps.
 
 
-<img width="500" alt="additional information" src="https://github.com/user-attachments/assets/9a5aaf3f-e063-4d07-8cdd-6272eec8a411"/>
-
-<!-- > 💡 Tip: Clicking the **Show paths** link will provide additional insights about the alert's data flow from user input (source), through the application, and when it is acted on (sink). -->
-
-### What is 'CWE'
-
-Many of the patterns CodeQL scans for come from existing databases of vulnerabilities.
-
-The Common Weakness Enumeration (CWE) is a category system for hardware and software weaknesses and vulnerabilities. Think of it as a way to describe and categorize security issues in an application's source code. For more information on CWEs, see the Wikipedia article [Common Weakness Enumeration](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration).
-
-### ⌨️ Activity: View the status of a CodeQL scan
-
-1. In the top navigation, select the **Actions** tab.
-
-1. If needed, wait a moment for the CodeQL run to finish (about 4 minutes).
-
-1. Click on the **CodeQL Setup** workflow run entry to open a page showing more details.
-
-   <img width="500" alt="codeql setup" src="https://github.com/user-attachments/assets/016a729e-3b41-466c-8edf-3d4b41a86b7d"/>
-
-   > 💡 Tip: The workflow run contains additional CodeQL information such as the run duration, logs, and analysis artifacts.
-
-### ⌨️ Activity: Review an Alert
-
-1. In the top navigation, select the **Security** tab.
-
-1. In the left navigation, find the **Vulnerability alerts** area and select the **Code scanning** option.
-
-1. (Optional) Use the filters and search bar to explore the open and closed security alerts, including from the CodeQL scan.
-
-1. Click on an alert.
-
-1. Notice the description, related vulnerability information and a recommended solution.
-
-    <img width="500" alt="recommendations" src="https://github.com/user-attachments/assets/a5653b45-b66f-4e5b-8e03-a7b8cd3b91b4"/>
-
-1. (Optional) Click the **View source** link to view the CodeQL query that detected the alert.
-
-1. (Optional) Click the **Show more** link to view the full recommendation.
-
-1. Inspect the audit trail to see a secure history of the alert, including open/close information.
-
-    <img width="500" alt="audit trail" src="https://github.com/user-attachments/assets/25ec5256-20c7-4e9d-8160-ff40f3763872"/>
-
-### ⌨️ Activity: Dismiss and Reopen an Alert
-
-1. In the top right, click **Dismiss alert** dropdown.
-
-1. Select any reason and add a short explanation then click the **Dismiss alert** button.
-
-   - The alert state will change to `Dismissed`.
-   - An entry is added to the audit trail, which can't be removed or edited.
-
-1. Reopen the alert.
-
-   - The alert state will change to `Open`.
-   - An entry is added to the audit trail, which can't be removed or edited.
-
+<!-- If you would like to learn more about pull request integrations for code scanning, see "[Triage code scanning alerts in pull requests](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/triaging-code-scanning-alerts-in-pull-requests)." -->

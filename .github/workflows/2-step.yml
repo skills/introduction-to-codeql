@@ -1,8 +1,8 @@
 name: Step 2
 
 on:
-  issues:
-    types: [opened]
+  pull_request:
+    types: opened
 
 permissions:
   contents: read

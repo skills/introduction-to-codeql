@@ -1,8 +1,10 @@
 name: Step 2
 
 on:
-  pull_request:
-    types: opened
+  workflow_run:
+    workflows: [CodeQL]
+    types:
+      - in_progress
 
 permissions:
   contents: read

@@ -13,11 +13,11 @@ In this first step, we'll be learning more about [CodeQL](https://codeql.github.
 
 [CodeQL](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql) is a static analysis testing tool that helps you identify security weaknesses such as SQL injection, cross-site scripting, and code injection issues.
 
-<img width="200" align="right" alt="codeql default configuration box" src="https://github.com/user-attachments/assets/cf5ba96b-98bb-4db5-b743-bd31bceaabac"/>
-
 Typically CodeQL patterns are collected into [query suites](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql#about-codeql-queries) of patterns. When combined well, this can be a very powerful! To help with this, teams of security experts have pre-populated suites for many common scenarios and programming languages.
 
 In many cases, taking advantage of CodeQL is as simple as accepting the default suite, but you can also select the extended suite or customize your own with [GitHub Actions]().
+
+<img width="200" align="right" alt="codeql default configuration box" src="https://github.com/user-attachments/assets/cf5ba96b-98bb-4db5-b743-bd31bceaabac"/>
 
 Here are some options the default configuration provides:
 

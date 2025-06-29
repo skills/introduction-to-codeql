@@ -13,13 +13,18 @@ env:
   STEP_3_FILE: ".github/steps/4-step.md"
 
 jobs:
-  required_issue_comment_keywords:
+  check_keywords:
     name: Check issue comment text for required keyword
     runs-on: ubuntu-latest
 
+    outputs:
+      result: ${{ steps.combine_checks.outputs.result }}
+
     steps:
       - name: Check for professortocat reference
+        id: check_professortocat
         uses: skills/action-keyphrase-checker@v1
+        continue-on-error: true
         with:
           text: ${{ github.event.comment.body }}
           keyphrase: "professortocat"
@@ -27,16 +32,28 @@ jobs:
           minimum-occurrences: 1
 
       - name: Check for alert reference
+        id: check_alert
         uses: skills/action-keyphrase-checker@v1
+        continue-on-error: true
         with:
           text: ${{ github.event.comment.body }}
           keyphrase: "alert"
           case-sensitive: false
           minimum-occurrences: 1
 
+      - name: Set continue output if both checks succeeded
+        id: combine_checks
+        run: |
+          if [[ "${{ steps.check_professortocat.outcome }}" == "success" && "${{ steps.check_alert.outcome }}" == "success" ]]; then
+            echo "result=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "result=fail" >> "$GITHUB_OUTPUT"
+          fi
+
   find_exercise:
-    needs: [required_issue_comment_keywords]
+    needs: [check_keywords]
     name: Find Exercise Issue
+    if: needs.check_keywords.outputs.result == 'success'
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.5.0
 
   post_next_step_content:

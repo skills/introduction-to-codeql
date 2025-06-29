@@ -34,14 +34,14 @@ To see how Code Scanning works, we will introduce a vulnerability into the `rout
 
 1. Scroll to the bottom of the pull request and search for a check named `CodeQL`. This is the analysis job scanning the proposed code changes in the pull request.
 
-   <img width="500" alt="pr panel" src="https://github.com/user-attachments/assets/1c29ee0f-cc1d-4568-9e71-338d45ad1d54"/>
+   <img width="500" alt="CodeQL check in progress" src="https://github.com/user-attachments/assets/3c1721cf-e18d-4b8a-8feb-615033d53f4c" />
 
 1. If the job is still running, wait a few minutes for it to complete.
 
 1. Search the comments to find the results of the analysis.
 
    - Notice that the results found a SQL injection vulnerability. It also suggests a fix.
-   - Don't worry about responding or resolving this problem (yet).
+   - Don't worry about responding to this or resolving the problem (yet).
 
    <img width="500" alt="code scan results" src="https://github.com/user-attachments/assets/1914befe-e091-4905-bfdc-a5a252a73d2d" />
 
@@ -53,11 +53,11 @@ To see how Code Scanning works, we will introduce a vulnerability into the `rout
 
 1. In the left navigation, select the **CodeQL** entry to filter the workflow runs.
 
-<img width="500" alt="codeql filter" src="https://github.com/user-attachments/assets/9b66339d-0fba-4a72-be2e-5a0b2b5677b7"/>
+   <img width="500" alt="codeql filter" src="https://github.com/user-attachments/assets/9b66339d-0fba-4a72-be2e-5a0b2b5677b7"/>
 
 1. Click on the workflow run with the name **PR #2** to open a page with more details.
 
-<img width="500" alt="codeql setup" src="https://github.com/user-attachments/assets/016a729e-3b41-466c-8edf-3d4b41a86b7d"/>
+   <img width="500" alt="codeql setup" src="https://github.com/user-attachments/assets/016a729e-3b41-466c-8edf-3d4b41a86b7d"/>
 
 1. Expand the run jobs by clicking **Show all jobs** then click on the **Analyze (python)** entry. The list of all workflow steps is now shown.
 
@@ -67,7 +67,7 @@ To see how Code Scanning works, we will introduce a vulnerability into the `rout
 
 1. Find the analysis entry and consider reviewing the logs.
 
-<img width="500" alt="python analysis logs" src="https://github.com/user-attachments/assets/56ac1cf6-8e51-4e1f-b7f5-2dd48a5e5614" />
+   <img width="500" alt="python analysis logs" src="https://github.com/user-attachments/assets/56ac1cf6-8e51-4e1f-b7f5-2dd48a5e5614" />
 
 1. With the pull request started and CodeQL scan finished, Mona will check your progress and share the next steps.
 

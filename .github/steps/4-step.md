@@ -1,6 +1,6 @@
 ## Step 4: Fix Security Vulnerabilities
 
-Let's fix the security vulnerability we introduced that CodeQL identified.
+Finally, let's use the information provided by CodeQL to better understand the vulnerability and fix it.
 
 ### ⌨️ Activity: Resolve an open alert
 

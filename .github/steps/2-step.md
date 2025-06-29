@@ -1,6 +1,6 @@
 ## Step 2: Detect Vulnerabilities in a Pull Request
 
-In this step, we will introduce a vulnerability into the `routes.py` file to trigger an alert.
+To see how Code Scanning works, we will introduce a vulnerability into the `routes.py` file to trigger an alert.
 
 ### ⌨️ Activity: Create a vulnerability
 
@@ -10,7 +10,7 @@ In this step, we will introduce a vulnerability into the `routes.py` file to tri
 
 1. In the top right of the preview, click the **Edit** button.
 
-   <img width="400" alt="edit button" src="https://github.com/user-attachments/assets/19462cc5-a360-4dae-a97b-ecfd571aa403"/>
+   <img width="500" alt="edit button" src="https://github.com/user-attachments/assets/19462cc5-a360-4dae-a97b-ecfd571aa403"/>
 
 1. Navigate to about **line 16** and modify it to the below.
 
@@ -18,9 +18,9 @@ In this step, we will introduce a vulnerability into the `routes.py` file to tri
    "SELECT * FROM books WHERE name LIKE '%" + name + "%'"
    ```
 
-1. Above the editor in the top-right, click the **Commit changes...** button. Select the radio button next to **Create a new branch** option. **DO NOT commit to the main branch.**
+1. Above the editor in the top-right, click the **Commit changes...** button. In the prompt window, select the radio button for the **Create a new branch** option. **DO NOT commit to the main branch.**
 
-1. Click the **Propose changes** option and click **Create pull request**. Use the following branch name.
+1. Click the **Propose changes** option and click **Create pull request**. Use the below branch name.
 
    ```txt
    learning-codeql
@@ -57,6 +57,5 @@ In this step, we will introduce a vulnerability into the `routes.py` file to tri
 
 > [!TIP]
 > Check out the [Triage code scanning alerts in pull requests](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/triaging-code-scanning-alerts-in-pull-requests) page to learn more about integration of code scanning into pull requests.
-
 
 <!-- > 💡 Tip: Clicking the **Show paths** link will provide additional insights about the alert's data flow from user input (source), through the application, and when it is acted on (sink). -->

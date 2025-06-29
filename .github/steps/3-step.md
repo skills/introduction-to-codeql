@@ -1,6 +1,6 @@
 ## Step 3: Review and Triage CodeQL Alerts
 
-With our pull request changes now reviewed by CodeQL, let's take a moment to learn about managing alerts.
+With our pull request changes now reviewed by CodeQL, we now have some results to view.Let's learn about managing alerts.
 
 GitHub provides a dedicated **Security** tab for securely managing all security related issues. CodeQL saves alerts using the same standard as many other analysis tools with the results showing up under the **Code scanning** area.
 
@@ -10,13 +10,15 @@ GitHub provides a dedicated **Security** tab for securely managing all security 
 
 The main area of an alert provides the resolution status, affected branch, code location, and classification information like severity and [CVE identification number](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories#cve-identification-numbers).
 
+After the status information, a detailed description of the issue, recommended solutions, and suggested code changes are provided.
+
 <img width="600" alt="additional information" src="https://github.com/user-attachments/assets/9a5aaf3f-e063-4d07-8cdd-6272eec8a411"/>
 
 ### What is CWE?
 
-Many of the patterns CodeQL scans for come from existing databases of vulnerabilities.
+Many of the patterns CodeQL scans for come from existing databases of vulnerabilities, which are categorized for easier understanding.
 
-The Common Weakness Enumeration (CWE) is a category system for hardware and software weaknesses and vulnerabilities. Think of it as a way to describe and categorize security issues in an application's source code. For more information on CWEs, see the Wikipedia article [Common Weakness Enumeration](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration).
+The **Common Weakness Enumeration (CWE)** is a category system for hardware and software weaknesses and vulnerabilities. Think of it as a way to describe and categorize security issues in an application's source code. For more information on CWEs, see the Wikipedia article [Common Weakness Enumeration](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration).
 
 ### ⌨️ Activity: Review an Alert
 

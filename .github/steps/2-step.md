@@ -1,10 +1,25 @@
 ## Step 2: Review and Triage CodeQL Alerts
 
-Now we will review the CodeQL scan results, triage an alert, and create a GitHub issue to track an alert.
+With our pull request changes now reviewed by CodeQL, let's take a moment to learn about managing alerts.
 
-### What is CWE
+GitHub provides a dedicated **Security** tab for securely managing all security related issues. CodeQL saves alerts using the same standard as many other analysis tools with the results showing up under the **Code scanning** area.
 
-Common Weakness Enumeration (CWE) is a category system for hardware and software weaknesses and vulnerabilities. Think of it as a way to describe and categorize security issues in an application's source code. For more information on CWEs, see the Wikipedia article [Common Weakness Enumeration](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration).
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/cf4fc6ec-e40e-4df6-8984-b6ec35341737" />
+
+### What information do alerts provide?
+
+The main area of an alert provides the resolution status, affected branch, code location, and classification information like severity and [CVE identification number](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories#cve-identification-numbers).
+
+
+<img width="500" alt="additional information" src="https://github.com/user-attachments/assets/9a5aaf3f-e063-4d07-8cdd-6272eec8a411"/>
+
+<!-- > 💡 Tip: Clicking the **Show paths** link will provide additional insights about the alert's data flow from user input (source), through the application, and when it is acted on (sink). -->
+
+### What is 'CWE'
+
+Many of the patterns CodeQL scans for come from existing databases of vulnerabilities.
+
+The Common Weakness Enumeration (CWE) is a category system for hardware and software weaknesses and vulnerabilities. Think of it as a way to describe and categorize security issues in an application's source code. For more information on CWEs, see the Wikipedia article [Common Weakness Enumeration](https://en.wikipedia.org/wiki/Common_Weakness_Enumeration).
 
 ### ⌨️ Activity: View the status of a CodeQL scan
 
@@ -26,43 +41,31 @@ Common Weakness Enumeration (CWE) is a category system for hardware and software
 
 1. (Optional) Use the filters and search bar to explore the open and closed security alerts, including from the CodeQL scan.
 
-#### Alert status and location
+1. Click on an alert.
 
-The main area of the alert provides the resolution status, affected branch, code location, and classification information like severity and [CVE identification number](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories#cve-identification-numbers).
+1. Notice the description, related vulnerability information and a recommended solution.
 
-> 💡 Tip: Clicking the **Show paths** link will provide additional insights about the alert's data flow from user input (source), through the application, and when it is acted on (sink).
+    <img width="500" alt="recommendations" src="https://github.com/user-attachments/assets/a5653b45-b66f-4e5b-8e03-a7b8cd3b91b4"/>
 
-<img width="500" alt="alert status" src="https://github.com/user-attachments/assets/2fecc67d-52ef-44fc-ad89-1eb28ceb9437">
+1. (Optional) Click the **View source** link to view the CodeQL query that detected the alert.
 
-<img width="500" alt="location information" src="https://github.com/user-attachments/assets/1a450118-f200-436b-8433-04b7e5e4f1a8"/>
+1. (Optional) Click the **Show more** link to view the full recommendation.
 
-<img width="500" alt="additional information" src="https://github.com/user-attachments/assets/9a5aaf3f-e063-4d07-8cdd-6272eec8a411"/>
+1. Inspect the audit trail to see a secure history of the alert, including open/close information.
 
-#### Explanation and Recommendation
+    <img width="500" alt="audit trail" src="https://github.com/user-attachments/assets/25ec5256-20c7-4e9d-8160-ff40f3763872"/>
 
-This alert is further described, justified, and a recommended solution is provided when possible.
+### ⌨️ Activity: Dismiss and Reopen an Alert
 
-- Click the **View source** link to view the CodeQL query that detected the alert.
-- Click the **Show more** link to view the full recommendation.
-
-<img width="500" alt="recommendations" src="https://github.com/user-attachments/assets/a5653b45-b66f-4e5b-8e03-a7b8cd3b91b4"/>
-
-#### Audit trail
-
-The audit trail provides a secure history of the alert for future reference, like who marked the vulnerability as closed/fixed.
-
-<img width="500" alt="audit trail" src="https://github.com/user-attachments/assets/25ec5256-20c7-4e9d-8160-ff40f3763872"/>
-
-### ⌨️ Activity: Dismiss an Alert
-
-1. On the alert page, in the top right, click **Dismiss alert** dropdown.
+1. In the top right, click **Dismiss alert** dropdown.
 
 1. Select any reason and add a short explanation then click the **Dismiss alert** button.
 
-    - The alert state will change to `Dismissed` and an audit trail entry will be added.
+   - The alert state will change to `Dismissed`.
+   - An entry is added to the audit trail, which can't be removed or edited.
 
-1. Navigate back to **Security** tab and **Code scanning alerts** area.
+1. Reopen the alert.
 
-1. Click the **1 Closed** text to switch to a view showing closed alerts.
+   - The alert state will change to `Open`.
+   - An entry is added to the audit trail, which can't be removed or edited.
 
-   <img width="500" alt="one closed alert" src="https://github.com/user-attachments/assets/b10005b6-9ef8-4d46-a160-4c9849d2c898"/>

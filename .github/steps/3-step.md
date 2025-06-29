@@ -30,12 +30,6 @@ If you expand the **More info** section at the bottom of the alert, there are ve
    "SELECT * FROM books WHERE name LIKE %s", name
    ```
 
-1. Navigate to about **line 22** and modify it to the below.
-
-   ```py
-   "SELECT * FROM books WHERE author LIKE %s", author
-   ```
-
 1. Above the editor in the top-right, click the **Commit changes...** button. Use the defaults options to commit the changes to `main`.
 
    - CodeQL will now initiate a another scan.
@@ -47,4 +41,15 @@ If you expand the **More info** section at the bottom of the alert, there are ve
    - There should be zero open alerts and two closed alerts. Nice work! 🎉
    - Feel free to review the closed alerts, especially the audit trail.
 
-1. With the CodeQL job finished, Mona will check your progress and share the next steps.
+<!-- 1. With the CodeQL job finished, Mona will check your progress and share the next steps. -->
+
+1. With the pull request started, Mona will check your progress and share a final review. Nice work! You are done! 🥳
+
+
+
+
+<!-- 1. Navigate back to **Security** tab and **Code scanning alerts** area.
+
+1. Click the **1 Closed** text to switch to a view showing closed alerts.
+
+   <img width="500" alt="one closed alert" src="https://github.com/user-attachments/assets/b10005b6-9ef8-4d46-a160-4c9849d2c898"/> -->

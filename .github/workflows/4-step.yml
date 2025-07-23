@@ -43,6 +43,7 @@ jobs:
     uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.6.0
     with:
       issue-url: ${{ needs.find_exercise.outputs.issue-url }}
+      exercise-title: "Introduction to CodeQL"
 
   disable_workflow:
     name: Disable this workflow

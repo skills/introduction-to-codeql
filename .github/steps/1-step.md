@@ -21,7 +21,7 @@ In many cases, taking advantage of CodeQL is as simple as accepting the default 
 
 Here are some of the options the default configuration provides:
 
-- **Languages:** Supported languages will automatically detected in your repository and scanning will be enabled.
+- **Languages:** Supported languages will automatically be detected in your repository and scanning will be enabled.
 
 - **Query suites:** A list of the available suites of patterns that will be used. The **Default** or **Extended** are provided automatically.
 
@@ -31,9 +31,9 @@ Here are some of the options the default configuration provides:
 
 1. Open a second tab and navigate to this repository. Ensure you are on the **Code** tab.
 
-1. In the top navigation, select the the **Settings** tab.
+1. In the top navigation, select the **Settings** tab.
 
-1. In the left navigation, fine the **Security** section and select **Advanced Security**.
+1. In the left navigation, find the **Security** section and select **Advanced Security**.
 
 1. Scroll down and find the **Code scanning** area.
 

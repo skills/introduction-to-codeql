@@ -1,6 +1,6 @@
 ## Step 3: Review and Triage CodeQL Alerts
 
-With our pull request changes now reviewed by CodeQL, we now have some results to view.Let's learn about managing alerts.
+With our pull request changes now reviewed by CodeQL, we now have some results to view. Let's learn about managing alerts.
 
 GitHub provides a dedicated **Security** tab for securely managing all security related issues. CodeQL saves alerts using the same standard as many other analysis tools with the results showing up under the **Code scanning** area.
 

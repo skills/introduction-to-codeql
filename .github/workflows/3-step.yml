@@ -1,0 +1,106 @@
+name: Step 3
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  contents: read
+  actions: write
+  issues: write
+
+env:
+  STEP_4_FILE: ".github/steps/4-step.md"
+
+jobs:
+  check_keywords:
+    name: Check issue comment text for required keyword
+    runs-on: ubuntu-latest
+
+    outputs:
+      result: ${{ steps.combine_checks.outputs.result }}
+
+    steps:
+      - name: Check for professortocat reference
+        id: check_professortocat
+        uses: skills/action-keyphrase-checker@v1
+        continue-on-error: true
+        with:
+          text: ${{ github.event.comment.body }}
+          keyphrase: "professortocat"
+          case-sensitive: false
+          minimum-occurrences: 1
+
+      - name: Check for alert reference
+        id: check_alert
+        uses: skills/action-keyphrase-checker@v1
+        continue-on-error: true
+        with:
+          text: ${{ github.event.comment.body }}
+          keyphrase: "alert"
+          case-sensitive: false
+          minimum-occurrences: 1
+
+      - name: Set continue output if both checks succeeded
+        id: combine_checks
+        run: |
+          if [[ "${{ steps.check_professortocat.outcome }}" == "success" && "${{ steps.check_alert.outcome }}" == "success" ]]; then
+            echo "result=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "result=fail" >> "$GITHUB_OUTPUT"
+          fi
+
+  find_exercise:
+    needs: [check_keywords]
+    name: Find Exercise Issue
+    if: needs.check_keywords.outputs.result == 'success'
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.1
+
+  post_next_step_content:
+    name: Post next step content
+    needs: [find_exercise]
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.7.1
+
+      - name: Create comment - step finished
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
+          vars: |
+            next_step_number: 4
+
+      - name: Create comment - add step content
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: ${{ env.STEP_4_FILE }}
+
+      - name: Create comment - watching for progress
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
+
+      - name: Disable current workflow and enable next one
+        run: |
+          gh workflow disable "${{ github.workflow }}"
+          gh workflow enable "Step 4"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

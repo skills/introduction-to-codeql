@@ -4,7 +4,7 @@ With our pull request changes now reviewed by CodeQL, we now have some results t
 
 GitHub provides a dedicated **Security** tab for securely managing all security related issues. CodeQL saves alerts using the same standard as many other analysis tools with the results showing up under the **Code scanning** area.
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/cf4fc6ec-e40e-4df6-8984-b6ec35341737" />
+<img width="600" alt="image" src="../images/security-tab-overview.png" />
 
 ### What information do alerts provide?
 
@@ -12,7 +12,7 @@ The main area of an alert provides the resolution status, affected branch, code 
 
 After the status information, a detailed description of the issue, recommended solutions, and suggested code changes are provided.
 
-<img width="600" alt="additional information" src="https://github.com/user-attachments/assets/9a5aaf3f-e063-4d07-8cdd-6272eec8a411"/>
+<img width="600" alt="additional information" src="../images/additional-information.png"/>
 
 ### What is CWE?
 
@@ -30,7 +30,7 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
 
 1. Return to the recently created pull request. Ignore the failed check and click the **Merge pull request** button.
 
-   <img width="300" alt="merge button" src="https://github.com/user-attachments/assets/cb6fc4a9-c441-4d63-9104-efca6171d262" />
+   <img width="300" alt="merge button" src="../images/merge-button.png" />
 
 1. Click the **Delete branch**. It is not needed anymore.
 
@@ -40,7 +40,7 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
 
 1. In the left navigation, notice that the **Code Scanning** option now has a `1` entry next to it, informing us of an open alert.
 
-   <img width="250" alt="code scanning alerts count" src="https://github.com/user-attachments/assets/80f17f92-bd8e-45c4-b471-c60665e116d7" />
+   <img width="250" alt="code scanning alerts count" src="../images/code-scanning-alerts-count.png" />
 
 ### ⌨️ Activity: Review an Alert
 
@@ -50,7 +50,7 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
 
 1. Notice the description, vulnerability description, and a recommended solution.
 
-   <img width="600" alt="alert overview" src="https://github.com/user-attachments/assets/6da3aaa7-c9bb-4046-9372-c137a2d43106" />
+   <img width="600" alt="alert overview" src="../images/alert-overview.png" />
 
 1. Notice the audit trail provides the source of the vulnerability and shows that it came from our pull request.
 
@@ -64,14 +64,14 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
    This is a playground repository for learning about CodeQL alerts.
    ```
 
-   <img width="300" alt="dismiss alert options" src="https://github.com/user-attachments/assets/7be133a7-3f20-4bf3-8073-383eb1cce359" />
+   <img width="300" alt="dismiss alert options" src="../images/dismiss-alert-options.png" />
 
 1. Click the **Dismiss alert** button.
 
    - The alert state will change to `Dismissed`.
    - A read-only entry was added with the description to the audit trail showing who closed it.
 
-   <img width="300" alt="audit log entry showing alert dismissed" src="https://github.com/user-attachments/assets/afdd6e11-d4c9-466c-82d4-622c96e039a3" />
+   <img width="300" alt="audit log entry showing alert dismissed" src="../images/audit-log-alert-dismissed.png" />
 
 1. In the top right, click the **Reopen alert** button.
 

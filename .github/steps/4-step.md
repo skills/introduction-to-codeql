@@ -12,7 +12,7 @@ Finally, let's use the information provided by CodeQL to better understand the v
 
 1. In the top right of the preview, click the **Edit** button.
 
-   <img width="500" alt="edit button" src="https://github.com/user-attachments/assets/19462cc5-a360-4dae-a97b-ecfd571aa403"/>
+   <img width="500" alt="edit button" src="../images/edit-button.png"/>
 
 1. Navigate to about **line 16** and modify it to the below.
 
@@ -33,10 +33,10 @@ Finally, let's use the information provided by CodeQL to better understand the v
 
 1. Click on **Closed** to show our recently resolved alert.
 
-   <img width="350" alt="image" src="https://github.com/user-attachments/assets/75656267-cd80-47de-82cb-fd50e423f992" />
+   <img width="350" alt="image" src="../images/closed-alerts-button.png" />
 
 1. Open our alert and notice the audit trail now includes how the alert was fixed.
 
-   <img width="350" alt="image" src="https://github.com/user-attachments/assets/316e25cb-e8ce-402d-aba8-7cbba9cb0753" />
+   <img width="350" alt="image" src="../images/audit-trail-fixed-alert.png" />
 
 1. With our alert fixed, Mona will check your progress and share a final review. Nice work! You are all done! 🥳

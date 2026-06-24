@@ -27,7 +27,6 @@ Here are some of the options the default configuration provides:
 
 - **Runner type:** Type of GitHub Actions runner that will run the CodeQL analysis. This defaults to Standard GitHub Hosted Runners but can be customized to use [self-hosted runners](https://docs.github.com/en/enterprise-cloud@latest/code-security/how-tos/secure-at-scale/configure-enterprise-security/configure-specific-tools/configuring-code-scanning-for-your-appliance).
 
-
 - **Events:** Triggers for running a CodeQL scan. It's common to run before merging and on a schedule for production code.
 
 ### ⌨️ Activity: Enable code scanning with CodeQL

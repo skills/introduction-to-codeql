@@ -39,7 +39,6 @@ To see how Code Scanning works, we will introduce a vulnerability into the `rout
 1. If the job is still running, wait a few minutes for it to complete.
 
 1. Search the comments to find the results of the analysis.
-
    - Notice that the results found a SQL injection vulnerability. It also suggests a fix.
    - Don't worry about responding to this or resolving the problem (yet).
 

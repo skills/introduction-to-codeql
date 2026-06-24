@@ -57,7 +57,7 @@ To see how Code Scanning works, we will introduce a vulnerability into the `rout
 
 1. Click on the workflow run with the name **PR #2** to open a page with more details.
 
-   <img width="500" alt="codeql setup" src="../images/codeql-setup.png"/>
+   <img width="500" alt="codeql setup" src="../images/codeql-pr2.png"/>
 
 1. Expand the run jobs by clicking **Show all jobs** then click on the **Analyze (python)** entry. The list of all workflow steps is now shown.
 

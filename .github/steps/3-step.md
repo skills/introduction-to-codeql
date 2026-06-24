@@ -2,7 +2,7 @@
 
 With our pull request changes now reviewed by CodeQL, we now have some results to view. Let's learn about managing alerts.
 
-GitHub provides a dedicated **Security** tab for securely managing all security related issues. CodeQL saves alerts using the same standard as many other analysis tools with the results showing up under the **Code scanning** area.
+GitHub provides a **Security and quality** tab for securely managing all security related issues. CodeQL saves alerts using the same standard as many other analysis tools with the results showing up under the **Code scanning** area.
 
 <img width="600" alt="image" src="../images/security-tab-overview.png" />
 
@@ -35,7 +35,7 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
 
 1. Wait a moment for CodeQL to analyze the new changes to the `main` branch.
 
-1. Return the the **Security and quality** tab.
+1. Return to the **Security and quality** tab.
 
 1. In the left navigation, notice that the **Code Scanning** option now has a `1` entry next to it, informing us of an open alert.
 

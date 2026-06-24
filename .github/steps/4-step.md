@@ -25,7 +25,7 @@ Finally, let's use the information provided by CodeQL to better understand the v
 
 1. Wait a moment for the **CodeQL** workflow to finish.
 
-1. Return the the **Security** tab and **Code Scanning** area.
+1. Return to the **Security and quality** tab and **Code Scanning** area.
    - There should be no open alerts and 1 closed alerts. Nice work! 🎉
    - Feel free to review the closed alerts, especially the audit trail.
 

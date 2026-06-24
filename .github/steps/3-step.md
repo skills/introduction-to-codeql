@@ -22,10 +22,9 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
 
 ### ⌨️ Activity: View existing alerts
 
-1. In the top navigation, select the **Security** tab.
+1. In the top navigation, select the **Security and quality** tab.
 
-1. In the left navigation, find the **Vulnerability alerts** area and select the **Code scanning** option.
-
+1. In the left navigation, locate the **Findings** area and select the **Code scanning** option.
    - Notice that there are no alerts. This is expected since the vulnerable code on the pull request has not been merged yet.
 
 1. Return to the recently created pull request. Ignore the failed check and click the **Merge pull request** button.
@@ -36,7 +35,7 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
 
 1. Wait a moment for CodeQL to analyze the new changes to the `main` branch.
 
-1. Return the the **Security** tab.
+1. Return the the **Security and quality** tab.
 
 1. In the left navigation, notice that the **Code Scanning** option now has a `1` entry next to it, informing us of an open alert.
 
@@ -66,15 +65,13 @@ The **Common Weakness Enumeration (CWE)** is a category system for hardware and 
 
    <img width="300" alt="dismiss alert options" src="../images/dismiss-alert-options.png" />
 
-1. Click the **Dismiss alert** button.
-
+1. Click the **Dismiss** button.
    - The alert state will change to `Dismissed`.
    - A read-only entry was added with the description to the audit trail showing who closed it.
 
    <img width="300" alt="audit log entry showing alert dismissed" src="../images/audit-log-alert-dismissed.png" />
 
 1. In the top right, click the **Reopen alert** button.
-
    - The alert state will change back to `Open`.
    - A read-only entry was added to the audit trail showing who opened it.
 

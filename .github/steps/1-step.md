@@ -35,7 +35,7 @@ Here are some of the options the default configuration provides:
 
 1. In the top navigation, select the **Settings** tab.
 
-1. In the left navigation, find the **Security** section and select **Advanced Security**.
+1. In the left navigation, find the **Security** section and select **Advanced Security**. If **Advanced Security** is not shown, select **Code security**.
 
 1. Scroll down and find the **Code scanning** area.
 

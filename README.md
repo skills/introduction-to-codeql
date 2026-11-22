@@ -44,13 +44,23 @@ database; there are no stored edits or migrations.
    .github/workflows/codeql-cxx20.yml
 
 The CodeQL workflow downloads GitHub's official Windows bundle pinned
-by SHA-256, runs the C++ CLI extractor during a real native build, and
-uploads SARIF results via the GitHub API. The upload specifies a `checkout_uri`
-that maps extracted temporary source paths to repository files, then waits
-for the GitHub SARIF-processing status to become `complete`, failing closed
-on error or timeout. No third-party GitHub Actions are executed by either
-workflow. The CodeQL CLI is an external analysis
-tool with its own upstream terms, not part of the 0BSD C++ application.
+by SHA-256, runs the C++ CLI extractor during a real native build, validates
+SARIF 2.1.0, and fails on any reported security or quality finding. This
+**local C++ CodeQL quality gate is enforced independently of GitHub Code
+Scanning publication**. No third-party GitHub Actions are executed.
+
+GitHub's managed CodeQL **default setup** is currently enabled on the fork.
+GitHub rejects SARIF from a simultaneous custom advanced setup, so
+publication is explicitly **on HOLD** by default. Passing the local gate
+does not mean the SARIF was ingested, and the job summary says so.
+After a repository administrator disables CodeQL default setup, they may
+set the Actions repository variable `CODEQL_SARIF_PUBLISH` to `true` to
+opt into GitHub Code Scanning publication. When enabled, the uploader
+provides the temporary-root `checkout_uri` and polls until the SARIF
+processing status becomes `complete`; it fails on errors or timeouts.
+
+The CodeQL CLI is an external analysis tool with its own upstream terms,
+not part of the 0BSD C++ application.
 
 ## Previous exercise and licensing
 

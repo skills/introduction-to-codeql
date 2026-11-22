@@ -22,7 +22,9 @@ if([string]::Equals($dest,$root,[StringComparison]::OrdinalIgnoreCase) -or
 function Assert-NoJunctionAncestor([string]$fullPath,[string]$kind){
   $cursor=$fullPath
   while(-not [string]::IsNullOrWhiteSpace($cursor)){
-    $entry=Get-Item -LiteralPath $cursor -Force -ErrorAction SilentlyContinue
+    $entry=$null
+    try{$entry=Get-Item -LiteralPath $cursor -Force -ErrorAction Stop}
+    catch [System.Management.Automation.ItemNotFoundException]{}
     if($null -ne $entry -and
        ($entry.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){
       throw ('EVIDENCE|HOLD|reparse_point_ancestor|'+$kind+'|'+$cursor)

@@ -1,0 +1,88 @@
+name: Native C++20 MSVC O2 HEAD TAIL
+on:
+  push:
+    branches:
+      - main
+      - refactor/native-cxx20-bookstore-20261121
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bookstore-native-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  native:
+    runs-on: windows-2025
+    timeout-minutes: 50
+    env:
+      MSBUILDDISABLENODEREUSE: '1'
+      DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER: '1'
+    steps:
+      - name: Fetch exact Git commit source using PowerShell
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          if($env:RUNNER_OS -cne 'Windows' -or
+             $env:GITHUB_REPOSITORY -cnotin @('Simply-Well-Executed/introduction-to-codeql',
+               'skills/introduction-to-codeql') -or
+             $env:GITHUB_SHA -cnotmatch '^[0-9a-f]{40}$'){
+            throw 'NATIVE|HOLD|invalid_source_or_runner'
+          }
+          $archive=Join-Path $env:RUNNER_TEMP 'native-exact-source.zip'
+          $directory=Join-Path $env:RUNNER_TEMP 'native-source'
+          $uri='https://api.github.com/repos/'+$env:GITHUB_REPOSITORY+'/zipball/'+$env:GITHUB_SHA
+          Invoke-WebRequest -Uri $uri -Headers @{
+            Authorization='Bearer '+$env:GH_TOKEN
+            Accept='application/vnd.github+json'
+            'User-Agent'='swe-bookstore-native'
+          } -OutFile $archive -MaximumRedirection 5
+          Expand-Archive -LiteralPath $archive -DestinationPath $directory
+          $dirs=@(Get-ChildItem -LiteralPath $directory -Directory)
+          if($dirs.Count -ne 1 -or
+             -not [IO.File]::Exists((Join-Path $dirs[0].FullName 'src/main.cpp'))){
+            throw 'NATIVE|HOLD|incomplete_exact_source'
+          }
+          [IO.File]::WriteAllText((Join-Path $env:RUNNER_TEMP 'native-root.txt'),
+            $dirs[0].FullName)
+      - name: Source custody, native Release build and loopback tests
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $root=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'native-root.txt'))
+          $script=Join-Path $root 'ci/Invoke-NativePipeline.ps1'
+          $build=Join-Path $env:RUNNER_TEMP 'native-build'
+          & pwsh -NoLogo -NoProfile -NonInteractive -File $script -RepositoryRoot $root -OutputDirectory $build
+          if($LASTEXITCODE -ne 0){throw 'NATIVE|HOLD|compile_or_tests_failed'}
+      - name: Index academic research artifact and digest
+        if: success()
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $root=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'native-root.txt'))
+          $paper=Join-Path $root 'research/SARIF-ATOMIX-Null-Hypothesis.md'
+          if(-not [IO.File]::Exists($paper)){throw 'RESEARCH|HOLD|missing_research_artifact'}
+          $digest=(Get-FileHash -LiteralPath $paper -Algorithm SHA256).Hash.ToLowerInvariant()
+          $url='https://github.com/Simply-Well-Executed/introduction-to-codeql/blob/refactor/native-cxx20-bookstore-20261121/research/SARIF-ATOMIX-Null-Hypothesis.md'
+          $lines=@(
+            '### Academic research artifact: SARIF / Atomix'
+            ('[Read the canonical Harvard-style essay]('+$url+')')
+            ('SHA-256: `'+$digest+'`')
+            'Status: EXPLORATORY / NO ATOMIX EXPERIMENT EXECUTED / RELEASE=HOLD'
+            'Upstream run 44994683214 is historical and cannot retroactively receive this artifact.'
+          )
+          Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Value ($lines -join [Environment]::NewLine)
+          Write-Host ('RESEARCH|ARTIFACT_PRESENT|SHA256='+$digest+'|NO_TEST_EXECUTED')
+      - name: No automatic release
+        if: always()
+        shell: pwsh
+        run: |
+          Write-Host 'NATIVE|RELEASE=HOLD|NO_AUTO_MERGE|NO_PUBLICATION'
+          Write-Host 'NATIVE|EXPLICIT_APPROVAL_REQUIRED'

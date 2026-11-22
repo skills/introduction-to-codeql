@@ -93,7 +93,7 @@ jobs:
           }
           [IO.File]::WriteAllText((Join-Path $env:RUNNER_TEMP 'codeql-sarif.txt'),$sarif)
           Write-Host ('CODEQL|SARIF_SHA256='+(Get-FileHash -LiteralPath $sarif -Algorithm SHA256).Hash.ToLowerInvariant())
-      - name: Validate C++ SARIF and fail on all findings
+      - name: Validate C++ SARIF and count findings
         shell: pwsh
         run: |
           Set-StrictMode -Version Latest
@@ -124,10 +124,12 @@ jobs:
           }
           Write-Host ('CODEQL|SARIF_VALIDATED|RUNS='+$runs.Count+
             '|FINDINGS='+$findingCount)
-          if($findingCount -gt 0){
-            throw ('CODEQL|HOLD|SARIF_findings_detected|COUNT='+$findingCount)
-          }
-          Write-Host 'CODEQL|LOCAL_SECURITY_QUALITY_PASS|RELEASE=HOLD'
+          # Report is valid even when results contain findings. Publish an
+          # opted-in scan before enforcing the separate quality HOLD.
+          [IO.File]::WriteAllText(
+            (Join-Path $env:RUNNER_TEMP 'codeql-findings-count.txt'),
+            [string]$findingCount)
+          Write-Host 'CODEQL|SARIF_STRUCTURE_PASS|PUBLICATION_DECISION_NEXT|RELEASE=HOLD'
       - name: Upload C++ SARIF directly through GitHub REST API
         if: ${{ vars.CODEQL_SARIF_PUBLISH == 'true' }}
         shell: pwsh
@@ -217,13 +219,49 @@ jobs:
           Write-Host 'CODEQL|TO_PUBLISH|FIRST_DISABLE_CODEQL_DEFAULT_SETUP|THEN_SET_REPOSITORY_VARIABLE_CODEQL_SARIF_PUBLISH=true'
           $summary=@(
             '### C++20 CodeQL local security and quality gate'
-            'The pinned native C++ analysis and SARIF validation passed with zero findings.'
+            'The pinned native C++ analysis produced a validated SARIF report. The subsequent findings gate remains authoritative.'
             'GitHub Code Scanning publication is **on HOLD** because this repository uses incompatible CodeQL default setup.'
             'The results are **not published** to GitHub Code Scanning.'
             'To enable publication: disable CodeQL default setup, then set the repository Actions variable CODEQL_SARIF_PUBLISH to true.'
             'Release and merge remain on HOLD.'
           )
           Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Value ($summary -join [Environment]::NewLine)
+      - name: Enforce CodeQL findings gate after publication decision
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $countPath=Join-Path $env:RUNNER_TEMP 'codeql-findings-count.txt'
+          if(-not [IO.File]::Exists($countPath)){throw 'CODEQL|HOLD|missing_findings_count'}
+          $text=[IO.File]::ReadAllText($countPath)
+          if($text -cnotmatch '^[0-9]+        if: success()
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $root=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'codeql-root.txt'))
+          $paper=Join-Path $root 'research/SARIF-ATOMIX-Null-Hypothesis.md'
+          if(-not [IO.File]::Exists($paper)){throw 'RESEARCH|HOLD|missing_research_artifact'}
+          $digest=(Get-FileHash -LiteralPath $paper -Algorithm SHA256).Hash.ToLowerInvariant()
+          $url='https://github.com/Simply-Well-Executed/introduction-to-codeql/blob/refactor/native-cxx20-bookstore-20261121/research/SARIF-ATOMIX-Null-Hypothesis.md'
+          $lines=@(
+            '### Academic research artifact: SARIF / Atomix'
+            ('[Read the canonical Harvard-style essay]('+$url+')')
+            ('SHA-256: `'+$digest+'`')
+            'Status: EXPLORATORY / NO ATOMIX EXPERIMENT EXECUTED / RELEASE=HOLD'
+            'Upstream run 44994683214 is historical and cannot retroactively receive this artifact.'
+          )
+          Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Value ($lines -join [Environment]::NewLine)
+          Write-Host ('RESEARCH|ARTIFACT_PRESENT|SHA256='+$digest+'|NO_TEST_EXECUTED')
+      - name: No automatic release
+        if: always()
+        shell: pwsh
+        run: |
+          Write-Host 'CODEQL|RELEASE=HOLD|NOT_MERGE_APPROVAL'
+){throw 'CODEQL|HOLD|invalid_findings_count'}
+          $count=[long]::Parse($text,[Globalization.CultureInfo]::InvariantCulture)
+          if($count -ne 0){throw ('CODEQL|HOLD|SARIF_findings_detected|COUNT='+$count)}
+          Write-Host 'CODEQL|LOCAL_SECURITY_QUALITY_PASS|FINDINGS=0|RELEASE=HOLD'
       - name: Index academic research artifact and digest
         if: success()
         shell: pwsh

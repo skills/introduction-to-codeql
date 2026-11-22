@@ -24,7 +24,8 @@ $sourcePaths=@('CMakeLists.txt','include/bookstore.hpp',
   'src/bookstore.cpp','src/main.cpp','tests/bookstore_tests.cpp',
   'ci/Assert-NativeOnly.ps1','ci/Invoke-NativePipeline.ps1',
   'ci/Test-HttpLoopback.ps1','ci/Test-SlowHeader.ps1',
-  'ci/Test-OutputContainment.ps1')
+  'ci/Test-OutputContainment.ps1',
+  'research/SARIF-ATOMIX-Null-Hypothesis.md')
 function Assert-Source([string]$operation,[string]$phase){
   $lines=[Collections.Generic.List[string]]::new()
   foreach($relative in $sourcePaths){

@@ -14,8 +14,10 @@ Run from this repository's root:
     pwsh -NoLogo -NoProfile -NonInteractive -File ci/Invoke-NativePipeline.ps1 -RepositoryRoot . -OutputDirectory "$env:TEMP\swe-bookstore-build"
 
 The workflow uses native Release /O2, one MSBuild worker with node reuse
-disabled, SHA-256 HEAD and TAIL source checks, CTest, and an actual local
-HTTP smoke test. On compilation or test failure, release stays HOLD.
+disabled, SHA-256 HEAD and TAIL source checks, CTest, an out-of-tree
+build-guard regression, and HTTP smoke tests including a slow-header client.
+The server imposes a five-second absolute header deadline and returns
+`Allow: GET` on HTTP 405 replies. On compilation or test failure, release stays HOLD.
 
 To launch the program:
 
@@ -43,8 +45,11 @@ database; there are no stored edits or migrations.
 
 The CodeQL workflow downloads GitHub's official Windows bundle pinned
 by SHA-256, runs the C++ CLI extractor during a real native build, and
-uploads SARIF results via the GitHub API. No third-party GitHub Actions
-are executed by either workflow. The CodeQL CLI is an external analysis
+uploads SARIF results via the GitHub API. The upload specifies a `checkout_uri`
+that maps extracted temporary source paths to repository files, then waits
+for the GitHub SARIF-processing status to become `complete`, failing closed
+on error or timeout. No third-party GitHub Actions are executed by either
+workflow. The CodeQL CLI is an external analysis
 tool with its own upstream terms, not part of the 0BSD C++ application.
 
 ## Previous exercise and licensing

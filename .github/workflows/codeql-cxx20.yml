@@ -104,9 +104,24 @@ jobs:
           $memory=[IO.MemoryStream]::new()
           $gzip=[IO.Compression.GZipStream]::new($memory,[IO.Compression.CompressionLevel]::Optimal,$true)
           try{$gzip.Write($bytes,0,$bytes.Length)}finally{$gzip.Dispose()}
+          # The analyzer's extracted root is in RUNNER_TEMP, not the Actions
+          # workspace. Supply its file URI so GitHub maps SARIF paths properly.
+          $sourceRoot=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'codeql-root.txt'))
+          $checkoutPath=[IO.Path]::GetFullPath($sourceRoot)
+          if(-not [IO.Path]::EndsInDirectorySeparator($checkoutPath)){
+            $checkoutPath += [IO.Path]::DirectorySeparatorChar
+          }
+          if(-not [IO.Directory]::Exists($checkoutPath)){
+            throw 'CODEQL|HOLD|checkout_directory_missing'
+          }
+          $checkoutUri=([Uri]::new($checkoutPath)).AbsoluteUri
+          if(-not $checkoutUri.StartsWith('file:///',[StringComparison]::OrdinalIgnoreCase)){
+            throw 'CODEQL|HOLD|checkout_uri_not_file_uri'
+          }
           $body=@{
             commit_sha=$env:GITHUB_SHA
             ref=$env:GITHUB_REF
+            checkout_uri=$checkoutUri
             sarif=[Convert]::ToBase64String($memory.ToArray())
             tool_name='CodeQL'
           } | ConvertTo-Json -Compress
@@ -118,7 +133,35 @@ jobs:
             'User-Agent'='swe-native-codeql'
           } -Body $body -ContentType 'application/json'
           if($null -eq $result.id){throw 'CODEQL|HOLD|upload_unconfirmed'}
-          Write-Host ('CODEQL|SARIF_UPLOAD_ID='+$result.id+'|RELEASE=HOLD')
+          $uploadId=[string]$result.id
+          Write-Host ('CODEQL|UPLOAD_ACCEPTED|ID='+$uploadId+'|CHECKOUT_URI='+$checkoutUri)
+          # Upload IDs mean accepted, not processed. Poll with a bounded
+          # deadline and accept only the documented "complete" status.
+          $statusUrl=$url+'/'+[Uri]::EscapeDataString($uploadId)
+          $headers=@{
+            Authorization='Bearer '+$env:GH_TOKEN
+            Accept='application/vnd.github+json'
+            'User-Agent'='swe-native-codeql'
+          }
+          $completed=$false
+          for($attempt=0;$attempt -lt 48;$attempt++){
+            $status=Invoke-RestMethod -Method Get -Uri $statusUrl -Headers $headers
+            if($status.processing_status -ceq 'complete'){
+              if([string]::IsNullOrWhiteSpace([string]$status.analyses_url)){
+                throw 'CODEQL|HOLD|analysis_url_missing'
+              }
+              $completed=$true
+              Write-Host ('CODEQL|PROCESSING_COMPLETE|ID='+$uploadId+
+                          '|ANALYSES_URL='+$status.analyses_url)
+              break
+            }
+            if($status.processing_status -cne 'pending'){
+              throw ('CODEQL|HOLD|processing_status_'+[string]$status.processing_status)
+            }
+            Start-Sleep -Seconds 5
+          }
+          if(-not $completed){throw 'CODEQL|HOLD|processing_timeout'}
+          Write-Host ('CODEQL|SARIF_UPLOAD_COMPLETE|ID='+$uploadId+'|RELEASE=HOLD')
       - name: No automatic release
         if: always()
         shell: pwsh

@@ -156,6 +156,24 @@ jobs:
               break
             }
             if($status.processing_status -cne 'pending'){
+              Write-Host ('CODEQL|PROCESSING_RESPONSE='+
+                ($status | ConvertTo-Json -Compress -Depth 6))
+              # A GitHub-managed default CodeQL setup cannot coexist with
+              # an explicit CodeQL CLI SARIF upload. Diagnose without changing
+              # security settings or granting implicit approval to disable it.
+              $defaultState='unavailable'
+              try{
+                $setupUrl='https://api.github.com/repos/'+$env:GITHUB_REPOSITORY+
+                  '/code-scanning/default-setup'
+                $config=Invoke-RestMethod -Method Get -Uri $setupUrl -Headers $headers
+                $defaultState=[string]$config.state
+              }catch{
+                Write-Host 'CODEQL|DEFAULT_SETUP_QUERY_UNAVAILABLE'
+              }
+              Write-Host ('CODEQL|DEFAULT_SETUP_STATE='+$defaultState)
+              if($defaultState -ceq 'configured'){
+                throw 'CODEQL|HOLD|GitHub_default_setup_blocks_explicit_CodeQL_SARIF_upload'
+              }
               throw ('CODEQL|HOLD|processing_status_'+[string]$status.processing_status)
             }
             Start-Sleep -Seconds 5

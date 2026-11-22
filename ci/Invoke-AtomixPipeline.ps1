@@ -54,16 +54,31 @@ $divisor=[System.Numerics.BigInteger]::Pow(
 $oneHundred=[System.Numerics.BigInteger]::Parse('100')
 $utf8=[Text.UTF8Encoding]::new($false,$true)
 function Assert-SourceAndTriforce([string]$operation,[string]$edge){
-    $lines=[Collections.Generic.List[string]]::new()
     foreach($relative in $required){
-        $file=Join-Path $root $relative
-        if(-not [IO.File]::Exists($file)){
+        if(-not [IO.File]::Exists((Join-Path $root $relative))){
             throw ('ATOMIX|HOLD|missing_source|'+$relative)
         }
-        if(((Get-Item -LiteralPath $file).Attributes -band
-            [IO.FileAttributes]::ReparsePoint) -ne 0){
+    }
+    # Full-tree source custody from the exact commit ZIP, matching the
+    # intent of PR #34: required paths alone are NOT sufficient.
+    $paths=[Collections.Generic.List[string]]::new()
+    foreach($item in Get-ChildItem -LiteralPath $root -Recurse -File -Force){
+        $relative=[IO.Path]::GetRelativePath($root,$item.FullName).Replace('\','/')
+        if($relative.StartsWith('.git/',[StringComparison]::OrdinalIgnoreCase)){
+            continue
+        }
+        if(($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){
             throw ('ATOMIX|HOLD|source_reparse_point|'+$relative)
         }
+        $paths.Add($relative)
+    }
+    $paths.Sort([StringComparer]::Ordinal)
+    if($paths.Count -lt $required.Count){
+        throw 'ATOMIX|HOLD|source_tree_incomplete'
+    }
+    $lines=[Collections.Generic.List[string]]::new()
+    foreach($relative in $paths){
+        $file=Join-Path $root $relative
         $digest=(Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant()
         $lines.Add($relative+'='+$digest)
     }
@@ -233,3 +248,6 @@ $auditHash=(Get-FileHash -LiteralPath $auditPath -Algorithm SHA256).Hash.ToLower
 Write-Host ('ATOMIX|TRIFORCE|HEAD_AIRGAP_TAIL|MAGICCOMB_PASS'+
     '|THREE_Q62_WITNESSES|AUDIT_SHA256='+$auditHash+
     '|LOCAL_ONLY|RELEASE=HOLD')
+Write-Host 'ATOMIX|AUDIT_JSON_BEGIN'
+Write-Host ([IO.File]::ReadAllText($auditPath,[Text.Encoding]::UTF8))
+Write-Host 'ATOMIX|AUDIT_JSON_END'

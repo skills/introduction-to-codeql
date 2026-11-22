@@ -111,7 +111,7 @@ function Get-Sha256([byte[]]$bytes){
 }
 # A phase-varying Unicode corpus is deliberately fixed by protocol ID.
 # Nothing in this fixture is fed to a production API or rendered as markup.
-$protocol='ATOMIX-PINOY-HALF-PHIPING-SARIF-001'
+$protocol='ATOMIX-PINOY-HALF-PHIPING-SARIF-002'
 $phases=@(
     [pscustomobject]@{name='HEAD';marker='Σ-Euler-א'},
     [pscustomobject]@{name='AIRGAP';marker='π-Pi-ب'},

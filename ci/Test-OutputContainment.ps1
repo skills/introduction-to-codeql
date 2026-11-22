@@ -23,4 +23,30 @@ foreach($candidate in $bad){
     throw ('NATIVE|HOLD|output_guard_regression|'+$candidate+'|exit='+$exitCode)
   }
 }
-Write-Host ('NATIVE|PASS|OUTPUT_GUARD|CASES='+$bad.Count+'|EQUAL_AND_DESCENDANTS')
+# A junction outside the source tree can point back inside it.
+# Removing the junction must never recursively delete its target.
+$sandbox=Join-Path ([IO.Path]::GetTempPath()) ('swe-junction-test-'+[Guid]::NewGuid().ToString('N'))
+[void][IO.Directory]::CreateDirectory($sandbox)
+$junction=Join-Path $sandbox 'redirect'
+try{
+  $created=New-Item -ItemType Junction -Path $junction -Target $root -ErrorAction Stop
+  if($null -eq $created -or
+     ($created.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0){
+    throw 'NATIVE|HOLD|junction_fixture_creation_failed'
+  }
+  $candidate=Join-Path $junction 'atomix-output'
+  $output=(& pwsh -NoLogo -NoProfile -NonInteractive -File $pipeline -RepositoryRoot $root -OutputDirectory $candidate -SkipTests 2>&1 | Out-String)
+  $exitCode=$LASTEXITCODE
+  if($exitCode -eq 0 -or $output -notmatch 'reparse_point_ancestor'){
+    throw ('NATIVE|HOLD|junction_guard_regression|exit='+$exitCode)
+  }
+} finally {
+  if([IO.Directory]::Exists($junction)){
+    [IO.Directory]::Delete($junction)
+  }
+  if([IO.Directory]::Exists($sandbox)){
+    [IO.Directory]::Delete($sandbox)
+  }
+}
+Write-Host ('NATIVE|PASS|OUTPUT_GUARD|CASES='+($bad.Count+1)+
+  '|EQUAL_DESCENDANT_AND_EXTERNAL_JUNCTION')

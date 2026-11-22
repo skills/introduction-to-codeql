@@ -25,6 +25,8 @@ $sourcePaths=@('CMakeLists.txt','include/bookstore.hpp',
   'ci/Assert-NativeOnly.ps1','ci/Invoke-NativePipeline.ps1',
   'ci/Test-HttpLoopback.ps1','ci/Test-SlowHeader.ps1',
   'ci/Test-OutputContainment.ps1',
+  'ci/Invoke-AtomixPipeline.ps1',
+  'docs/ATOMIX_TRIFORCE_AUTOMATION.md',
   'research/SARIF-ATOMIX-Null-Hypothesis.md')
 function Assert-Source([string]$operation,[string]$phase){
   $lines=[Collections.Generic.List[string]]::new()
@@ -61,6 +63,9 @@ function Invoke-Stage([string]$name,[scriptblock]$operation){
 if($LASTEXITCODE -ne 0){throw 'NATIVE|HOLD|source_policy'}
 Invoke-Stage 'output_guard_regression' {
   & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Test-OutputContainment.ps1') -RepositoryRoot $root
+}
+Invoke-Stage 'atomix_q62_magiccomb' {
+  & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Invoke-AtomixPipeline.ps1') -RepositoryRoot $root -EvidenceDirectory (Join-Path $out 'atomix-evidence')
 }
 Invoke-Stage 'configure' {
   & cmake -S $root -B $out -G 'Visual Studio 18 2026' -A x64 -DBUILD_TESTING=ON

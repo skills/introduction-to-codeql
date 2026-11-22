@@ -47,7 +47,9 @@ native pipeline stage. The Atomix stage itself independently walks:
 3. **TAIL MagicComb:** repeat the same integrity gates and test a third
    Unicode/SARIF trial, including a paired `finally` TAIL on errors.
 
-Each phase has its own HEAD and TAIL attestations. An unexpected source
+Each phase has its own HEAD and TAIL attestations. Source custody enumerates
+**the complete, sorted Git source tree**, excluding only local `.git/` metadata,
+not merely a short allowlist of required source files. An unexpected source
 change, Q62 difference, invalid SARIF, non-single-bit mutation, missing
 phase or repeated evidence directory becomes a **HOLD**, not a pass.
 
@@ -83,8 +85,11 @@ The source is never overwritten. No modified SARIF or strings are uploaded
 to GitHub Code Scanning or sent to any live service. Every phase produces
 an out-of-tree JSON audit with original/probe SHA-256, byte offset, XOR mask,
 source ledger hash, protocol, pass/fail and release state. The resulting
-aggregate `atomix-audit.json` is SHA-256 hashed, and the digest is printed
-to the CI log.
+aggregate `atomix-audit.json` is SHA-256 hashed, and its digest **and full
+bounded JSON audit** are printed into the CI log between explicit BEGIN/END
+markers. The out-of-tree temp file is not a separately uploaded GitHub Actions
+artifact, and the log retains evidence only for the configured log-retention
+period.
 
 ## Distinguish evidence from authority
 

@@ -70,6 +70,7 @@ constexpr std::array<Book, 5> kBooks{{
   data += std::to_string(status);
   data += " ";
   data += reason;
+  if (status == 405) data += "\r\nAllow: GET";
   data += "\r\nContent-Type: ";
   data += mime;
   data += "\r\nContent-Length: ";

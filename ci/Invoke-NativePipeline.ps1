@@ -6,10 +6,15 @@ param([Parameter(Mandatory=$true)][string]$RepositoryRoot,
 Set-StrictMode -Version Latest
 $ErrorActionPreference='Stop'
 if(-not $IsWindows){throw 'NATIVE|HOLD|MSVC_requires_Windows'}
-$root=[IO.Path]::GetFullPath($RepositoryRoot)
-$out=[IO.Path]::GetFullPath($OutputDirectory)
-if($out.StartsWith($root+[IO.Path]::DirectorySeparatorChar,
-                   [StringComparison]::OrdinalIgnoreCase)){
+# Normalize both roots before testing equality and containment.
+$root=[IO.Path]::TrimEndingDirectorySeparator([IO.Path]::GetFullPath($RepositoryRoot))
+$out=[IO.Path]::TrimEndingDirectorySeparator([IO.Path]::GetFullPath($OutputDirectory))
+$prefix=$root
+if(-not [IO.Path]::EndsInDirectorySeparator($prefix)){
+  $prefix += [IO.Path]::DirectorySeparatorChar
+}
+if([string]::Equals($out,$root,[StringComparison]::OrdinalIgnoreCase) -or
+   $out.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){
   throw 'NATIVE|HOLD|output_inside_source'
 }
 $env:MSBUILDDISABLENODEREUSE='1'

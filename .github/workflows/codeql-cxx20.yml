@@ -31,7 +31,8 @@ jobs:
           $ErrorActionPreference='Stop'
           if($env:RUNNER_OS -cne 'Windows' -or
              $env:GITHUB_SHA -cnotmatch '^[0-9a-f]{40}$' -or
-             $env:GITHUB_REPOSITORY -cne 'Simply-Well-Executed/introduction-to-codeql'){
+             $env:GITHUB_REPOSITORY -cnotin @('Simply-Well-Executed/introduction-to-codeql',
+               'skills/introduction-to-codeql')){
             throw 'CODEQL|HOLD|invalid_runner_or_revision'
           }
           $zip=Join-Path $env:RUNNER_TEMP 'cpp-exact-source.zip'

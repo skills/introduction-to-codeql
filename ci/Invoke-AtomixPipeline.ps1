@@ -22,6 +22,8 @@ if([string]::Equals($evidence,$root,[StringComparison]::OrdinalIgnoreCase) -or
    $evidence.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){
     throw 'ATOMIX|HOLD|evidence_inside_source'
 }
+& pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Assert-ExternalEvidencePath.ps1') -RepositoryRoot $root -EvidencePath $evidence
+if($LASTEXITCODE -ne 0){throw 'ATOMIX|HOLD|unsafe_external_evidence_path'}
 if([IO.Directory]::Exists($evidence)){
     throw 'ATOMIX|HOLD|evidence_must_be_fresh'
 }
@@ -31,6 +33,7 @@ $required=@(
     'src/bookstore.cpp',
     'ci/Invoke-NativePipeline.ps1',
     'ci/Invoke-AtomixPipeline.ps1',
+    'ci/Assert-ExternalEvidencePath.ps1',
     'ci/Assert-NativeOnly.ps1',
     'research/SARIF-ATOMIX-Null-Hypothesis.md',
     'docs/ATOMIX_TRIFORCE_AUTOMATION.md',

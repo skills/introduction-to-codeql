@@ -6,7 +6,7 @@ runtime, JavaScript Actions, container or interpreter dependency.
 
 ## Build and validate
 
-Requirements: Windows, Visual Studio 2026 C++ tools, CMake 3.30 or newer,
+Requirements: Windows, Visual Studio 2026 C++ tools, CMake 4.2 or newer,
 and PowerShell 7.
 
 Run from this repository's root:

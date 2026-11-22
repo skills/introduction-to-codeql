@@ -29,7 +29,8 @@ jobs:
           Set-StrictMode -Version Latest
           $ErrorActionPreference='Stop'
           if($env:RUNNER_OS -cne 'Windows' -or
-             $env:GITHUB_REPOSITORY -cne 'Simply-Well-Executed/introduction-to-codeql' -or
+             $env:GITHUB_REPOSITORY -cnotin @('Simply-Well-Executed/introduction-to-codeql',
+               'skills/introduction-to-codeql') -or
              $env:GITHUB_SHA -cnotmatch '^[0-9a-f]{40}$'){
             throw 'NATIVE|HOLD|invalid_source_or_runner'
           }

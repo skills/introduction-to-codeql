@@ -62,6 +62,29 @@ processing status becomes `complete`; it fails on errors or timeouts.
 The CodeQL CLI is an external analysis tool with its own upstream terms,
 not part of the 0BSD C++ application.
 
+## Atomix automatic integrity gate
+
+Native Windows C++20 CI now runs a local-only **Atomix / Pinoy Half-Phiping**
+test gate before configuration, build and CodeQL C++ extraction. See
+[the frozen Atomix TRIFORCE protocol](docs/ATOMIX_TRIFORCE_AUTOMATION.md)
+and [the source script](ci/Invoke-AtomixPipeline.ps1).
+
+The gate checks the **actual Q62 Euler, Pi and intensity records** derived
+from [pentagonal-xor-cpp20 PR #34](https://github.com/Simply-Well-Executed/pentagonal-xor-cpp20/pull/34).
+Every local phase (HEAD, AIRGAP MagicComb and TAIL) recomputes all three
+witnesses and checks paired SHA-256 source custody. Each synthetic Unicode
+SARIF 2.1.0 string trial applies exactly one reversible XOR bit in a fresh
+in-memory copy and preserves an out-of-tree SHA-256 audit. The phase-varying
+corpus is deliberately deterministic; this is a restrained proof of concept,
+**not** the entire unprovided historical Atomix volatility generator.
+
+The AIRGAP is a logical validation boundary, **not a physical airgap**.
+A local probe pass does not establish a vulnerability or authorize any
+GitHub Code Scanning upload, upstream maintainer review, merge or release.
+The two repository contexts permitted for the exact-source workflow are
+the fork and `skills/introduction-to-codeql`; upstream workflow execution
+still requires a maintainer's explicit approval.
+
 ## Academic research artifacts
 
 - [SARIF as an untrusted boundary: an Atomix-only null-hypothesis investigation](research/SARIF-ATOMIX-Null-Hypothesis.md) is the canonical, Git-tracked Harvard-style essay (research ID `SARIF-ATOMIX-ESSAY-2026-11-22-v2`).

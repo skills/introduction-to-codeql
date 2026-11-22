@@ -1,0 +1,126 @@
+name: CodeQL C++20 pinned CLI
+on:
+  push:
+    branches:
+      - main
+      - refactor/native-cxx20-bookstore-20261121
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+  security-events: write
+concurrency:
+  group: bookstore-codeql-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  cpp-codeql:
+    runs-on: windows-2025
+    timeout-minutes: 95
+    env:
+      MSBUILDDISABLENODEREUSE: '1'
+      DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER: '1'
+    steps:
+      - name: Bootstrap exact C++ source without external actions
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          if($env:RUNNER_OS -cne 'Windows' -or
+             $env:GITHUB_SHA -cnotmatch '^[0-9a-f]{40}$' -or
+             $env:GITHUB_REPOSITORY -cne 'Simply-Well-Executed/introduction-to-codeql'){
+            throw 'CODEQL|HOLD|invalid_runner_or_revision'
+          }
+          $zip=Join-Path $env:RUNNER_TEMP 'cpp-exact-source.zip'
+          $dir=Join-Path $env:RUNNER_TEMP 'cpp-exact-source'
+          $url='https://api.github.com/repos/'+$env:GITHUB_REPOSITORY+'/zipball/'+$env:GITHUB_SHA
+          Invoke-WebRequest -Uri $url -Headers @{
+            Authorization='Bearer '+$env:GH_TOKEN
+            Accept='application/vnd.github+json'
+            'User-Agent'='swe-codeql-cxx20'
+          } -OutFile $zip -MaximumRedirection 5
+          Expand-Archive -LiteralPath $zip -DestinationPath $dir
+          $folders=@(Get-ChildItem -LiteralPath $dir -Directory)
+          if($folders.Count -ne 1 -or
+             -not [IO.File]::Exists((Join-Path $folders[0].FullName 'src/main.cpp'))){
+            throw 'CODEQL|HOLD|incomplete_exact_source'
+          }
+          $root=$folders[0].FullName
+          [IO.File]::WriteAllText((Join-Path $env:RUNNER_TEMP 'codeql-root.txt'),$root)
+          & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Assert-NativeOnly.ps1') -RepositoryRoot $root
+          if($LASTEXITCODE -ne 0){throw 'CODEQL|HOLD|source_policy_failed'}
+      - name: Verify SHA256 of the official CodeQL Windows bundle
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $url='https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.27.5/codeql-bundle-win64.tar.gz'
+          $expected='6d0befdb4a1d60906b05610e16ac9d00b3d083ab885bb005d934a3a43fae69b4'
+          $archive=Join-Path $env:RUNNER_TEMP 'codeql-bundle-win64.tar.gz'
+          Invoke-WebRequest -Uri $url -OutFile $archive -MaximumRedirection 5
+          $actual=(Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
+          if($actual -cne $expected){throw 'CODEQL|HOLD|archive_hash_mismatch'}
+          $destination=Join-Path $env:RUNNER_TEMP 'codeql-bundle'
+          [void][IO.Directory]::CreateDirectory($destination)
+          & tar.exe -xzf $archive -C $destination
+          if($LASTEXITCODE -ne 0){throw 'CODEQL|HOLD|archive_extract_failed'}
+          $cli=Join-Path $destination 'codeql/codeql.exe'
+          if(-not [IO.File]::Exists($cli)){throw 'CODEQL|HOLD|CLI_missing'}
+          & $cli version
+          if($LASTEXITCODE -ne 0){throw 'CODEQL|HOLD|CLI_startup_failed'}
+          [IO.File]::WriteAllText((Join-Path $env:RUNNER_TEMP 'codeql-cli.txt'),$cli)
+          Write-Host ('CODEQL|BUNDLE=2.27.5|SHA256='+$actual)
+      - name: Extract compiled C++20 and analyze security and quality
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $root=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'codeql-root.txt'))
+          $cli=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'codeql-cli.txt'))
+          $db=Join-Path $env:RUNNER_TEMP 'cpp-codeql-database'
+          $out=Join-Path $env:RUNNER_TEMP 'cpp-codeql-build'
+          $buildCmd='pwsh -NoLogo -NoProfile -NonInteractive -File "'+(Join-Path $root 'ci/Invoke-NativePipeline.ps1')+'" -RepositoryRoot "'+$root+'" -OutputDirectory "'+$out+'" -SkipTests'
+          & $cli database create $db '--language=cpp' "--source-root=$root" "--command=$buildCmd"
+          if($LASTEXITCODE -ne 0){throw 'CODEQL|HOLD|CPP_extraction_failed'}
+          $sarif=Join-Path $env:RUNNER_TEMP 'cpp-codeql.sarif'
+          & $cli database analyze $db 'codeql/cpp-queries:codeql-suites/cpp-security-and-quality.qls' '--format=sarifv2.1.0' "--output=$sarif" '--threads=2'
+          if($LASTEXITCODE -ne 0 -or -not [IO.File]::Exists($sarif)){
+            throw 'CODEQL|HOLD|query_analysis_failed'
+          }
+          [IO.File]::WriteAllText((Join-Path $env:RUNNER_TEMP 'codeql-sarif.txt'),$sarif)
+          Write-Host ('CODEQL|SARIF_SHA256='+(Get-FileHash -LiteralPath $sarif -Algorithm SHA256).Hash.ToLowerInvariant())
+      - name: Upload C++ SARIF directly through GitHub REST API
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $path=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'codeql-sarif.txt'))
+          $bytes=[IO.File]::ReadAllBytes($path)
+          $memory=[IO.MemoryStream]::new()
+          $gzip=[IO.Compression.GZipStream]::new($memory,[IO.Compression.CompressionLevel]::Optimal,$true)
+          try{$gzip.Write($bytes,0,$bytes.Length)}finally{$gzip.Dispose()}
+          $body=@{
+            commit_sha=$env:GITHUB_SHA
+            ref=$env:GITHUB_REF
+            sarif=[Convert]::ToBase64String($memory.ToArray())
+            tool_name='CodeQL'
+          } | ConvertTo-Json -Compress
+          $memory.Dispose()
+          $url='https://api.github.com/repos/'+$env:GITHUB_REPOSITORY+'/code-scanning/sarifs'
+          $result=Invoke-RestMethod -Method Post -Uri $url -Headers @{
+            Authorization='Bearer '+$env:GH_TOKEN
+            Accept='application/vnd.github+json'
+            'User-Agent'='swe-native-codeql'
+          } -Body $body -ContentType 'application/json'
+          if($null -eq $result.id){throw 'CODEQL|HOLD|upload_unconfirmed'}
+          Write-Host ('CODEQL|SARIF_UPLOAD_ID='+$result.id+'|RELEASE=HOLD')
+      - name: No automatic release
+        if: always()
+        shell: pwsh
+        run: |
+          Write-Host 'CODEQL|RELEASE=HOLD|NOT_MERGE_APPROVAL'

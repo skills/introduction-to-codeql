@@ -17,6 +17,8 @@ if([string]::Equals($out,$root,[StringComparison]::OrdinalIgnoreCase) -or
    $out.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){
   throw 'NATIVE|HOLD|output_inside_source'
 }
+& pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Assert-ExternalEvidencePath.ps1') -RepositoryRoot $root -EvidencePath $out
+if($LASTEXITCODE -ne 0){throw 'NATIVE|HOLD|unsafe_external_evidence_path'}
 $env:MSBUILDDISABLENODEREUSE='1'
 $env:DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER='1'
 $baseline=$null
@@ -25,6 +27,7 @@ $sourcePaths=@('CMakeLists.txt','include/bookstore.hpp',
   'ci/Assert-NativeOnly.ps1','ci/Invoke-NativePipeline.ps1',
   'ci/Test-HttpLoopback.ps1','ci/Test-SlowHeader.ps1',
   'ci/Test-OutputContainment.ps1',
+  'ci/Assert-ExternalEvidencePath.ps1',
   'ci/Invoke-AtomixPipeline.ps1',
   'docs/ATOMIX_TRIFORCE_AUTOMATION.md',
   'research/SARIF-ATOMIX-Null-Hypothesis.md')
@@ -65,7 +68,8 @@ Invoke-Stage 'output_guard_regression' {
   & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Test-OutputContainment.ps1') -RepositoryRoot $root
 }
 Invoke-Stage 'atomix_q62_magiccomb' {
-  & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Invoke-AtomixPipeline.ps1') -RepositoryRoot $root -EvidenceDirectory (Join-Path $out 'atomix-evidence')
+  $atomixEvidence=Join-Path $out ('atomix-evidence-'+[Guid]::NewGuid().ToString('N'))
+  & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Invoke-AtomixPipeline.ps1') -RepositoryRoot $root -EvidenceDirectory $atomixEvidence
 }
 Invoke-Stage 'configure' {
   & cmake -S $root -B $out -G 'Visual Studio 18 2026' -A x64 -DBUILD_TESTING=ON

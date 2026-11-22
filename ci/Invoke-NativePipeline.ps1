@@ -23,7 +23,8 @@ $baseline=$null
 $sourcePaths=@('CMakeLists.txt','include/bookstore.hpp',
   'src/bookstore.cpp','src/main.cpp','tests/bookstore_tests.cpp',
   'ci/Assert-NativeOnly.ps1','ci/Invoke-NativePipeline.ps1',
-  'ci/Test-HttpLoopback.ps1')
+  'ci/Test-HttpLoopback.ps1','ci/Test-SlowHeader.ps1',
+  'ci/Test-OutputContainment.ps1')
 function Assert-Source([string]$operation,[string]$phase){
   $lines=[Collections.Generic.List[string]]::new()
   foreach($relative in $sourcePaths){
@@ -57,6 +58,9 @@ function Invoke-Stage([string]$name,[scriptblock]$operation){
 }
 & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Assert-NativeOnly.ps1') -RepositoryRoot $root
 if($LASTEXITCODE -ne 0){throw 'NATIVE|HOLD|source_policy'}
+Invoke-Stage 'output_guard_regression' {
+  & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Test-OutputContainment.ps1') -RepositoryRoot $root
+}
 Invoke-Stage 'configure' {
   & cmake -S $root -B $out -G 'Visual Studio 18 2026' -A x64 -DBUILD_TESTING=ON
 }
@@ -69,6 +73,9 @@ if(-not $SkipTests){
   }
   Invoke-Stage 'http_loopback' {
     & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Test-HttpLoopback.ps1') -Executable (Join-Path $out 'Release/bookstore.exe')
+  }
+  Invoke-Stage 'slow_header_deadline' {
+    & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Test-SlowHeader.ps1') -Executable (Join-Path $out 'Release/bookstore.exe')
   }
 }
 Write-Host 'NATIVE|PASS|CXX20|MSVC|O2|RELEASE=HOLD'

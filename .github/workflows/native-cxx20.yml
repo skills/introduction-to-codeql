@@ -60,6 +60,23 @@ jobs:
           $build=Join-Path $env:RUNNER_TEMP 'native-build'
           & pwsh -NoLogo -NoProfile -NonInteractive -File $script -RepositoryRoot $root -OutputDirectory $build
           if($LASTEXITCODE -ne 0){throw 'NATIVE|HOLD|compile_or_tests_failed'}
+      - name: Prove repeat build preserves source and allocates fresh Atomix evidence
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $root=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'native-root.txt'))
+          $build=Join-Path $env:RUNNER_TEMP 'native-build'
+          & pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $root 'ci/Invoke-NativePipeline.ps1') -RepositoryRoot $root -OutputDirectory $build -SkipTests
+          if($LASTEXITCODE -ne 0){throw 'NATIVE|HOLD|repeat_build_failed'}
+          $evidence=@(Get-ChildItem -LiteralPath $build -Directory -Filter 'atomix-evidence-*')
+          if($evidence.Count -ne 2){throw ('ATOMIX|HOLD|expected_two_disjoint_evidence_sets|ACTUAL='+$evidence.Count)}
+          foreach($item in $evidence){
+            if(-not [IO.File]::Exists((Join-Path $item.FullName 'atomix-audit.json'))){
+              throw ('ATOMIX|HOLD|missing_individual_audit|'+$item.Name)
+            }
+          }
+          Write-Host 'ATOMIX|REPEAT_BUILD_PASS|INDEPENDENT_EVIDENCE_SETS=2|RELEASE=HOLD'
       - name: Index academic research artifact and digest
         if: success()
         shell: pwsh

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: 0BSD
-#define WIN32_LEAN_AND_MEAN
-#define NOMINMAX
+// Windows feature macros are supplied once by the CMake target.
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include "bookstore.hpp"

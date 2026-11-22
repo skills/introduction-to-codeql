@@ -1,39 +1,107 @@
-# Enable CodeQL to secure your source code
+# Native C++20 CodeQL Book Store
 
-_Learn to identify, resolve, and prevent insecure coding patterns._
+The active application is now a native Windows C++20 HTTP book catalogue.
+It uses MSVC, CMake and WinSock2, with no Python, Flask, pip, SQLite
+runtime, JavaScript Actions, container or interpreter dependency.
 
-## Welcome
+## Build and validate
 
-- **Who is this for**: Developers, security engineers, open source maintainers.
-- **What you'll learn**: How to enable code scanning to identify typical vulnerabilities like SQL injection, review alerts, and take action to fix them.
-- **What you'll build**: An automated process to identify existing vulnerabilities and prevent future vulnerabilities in production code.
-- **Prerequisites**:
-  - [Introduction to GitHub](https://github.com/skills/introduction-to-github)
-- **How long**: Less than 30 minutes.
+Requirements: Windows, Visual Studio 2026 C++ tools, CMake 4.2 or newer,
+and PowerShell 7.
 
-### How to start this exercise
+Run from this repository's root:
 
-Simply copy the exercise to your account, then give your favorite Octocat (Mona) **about 20 seconds** to prepare the first lesson, then **refresh the page**.
+    pwsh -NoLogo -NoProfile -NonInteractive -File ci/Invoke-NativePipeline.ps1 -RepositoryRoot . -OutputDirectory "$env:TEMP\swe-bookstore-build"
 
-[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills&template_name=introduction-to-codeql&owner=%40me&name=skills-introduction-to-codeql&description=Exercise:+Introduction+to+CodeQL&visibility=public)
+The workflow uses native Release /O2, one MSBuild worker with node reuse
+disabled, SHA-256 HEAD and TAIL source checks, CTest, an out-of-tree
+build-guard regression, and HTTP smoke tests including a slow-header client.
+The server imposes a five-second absolute header deadline and returns
+`Allow: GET` on HTTP 405 replies. On compilation or test failure, release stays HOLD.
 
-<details>
-<summary>Having trouble? 🤷</summary><br/>
+To launch the program:
 
-When copying the exercise, we recommend the following settings:
+    & "$env:TEMP\swe-bookstore-build\Release\bookstore.exe" --port 8080
 
-- For owner, choose your personal account or an organization to host the repository.
-- We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
+The only listening address is 127.0.0.1. The app serves the five seeded
+books from an immutable in-memory array and supports:
 
-If the exercise isn't ready in 20 seconds:
+- http://127.0.0.1:8080/
+- http://127.0.0.1:8080/?name=The+Hobbit
+- http://127.0.0.1:8080/?author=JRR+Tolkien
+- http://127.0.0.1:8080/?read=false
 
-1. After your new repository is created, wait about 20 seconds, then refresh the page.
-2. Follow the step-by-step instructions in the issue created in your repository.
-3. If the page doesn't refresh automatically, please check the [Actions](../../actions) tab.
-   - Check to see if a job is running. Sometimes it simply takes a bit longer.
-   - If the page shows a failed job, please submit an issue. Nice, you found a bug! 🐛
+The HTTP implementation is intentionally small and single-threaded.
+It is a local demonstration server, not a production internet service.
+The original SQL storage has **not** been reproduced as a persistent
+database; there are no stored edits or migrations.
 
-</details>
+## Active native pipelines
 
----
+1. Native C++20 MSVC build, CTest, and HTTP verification:
+   .github/workflows/native-cxx20.yml
+2. CodeQL 2.27.5 C++ security-and-quality suite:
+   .github/workflows/codeql-cxx20.yml
 
+The CodeQL workflow downloads GitHub's official Windows bundle pinned
+by SHA-256, runs the C++ CLI extractor during a real native build, validates
+SARIF 2.1.0, and fails on any reported security or quality finding. This
+**local C++ CodeQL quality gate is enforced independently of GitHub Code
+Scanning publication**. No third-party GitHub Actions are executed.
+
+GitHub's managed CodeQL **default setup** is currently enabled on the fork.
+GitHub rejects SARIF from a simultaneous custom advanced setup, so
+publication is explicitly **on HOLD** by default. Passing the local gate
+does not mean the SARIF was ingested, and the job summary says so.
+After a repository administrator disables CodeQL default setup, they may
+set the Actions repository variable `CODEQL_SARIF_PUBLISH` to `true` to
+opt into GitHub Code Scanning publication. When enabled, the uploader
+provides the temporary-root `checkout_uri` and polls until the SARIF
+processing status becomes `complete`; it fails on errors or timeouts.
+
+The CodeQL CLI is an external analysis tool with its own upstream terms,
+not part of the 0BSD C++ application.
+
+## Atomix automatic integrity gate
+
+Native Windows C++20 CI now runs a local-only **Atomix / Pinoy Half-Phiping**
+test gate before configuration, build and CodeQL C++ extraction. See
+[the frozen Atomix TRIFORCE protocol](docs/ATOMIX_TRIFORCE_AUTOMATION.md)
+and [the source script](ci/Invoke-AtomixPipeline.ps1).
+
+The gate checks the **actual Q62 Euler, Pi and intensity records** derived
+from [pentagonal-xor-cpp20 PR #34](https://github.com/Simply-Well-Executed/pentagonal-xor-cpp20/pull/34).
+Every local phase (HEAD, AIRGAP MagicComb and TAIL) recomputes all three
+witnesses and checks paired SHA-256 source custody. Each synthetic Unicode
+SARIF 2.1.0 string trial applies exactly one reversible XOR bit in a fresh
+in-memory copy and preserves an out-of-tree SHA-256 audit. The phase-varying
+corpus is deliberately deterministic; this is a restrained proof of concept,
+**not** the entire unprovided historical Atomix volatility generator.
+
+The AIRGAP is a logical validation boundary, **not a physical airgap**.
+A local probe pass does not establish a vulnerability or authorize any
+GitHub Code Scanning upload, upstream maintainer review, merge or release.
+The two repository contexts permitted for the exact-source workflow are
+the fork and `skills/introduction-to-codeql`; upstream workflow execution
+still requires a maintainer's explicit approval.
+
+## Academic research artifacts
+
+- [SARIF as an untrusted boundary: an Atomix-only null-hypothesis investigation](research/SARIF-ATOMIX-Null-Hypothesis.md) is the canonical, Git-tracked Harvard-style essay (research ID `SARIF-ATOMIX-ESSAY-2026-11-22-v2`).
+- In the user's working terminology, **Atomix** is the research goal; **Pinoy Half-Phiping** names the restrained investigation; **one-bit XOR mutation** is a minimal proof-of-concept on disposable, deliberately volatile Unicode strings. No Atomix experiment is claimed to have occurred.
+- Both CI workflows verify and index the document SHA-256 in the GitHub Actions job summary. The native HEAD/TAIL custody hash also includes this source document.
+- [Fork PR #1](https://github.com/Simply-Well-Executed/introduction-to-codeql/pull/1) and [upstream PR #78](https://github.com/skills/introduction-to-codeql/pull/78) share the branch's commit. The older [upstream workflow run 44994683214](https://github.com/skills/introduction-to-codeql/actions/runs/44994683214) is immutable and cannot have files retroactively attached; consult this source-tracked artifact instead.
+
+## Previous exercise and licensing
+
+The prior GitHub Skills Flask and SQLite lesson, its original automation,
+package manifests and media have been removed from the active working tree.
+Their complete source can still be inspected at the parent Git commit
+b93d82cc5c49492b2c6ab1c36240e62944a30c74, or through Git history.
+
+Newly written C++ and CI code uses SPDX-0BSD (LICENSES/0BSD.txt).
+The original root LICENSE remains MIT to preserve the original GitHub
+Skills source licensing. No pre-existing material was silently relicensed.
+
+All workflows are validation only. **RELEASE=HOLD**, with no automatic
+merge or publication.

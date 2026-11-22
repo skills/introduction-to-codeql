@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: 0BSD
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 4.2)
 project(swe_bookstore VERSION 1.0 LANGUAGES CXX)
 if(NOT WIN32 OR NOT MSVC)
   message(FATAL_ERROR "BOOKSTORE|HOLD|native Windows MSVC required")

@@ -62,6 +62,13 @@ processing status becomes `complete`; it fails on errors or timeouts.
 The CodeQL CLI is an external analysis tool with its own upstream terms,
 not part of the 0BSD C++ application.
 
+## Academic research artifacts
+
+- [SARIF as an untrusted boundary: an Atomix-only null-hypothesis investigation](research/SARIF-ATOMIX-Null-Hypothesis.md) is the canonical, Git-tracked Harvard-style essay (research ID `SARIF-ATOMIX-ESSAY-2026-11-22-v2`).
+- In the user's working terminology, **Atomix** is the research goal; **Pinoy Half-Phiping** names the restrained investigation; **one-bit XOR mutation** is a minimal proof-of-concept on disposable, deliberately volatile Unicode strings. No Atomix experiment is claimed to have occurred.
+- Both CI workflows verify and index the document SHA-256 in the GitHub Actions job summary. The native HEAD/TAIL custody hash also includes this source document.
+- [Fork PR #1](https://github.com/Simply-Well-Executed/introduction-to-codeql/pull/1) and [upstream PR #78](https://github.com/skills/introduction-to-codeql/pull/78) share the branch's commit. The older [upstream workflow run 44994683214](https://github.com/skills/introduction-to-codeql/actions/runs/44994683214) is immutable and cannot have files retroactively attached; consult this source-tracked artifact instead.
+
 ## Previous exercise and licensing
 
 The prior GitHub Skills Flask and SQLite lesson, its original automation,

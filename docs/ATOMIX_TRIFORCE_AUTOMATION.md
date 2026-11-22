@@ -2,9 +2,25 @@
 
 <!-- SPDX-License-Identifier: 0BSD -->
 
-**State:** CURRENT exploratory test protocol, `ATOMIX-PINOY-HALF-PHIPING-SARIF-001`.
+**State:** CURRENT exploratory test protocol, `ATOMIX-PINOY-HALF-PHIPING-SARIF-002`.
 **Custody:** Git commit and independent SHA-256 HEAD/TAIL evidence.
 **Release:** HOLD. **Human approval:** NOT AUTHENTICATED.
+
+## Protocol lineage and comparison hold
+
+- **001 (historical):** The limited-file-source-custody implementation passed
+  [native run 44997579868](https://github.com/Simply-Well-Executed/introduction-to-codeql/actions/runs/44997579868)
+  and [CodeQL run 44997579867](https://github.com/Simply-Well-Executed/introduction-to-codeql/actions/runs/44997579867).
+  Its evidence remains valid **within that specific protocol and commit**.
+- **002 (CURRENT):** Upgrades the MagicComb from the required-source subset
+  to a complete, sorted source-tree SHA-256 ledger and publishes a bounded
+  audit JSON into the CI log. These changes require **a new protocol ID**.
+  Results from 001 and 002 must not be pooled or claimed numerically
+  comparable without an explicit reviewed study design. Each run's commit
+  SHA remains part of its exact provenance.
+
+This is a versioned method change, not retrospective modification of 001.
+In either version, a failed or incomplete test stays HOLD.
 
 ## Scope: refract, do not merge identities
 

@@ -39,8 +39,13 @@ int main() {
         std::string::npos, "render_books");
   check(http_response("GET", "/").find("Content-Security-Policy: default-src 'none'") !=
         std::string::npos, "response_csp");
-  check(http_response("POST", "/").find("405 Method Not Allowed") !=
+  const auto rejected_method = http_response("POST", "/");
+  check(rejected_method.find("405 Method Not Allowed") !=
         std::string::npos, "method_guard");
+  check(rejected_method.find("\r\nAllow: GET\r\n") !=
+        std::string::npos, "method_guard_allow_get");
+  check(http_response("GET", "/").find("\r\nAllow: GET\r\n") ==
+        std::string::npos, "allow_header_only_on_405");
   check(http_response("GET", "/?name=x%0A").find("400 Bad Request") !=
         std::string::npos, "query_guard");
   check(http_response("GET", "/invalid").find("404 Not Found") !=

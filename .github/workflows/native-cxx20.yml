@@ -59,6 +59,26 @@ jobs:
           $build=Join-Path $env:RUNNER_TEMP 'native-build'
           & pwsh -NoLogo -NoProfile -NonInteractive -File $script -RepositoryRoot $root -OutputDirectory $build
           if($LASTEXITCODE -ne 0){throw 'NATIVE|HOLD|compile_or_tests_failed'}
+      - name: Index academic research artifact and digest
+        if: success()
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference='Stop'
+          $root=[IO.File]::ReadAllText((Join-Path $env:RUNNER_TEMP 'native-root.txt'))
+          $paper=Join-Path $root 'research/SARIF-ATOMIX-Null-Hypothesis.md'
+          if(-not [IO.File]::Exists($paper)){throw 'RESEARCH|HOLD|missing_research_artifact'}
+          $digest=(Get-FileHash -LiteralPath $paper -Algorithm SHA256).Hash.ToLowerInvariant()
+          $url='https://github.com/Simply-Well-Executed/introduction-to-codeql/blob/refactor/native-cxx20-bookstore-20261121/research/SARIF-ATOMIX-Null-Hypothesis.md'
+          $lines=@(
+            '### Academic research artifact: SARIF / Atomix'
+            ('[Read the canonical Harvard-style essay]('+$url+')')
+            ('SHA-256: `'+$digest+'`')
+            'Status: EXPLORATORY / NO ATOMIX EXPERIMENT EXECUTED / RELEASE=HOLD'
+            'Upstream run 44994683214 is historical and cannot retroactively receive this artifact.'
+          )
+          Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Value ($lines -join [Environment]::NewLine)
+          Write-Host ('RESEARCH|ARTIFACT_PRESENT|SHA256='+$digest+'|NO_TEST_EXECUTED')
       - name: No automatic release
         if: always()
         shell: pwsh

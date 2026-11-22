@@ -8,6 +8,7 @@ $expected=@('CMakeLists.txt','src/bookstore.cpp','src/main.cpp','include/booksto
             'tests/bookstore_tests.cpp','LICENSE','LICENSES/0BSD.txt',
             'ci/Invoke-NativePipeline.ps1','ci/Test-HttpLoopback.ps1',
             'ci/Invoke-AtomixPipeline.ps1',
+            'ci/Assert-ExternalEvidencePath.ps1',
             'docs/ATOMIX_TRIFORCE_AUTOMATION.md',
             'research/SARIF-ATOMIX-Null-Hypothesis.md')
 foreach($relative in $expected){

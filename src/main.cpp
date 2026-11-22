@@ -5,6 +5,7 @@
 #include "bookstore.hpp"
 #include <array>
 #include <charconv>
+#include <chrono>
 #include <cstddef>
 #include <iostream>
 #include <string>
@@ -49,17 +50,27 @@ namespace {
     line.substr(0, first), line.substr(first + 1, second - first - 1));
 }
 void serve_one(SOCKET client) {
-  constexpr int timeout_ms = 5000;
-  static_cast<void>(setsockopt(client, SOL_SOCKET, SO_RCVTIMEO,
-    reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms)));
+  constexpr int send_timeout_ms = 5000;
   static_cast<void>(setsockopt(client, SOL_SOCKET, SO_SNDTIMEO,
-    reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms)));
+    reinterpret_cast<const char*>(&send_timeout_ms), sizeof(send_timeout_ms)));
+  // SO_RCVTIMEO limits each receive, not the whole header read. Slow clients
+  // must not hold this single-threaded connection indefinitely.
+  const auto deadline = std::chrono::steady_clock::now() +
+                        std::chrono::seconds(5);
   constexpr std::size_t max_header = 8192;
   std::string request;
   request.reserve(1024);
   std::array<char, 2048> chunk{};
   while (request.find("\r\n\r\n") == std::string::npos &&
          request.size() <= max_header) {
+    const auto remaining_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+      deadline - std::chrono::steady_clock::now()).count();
+    if (remaining_ms <= 0) return;
+    const int timeout_ms = static_cast<int>(remaining_ms);
+    if (setsockopt(client, SOL_SOCKET, SO_RCVTIMEO,
+          reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms)) != 0) {
+      return;
+    }
     const int n = recv(client, chunk.data(), static_cast<int>(chunk.size()), 0);
     if (n <= 0) return;
     request.append(chunk.data(), static_cast<std::size_t>(n));
